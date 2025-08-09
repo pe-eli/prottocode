@@ -1,0 +1,48 @@
+import React from "react";
+
+const Hero: React.FC = () => {
+  return (
+    <section className="hero">
+      <div className="container hero-inner">
+        <div className="hero-left">
+          <h1>
+            Construímos experiências digitais
+            <span className="accent"> que convertem</span>
+          </h1>
+          <p className="lead">
+            Prottocode cria sites modernos, rápidos e otimizados para negócios
+            que querem crescer online. Front-end elegante, back-end seguro e
+            suporte contínuo.
+          </p>
+          <div className="hero-actions">
+            <a className="btn btn-primary" href="#contact">
+              Solicitar Proposta
+            </a>
+            <a className="btn btn-ghost" href="#services">
+              Nossos Serviços
+            </a>
+          </div>
+          <ul className="trust-list">
+            <li>Entrega no prazo</li>
+            <li>Performance & SEO</li>
+            <li>Suporte 6 meses</li>
+          </ul>
+        </div>
+        <div className="hero-right">
+          <div className="mockup">
+            <div className="mockup-screen">
+              <header className="mockup-top">prottocode / showcase</header>
+              <main className="mockup-content">
+                <h4>Landing page</h4>
+                <p>Design limpo, CTAs claros e carregamento rápido.</p>
+              </main>
+            </div>
+            <div className="mockup-shadow" />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Hero;
