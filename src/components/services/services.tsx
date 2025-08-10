@@ -30,12 +30,11 @@ const Services: React.FC = () => {
             <p>{s.desc}</p>
             <ul>
               {s.points.map((p) => (
-                <li key={p}>• {p}</li>
+                <li key={p}>{p}</li>
               ))}
             </ul>
-            <a className="link" href="#contact">
-              Solicitar orçamento →
-            </a>
+            <a href="#contact" className="service-link">Solicitar orçamento →</a>
+
           </article>
         ))}
       </div>

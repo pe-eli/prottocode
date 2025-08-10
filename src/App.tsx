@@ -28,7 +28,7 @@ const App: React.FC = () => {
                   e proposta personalizada em 48h.
                 </p>
               </div>
-              <a href="#contact" className="btn btn-primary">
+              <a href="#contact" className="service-link">
                 Solicitar Proposta
               </a>
             </div>
