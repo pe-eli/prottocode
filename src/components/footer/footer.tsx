@@ -8,7 +8,7 @@ const Footer: React.FC = () => {
           <div className="logo small">PC</div>
           <div>
             <strong>Prottocode</strong>
-            <small>Desenvolvimento & Design</small>
+            <small> Desenvolvimento & Design</small>
           </div>
         </div>
         <div className="credits">© {new Date().getFullYear()} Prottocode. Todos os direitos reservados.</div>

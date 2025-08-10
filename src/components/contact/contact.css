@@ -1,0 +1,40 @@
+.extra-contact {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+  justify-content: center;
+}
+
+.contact-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  font-size: 15px;
+}
+
+.contact-btn:hover {
+  transform: translateY(-3px);
+}
+
+.contact-btn.whatsapp {
+  background: linear-gradient(90deg, #25d366, #128c7e);
+  color: white;
+}
+
+.contact-btn.instagram {
+  background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4);
+  color: white;
+}
+
+.direct-contact-text {
+  text-align: center;
+  color: var(--muted);
+  margin-top: 28px;
+  font-size: 15px;
+}

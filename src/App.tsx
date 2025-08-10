@@ -5,6 +5,7 @@ import Services from "./components/services/services";
 import Testimonials from "./components/testimonials/Testimonials";
 import Footer from "./components/footer/footer";
 import Team from "./components/team/team";
+import Contact from "./components/contact/contact";
 import "./App.css";
 
 const App: React.FC = () => {
@@ -16,6 +17,7 @@ const App: React.FC = () => {
         <Services />
         <Team />
         <Testimonials />
+
         <section className="contact-cta">
           <div className="container">
             <div className="cta-card">
@@ -32,18 +34,8 @@ const App: React.FC = () => {
             </div>
           </div>
         </section>
-        <section id="contact" className="contact-form container">
-          <h2>Fale com a Prottocode</h2>
-          <form className="form-grid" onSubmit={(e) => e.preventDefault()}>
-            <input type="text" placeholder="Nome" required />
-            <input type="email" placeholder="Email" required />
-            <input type="text" placeholder="Empresa (opcional)" />
-            <textarea placeholder="Descreva seu projeto" rows={6} required />
-            <button className="btn btn-primary" type="submit">
-              Enviar Mensagem
-            </button>
-          </form>
-        </section>
+
+        <Contact /> {/* substituindo o formulário inline */}
       </main>
       <Footer />
     </div>
