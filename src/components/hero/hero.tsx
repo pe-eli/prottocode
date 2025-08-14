@@ -6,8 +6,8 @@ const Hero: React.FC = () => {
       <div className="container hero-inner">
         <div className="hero-left">
           <h1>
-            Construímos experiências digitais
-            <span className="accent"> que convertem</span>
+            O Futuro digital do seu negócio
+            <span className="accent"> começa aqui</span>
           </h1>
           <p className="lead">
             Prottocode cria sites modernos, rápidos e otimizados para negócios
