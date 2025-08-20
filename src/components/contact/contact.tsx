@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { db } from "../../../firebaseconfig";
 import { collection, addDoc, Timestamp } from "firebase/firestore";
+import { FaWhatsapp, FaInstagram } from "react-icons/fa";
 import "../../App.css";
 import "./contact.css";
 
@@ -42,7 +43,7 @@ const Contact: React.FC = () => {
 
   return (
     <section id="contact" className="contact-form container">
-      <h2>Fale com a Prottocode</h2>
+      <h2>Nós realizamos sua ideia, é só pedir!</h2>
       <form className="form-grid" onSubmit={handleSubmit}>
         <input
           type="text"
@@ -71,32 +72,34 @@ const Contact: React.FC = () => {
           onChange={(e) => setMessage(e.target.value)}
           required
         />
-        <button className="btn btn-primary" type="submit">
+        
+      </form>
+    <button className="btn btn-primary" type="submit">
           Enviar Mensagem
         </button>
-      </form>
-
       <p className="direct-contact-text">
         Prefere um atendimento mais rápido e direto? Fale conosco também por:
       </p>
 
       <div className="extra-contact">
+       <a
+              href="https://wa.me/5524999348783"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="contact-btn whatsapp"
+            >
+              <FaWhatsapp color="white" size={24} />
+              WhatsApp
+            </a>
         <a
-          href="https://wa.me/5524999348783"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="contact-btn whatsapp"
-        >
-          💬 WhatsApp
-        </a>
-        <a
-          href="https://www.instagram.com/prottocode?igsh=MWFkdGczajN0dGJpOQ=="
-          target="_blank"
-          rel="noopener noreferrer"
-          className="contact-btn instagram"
-        >
-          📸 Instagram
-        </a>
+              href="https://www.instagram.com/prottocode?igsh=MWFkdGczajN0dGJpOQ=="
+              target="_blank"
+              rel="noopener noreferrer"
+              className="contact-btn instagram"
+            >
+              <FaInstagram color="white" size={24} />
+              Instagram
+            </a>
       </div>
 
       {modalOpen && (

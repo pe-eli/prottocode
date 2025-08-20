@@ -15,10 +15,10 @@ const Hero: React.FC = () => {
             suporte contínuo.
           </p>
           <div className="hero-actions">
-            <a className="btn btn-primary" href="#contact">
+            <a className="btn-primary" href="#contact">
               Solicitar Proposta
             </a>
-            <a className="btn btn-ghost" href="#services">
+            <a className="btn-ghost" href="#services">
               Nossos Serviços
             </a>
           </div>
