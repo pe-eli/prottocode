@@ -1,5 +1,6 @@
 import React from "react";
 import logoImg from "../../assets/Semnome.png"; // ajuste o caminho se necessário
+import "./header.css"
 
 const Header: React.FC = () => {
   return (

@@ -57,7 +57,7 @@ const Contact: React.FC = () => {
         />
         <input
           type="email"
-          placeholder="Email"
+          placeholder="WhatsApp"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
@@ -69,6 +69,7 @@ const Contact: React.FC = () => {
           onChange={(e) => setCompany(e.target.value)}
         />
         <textarea
+            style={{display: "flex", justifyContent: "center"}}
           placeholder="Descreva seu projeto"
           rows={6}
           value={message}
