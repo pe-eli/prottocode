@@ -124,12 +124,16 @@ h1 {
   margin-top: 20px;
 }
 .card {
+  display: flex;
+  flex-direction: column;
   background: var(--card);
   padding: 20px;
   border-radius: 12px;
   border: 1px solid rgba(255,255,255,0.03);
   transform: translateY(0);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  align-items: center;
+  justify-content: center;
 }
 .card:hover {
   transform: translateY(-6px);

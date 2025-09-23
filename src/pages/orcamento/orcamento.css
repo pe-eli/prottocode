@@ -1,3 +1,12 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 .orcamento-page {
   --bg-light: #0c1424;
   --text-dark: #e6eef8;
@@ -53,14 +62,6 @@
   margin-bottom: 16px;
 }
 
-.servico-preco {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: var(--primary);
-  margin-bottom: 12px;
-}
-
-/* Botões específicos */
 .orcamento-page .btn {
   display: inline-block;
   width: 70%;
@@ -77,6 +78,8 @@
   background: linear-gradient(90deg,var(--accent),var(--accent-2));
   color: #0f1724;
   border: none;
+  display: flex;
+  place-self: center;
 }
 
 .orcamento-page .btn-primary:hover {
@@ -87,40 +90,119 @@
   transition: box-shadow 0.2s ease;
 }
 
-.selecionado{
+.card-selecionado{
   background-color: #232d3c;
+  border: 1px solid #e5e7eb;  
+}
+
+.btn-selecionado{
+  background: linear-gradient(90deg,var(--accent),var(--accent-2));
+  color: #0f1724;
+  border: none;
+  display: inline-block;
+  width: 70%;
+  text-align: center;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 5%;
+}
+
+.btn-naoselecionado{
+  background: transparent;
+  color: white;
+  border: 1px solid white;
+  display: inline-block;
+  width: 70%;
+  text-align: center;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 5%;
+}
+
+.extras-grid{
+  margin-top: 5vh;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  flex-direction: column;
+  width: 70%;
+  height: auto;
+  gap: 10px;
+
+}
+
+.extra-card{
+  cursor: pointer;
+  background-color: rgba(255,255,255,0.03);
+  border: none;
+  border-radius: 12px;
+  display: flex;
+  width: 100%;
+  height: 5rem;
+  padding: 0.8rem;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+.extra-card:hover {
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transform: translateY(-4px);
+  transition: transform 0.2s ease;
+}
+.selecionado {
+  background-color: #232d3c;
+  border: 1px solid #e5e7eb;
+  font-size: 1rem;
+}
+.card-selecionar{
+  font-size: 1rem;
+}
+
+.res-servico{
+  background-color: rgba(255, 255, 255, 0.16);
+  padding: 0.5rem;
+  border-radius: 12px;
+  width: 60%;
+  text-align: center;
+}
+
+.res-extra{
+  width: 100%;
+  border-radius: 12px;
+  place-self: center;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.16);
+  padding: 0.5rem;
+  text-align: center;
+  margin-top: 4px;
 }
 .resumo-orcamento {
-  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
   padding: 24px;
-  background: #f3f4f6;
-  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.03);
   border-radius: 12px;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
 }
 
-.resumo-orcamento h2 {
-  font-size: 1.4rem;
-  font-weight: 700;
-  margin-bottom: 12px;
+.linha{
+  display: flex;
+  border: 1px solid white;
+  margin: 3rem;
+  width: 60%;
+  height: 1px;
 }
 
-.resumo-orcamento p {
-  font-size: 1rem;
-  margin-bottom: 8px;
-  color: var(--text-dark);
-}
-
-.resumo-orcamento strong {
-  color: var(--primary);
-}
-
-.resumo-orcamento .btn-primary {
-  margin-top: 12px;
-  width: auto;
-  padding: 10px 20px;
-}
-
-/* Responsividade */
 @media (max-width: 600px) {
   .orcamento-header h1 {
     font-size: 1.6rem;
@@ -128,4 +210,71 @@
   .servicos-grid {
     grid-template-columns: 1fr;
   }
+
+  .resumo-orcamento{
+  width: 90%;
 }
+
+.linha{
+  margin: 5vh 0 5vh 0;
+}
+.res-servico{
+  background-color: rgba(255, 255, 255, 0.16);
+  padding: 0.5rem;
+  border-radius: 12px;
+  width: 95%;
+  text-align: center;
+}
+.res-extra{
+  width: 20rem;
+  border-radius: 12px;
+  place-self: center;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.16);
+  padding: 0.5rem;
+  text-align: center;
+  margin-top: 4px;
+}
+.orcamento-page h1{
+  text-align: center;
+}
+
+.form-orcamento {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+}
+
+.res-input{
+  background-color: transparent;
+  border: none;
+  text-align: center;
+  color: white;
+}
+.form-orcamento {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+
+.form-group input {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+

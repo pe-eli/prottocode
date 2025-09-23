@@ -16,7 +16,7 @@ const teamMembers = [
   {
     name: "Pedro Lucas",
     role: "Front-end Developer",
-    bio: "Técnico em mecatrônica também, atua na criação da parte visual dos projetos, conectando a tecnologia às pessoas de forma simples e eficiente. É responsável pela experiência de quem utiliza nossos sistemas",
+    bio: "Técnico em mecatrônica, atua na criação da parte visual dos projetos, conectando a tecnologia às pessoas de forma simples e eficiente. É responsável pela experiência de quem utiliza nossos sistemas.",
     img: "/image.jpg", 
     linkedin: "https://www.linkedin.com/in/pedro-moura-plse/",
     instagram: "https://www.instagram.com/_plmoura/",

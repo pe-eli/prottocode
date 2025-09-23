@@ -1,5 +1,5 @@
 import React from "react";
-import logoImg from "../../assets/Semnome.png"; // ajuste o caminho se necessário
+import logoImg from "../../assets/Semnome.png"; 
 
 const Footer: React.FC = () => {
   return (
@@ -7,7 +7,7 @@ const Footer: React.FC = () => {
       <div className="container footer-inner">
         <div className="brand small">
           <div className="logo small">
-            <img src={logoImg} alt="Prottocode Logo" />
+            <img style={{backgroundColor: "#dce5ff"}}src={logoImg} alt="Prottocode Logo" />
           </div>
           <div>
             <strong>Prottocode</strong>

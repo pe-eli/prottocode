@@ -16,7 +16,7 @@ const Hero: React.FC = () => {
           </p>
           <div className="hero-actions">
             <a className="btn-primary" href="#contact">
-              Solicitar Proposta
+              Solicitar orçamento
             </a>
             <a className="btn-ghost" href="#services">
               Nossos Serviços

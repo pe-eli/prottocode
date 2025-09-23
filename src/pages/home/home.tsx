@@ -28,14 +28,14 @@ const App: React.FC = () => {
                   e proposta personalizada em 48h.
                 </p>
               </div>
-              <a href="#contact" className="service-link">
-                Solicitar Proposta
+              <a href="/orcamento" className="service-link">
+                Solicitar orçamento
               </a>
             </div>
           </div>
         </section>
 
-        <Contact /> {/* substituindo o formulário inline */}
+        <Contact />
       </main>
       <Footer />
     </div>

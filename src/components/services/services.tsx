@@ -2,19 +2,19 @@ import React from "react";
 
 const services = [
   {
-    title: "Sites Institucionais",
-    desc: "Landing pages e sites institucionais otimizados para conversão.",
-    points: ["Design estratégico", "Responsivo", "SEO on-page"],
+    title: "Sites Profissionais",
+    desc: "Páginas modernas e rápidas, feitas para atrair clientes e valorizar seu negócio.",
+    points: ["Design que valoriza seu negócio", "Adaptado para todos os dispositivos", "Pronto para gerar resultados"],
   },
   {
     title: "E‑commerce",
     desc: "Lojas online com checkout otimizado, integrações e segurança.",
-    points: ["Pagamentos", "Gestão de estoque", "Performance"],
+    points: ["Receba pagamentos com segurança", "Organize seus produtos e estoque", "Site rápido e confiável"],
   },
   {
     title: "Apps e Painéis",
     desc: "Soluções web internas com autenticação e painéis administrativos.",
-    points: ["Auth seguro", "APIs escaláveis", "UX intuitiva"],
+    points: ["Segurança no acesso", "Conexão com diferentes serviços", "Uso prático para sua equipe e cliente"],
   },
 ];
 
@@ -27,7 +27,7 @@ const Services: React.FC = () => {
         {services.map((s) => (
           <article key={s.title} className="card">
             <h3>{s.title}</h3>
-            <p>{s.desc}</p>
+          <p style={{textAlign:"center"}}>{s.desc}</p>
             <ul>
               {s.points.map((p) => (
                 <li key={p}>{p}</li>

@@ -1,6 +1,7 @@
 import React from "react";
-import logoImg from "../../assets/Semnome.png"; // ajuste o caminho se necessário
+import logoImg from "../../assets/Semnome.png"; 
 import "./header.css"
+import { Link } from "react-router-dom";
 
 const Header: React.FC = () => {
   return (
@@ -8,7 +9,9 @@ const Header: React.FC = () => {
       <div className="container header-inner">
         <div className="brand">
           <div className="logo">
-            <img src={logoImg} alt="Prottocode Logo" />
+            <Link to="/">
+              <img src={logoImg} alt="Prottocode Logo" />
+            </Link>
           </div>
           <div className="brand-text">
             <strong>Prottocode</strong>
