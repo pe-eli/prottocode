@@ -5,8 +5,8 @@ import Services from "../../components/services/services";
 import Testimonials from "../../components/testimonials/Testimonials";
 import Footer from "../../components/footer/footer";
 import Team from "../../components/team/team";
-import Contact from "../../components/contact/contact";
 import "./home.css";
+import "../../components/contact/contact.css"
 
 const App: React.FC = () => {
   return (
@@ -35,7 +35,6 @@ const App: React.FC = () => {
           </div>
         </section>
 
-        <Contact />
       </main>
       <Footer />
     </div>

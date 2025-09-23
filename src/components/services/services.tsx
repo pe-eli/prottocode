@@ -33,7 +33,7 @@ const Services: React.FC = () => {
                 <li key={p}>{p}</li>
               ))}
             </ul>
-            <a href="#contact" className="service-link">Solicitar orçamento →</a>
+            <a href="/orcamento" className="service-link">Solicitar orçamento →</a>
 
           </article>
         ))}

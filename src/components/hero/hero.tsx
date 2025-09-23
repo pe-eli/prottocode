@@ -15,7 +15,7 @@ const Hero: React.FC = () => {
             suporte contínuo.
           </p>
           <div className="hero-actions">
-            <a className="btn-primary" href="#contact">
+            <a className="btn-primary" href="/orcamento">
               Solicitar orçamento
             </a>
             <a className="btn-ghost" href="#services">
