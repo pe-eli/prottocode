@@ -1,7 +1,7 @@
 .container {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 48px 20px;
+  padding: 32px 20px;
 }
 
 @keyframes fadeUp {
@@ -20,34 +20,62 @@
   border-radius: 10px;
   font-weight: 600;
   cursor: pointer;
-  transition: transform .18s ease, box-shadow .18s ease, background 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border: none;
 }
 .btn-primary {
-  background: linear-gradient(90deg,var(--accent),var(--accent-2));
-  color: #042531;
+  background: var(--gradient-primary);
+  color: #0a0e27;
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
   text-decoration: none;
   display: flex;
-  padding: 10px 6rem;
-  font-weight: 600;
+  padding: 12px 32px;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  transition: left 0.3s ease;
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(96,165,250,0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(96, 165, 250, 0.4);
+}
+
+.btn-primary:hover::before {
+  left: 100%;
 }
 .btn-ghost {
   display: flex;
-  background: transparent;
-  border: 1px solid rgba(255,255,255,0.06);
-  color: var(--muted);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1.5px solid rgba(110, 231, 183, 0.3);
+  color: var(--accent);
   margin: 1rem;
   text-decoration: none;
-  padding: 10px 36px;
-  border-radius: 10px;
+  padding: 12px 36px;
+  border-radius: 12px;
   font-weight: 600;
   align-items: center;
+  transition: all 0.3s ease;
+}
+
+.btn-ghost:hover {
+  background: rgba(110, 231, 183, 0.1);
+  border-color: var(--accent);
+  box-shadow: 0 8px 20px rgba(110, 231, 183, 0.2);
+  transform: translateY(-2px);
 }
 .btn-outline {
   border: 1px solid rgba(255,255,255,0.06);
@@ -57,7 +85,7 @@
 
 /* --- HERO --- */
 .hero {
-  padding: 80px 0;
+  padding: 40px 0 30px;
 }
 .hero-inner {
   display: flex;
@@ -126,18 +154,39 @@ h1 {
 .card {
   display: flex;
   flex-direction: column;
-  background: var(--card);
-  padding: 20px;
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.03);
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(10px);
+  padding: 24px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
   transform: translateY(0);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   align-items: center;
   justify-content: center;
+  position: relative;
+  overflow: hidden;
 }
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(110, 231, 183, 0.1) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
 .card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 32px rgba(110, 231, 183, 0.15);
+  border-color: rgba(110, 231, 183, 0.2);
+}
+
+.card:hover::before {
+  opacity: 1;
 }
 .service-link {
   display: inline-block;
@@ -164,34 +213,58 @@ h1 {
 }
 
 .test-card {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
-  padding: 22px;
-  border-radius: 16px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
-  backdrop-filter: blur(10px);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.3s ease;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  padding: 28px;
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   animation: fadeUp 0.6s ease;
   color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(110, 231, 183, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.test-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(110, 231, 183, 0.1), transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
 }
 
 .test-card strong {
-  font-size: 1.05rem;
-  color: #00d4ff;
+  font-size: 1.1rem;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   display: block;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
+  font-weight: 700;
 }
 
 .test-card p {
   margin: 0;
-  line-height: 1.5;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  position: relative;
+  z-index: 1;
 }
 
 .test-card:hover {
-  transform: translateY(-5px) scale(1.03);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.04));
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.28);
-  border-color: rgba(255, 255, 255, 0.12);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 32px rgba(110, 231, 183, 0.25);
+  border-color: rgba(110, 231, 183, 0.3);
+}
+
+.test-card:hover::before {
+  opacity: 1;
 }
 
 @keyframes fadeUp {
@@ -214,20 +287,43 @@ h1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 22px;
-  background: linear-gradient(90deg,rgba(96,165,250,0.06),rgba(110,231,183,0.04));
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.03);
+  padding: 32px;
+  background: linear-gradient(135deg, rgba(96, 165, 250, 0.1), rgba(110, 231, 183, 0.06));
+  border-radius: 16px;
+  border: 1px solid rgba(110, 231, 183, 0.2);
   animation: fadeUp 0.8s ease;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
 }
+
+.cta-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
 .cta-card .btn-primary {
-  background: var(--accent-2);
-  color: white;
-  font-weight: 500;
+  background: var(--gradient-primary);
+  color: #0a0e27;
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
 }
+
 .cta-card .btn-primary:hover {
-  background: var(--accent);
-  color: #042531;
+  background: var(--gradient-secondary);
+  box-shadow: 0 12px 32px rgba(96, 165, 250, 0.4);
 }
 
 /* --- FORM CONTATO --- */
@@ -246,16 +342,25 @@ h1 {
   justify-self: center;
 }
 .form-grid input, .form-grid textarea {
-  background: transparent;
-  border: 1px solid rgba(255,255,255,0.06);
-  padding: 12px;
-  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1.5px solid rgba(255, 255, 255, 0.08);
+  padding: 14px;
+  border-radius: 10px;
   color: inherit;
-  transition: border 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  font-size: 15px;
 }
+
+.form-grid input::placeholder, .form-grid textarea::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
 .form-grid input:focus, .form-grid textarea:focus {
+  outline: none;
   border-color: var(--accent);
-  box-shadow: 0 0 8px var(--accent);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 0 20px rgba(110, 231, 183, 0.2);
 }
 
 /* --- FOOTER --- */

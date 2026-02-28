@@ -4,7 +4,7 @@ import Hero from "../../components/hero/hero";
 import Services from "../../components/services/services";
 import Testimonials from "../../components/testimonials/Testimonials";
 import Footer from "../../components/footer/footer";
-import Team from "../../components/team/team";
+// import Team from "../../components/team/team";
 import "./home.css";
 import "../../components/contact/contact.css"
 
@@ -15,21 +15,22 @@ const App: React.FC = () => {
       <main>
         <Hero />
         <Services />
-        <Team />
+
+        {/* <Team /> */}
         <Testimonials />
 
         <section className="contact-cta">
           <div className="container">
             <div className="cta-card">
               <div>
-                <h3>Pronto para transformar sua presença online?</h3>
+                <h3>Pronto para automatizar seu negócio?</h3>
                 <p>
-                  Conte-nos seu projeto — oferecemos análise técnica gratuita
-                  e proposta personalizada em 48h.
+                  Reduza custos, aumente a eficiência e libere sua equipe para o que realmente importa.
+                  Converse com nossos especialistas sobre sua automação ideal.
                 </p>
               </div>
               <a href="/orcamento" className="service-link">
-                Solicitar orçamento
+                Solicitar proposta
               </a>
             </div>
           </div>
