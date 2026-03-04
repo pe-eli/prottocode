@@ -1,0 +1,238 @@
+/* How It Works Section */
+.how-it-works {
+  padding: 5rem 0;
+  background: rgba(0, 0, 0, 0.01);
+}
+
+.how-it-works-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.how-it-works-header h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.how-it-works-header .section-lead {
+  font-size: 1.1rem;
+  color: rgba(0, 0, 0, 0.8);
+  margin: 0;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Timeline */
+.timeline {
+  display: flex;
+  gap: 2rem;                      /* space between step cards */
+  margin: 0 auto 4rem auto;       /* center within container */
+  max-width: 1200px;              /* prevent full‑width stretching */
+  justify-content: center;        /* distribute evenly with gap */
+  align-items: stretch;
+  padding: 0 1rem;                /* breathing room on narrow screens */
+}
+
+.timeline-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  position: relative;
+}
+
+/* Step Card */
+.step-card {
+  background: rgba(0, 0, 0, 0.04);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 85, 204, 0.15);
+  border-radius: 16px;
+  padding: 32px 24px;
+  width: 100%;
+  text-align: center;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  min-height: 430px;
+  justify-content: center;
+}
+
+.step-card:hover {
+  background: rgba(0, 0, 0, 0.06);
+  border-color: rgba(0, 85, 204, 0.3);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0, 85, 204, 0.2);
+}
+
+.step-icon {
+  font-size: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 60px;
+  min-height: 60px;
+}
+
+.step-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #ffffff;
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin: 8px 0;
+}
+
+.step-card h3 {
+  font-size: 1.3rem;
+  margin: 0;
+  color: #000000;
+  font-weight: 700;
+}
+
+.step-card p {
+  font-size: 0.95rem;
+  color: rgba(0, 0, 0, 0.75);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Timeline Connectors */
+.timeline-connector {
+  flex: 0 0 auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 80px;
+  margin: -80px auto 0 auto;
+  padding: 0 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent);
+  z-index: 1;
+}
+
+/* CTA Section */
+.how-it-works-cta {
+  background: linear-gradient(135deg, rgba(0, 85, 204, 0.08), rgba(2, 22, 90, 0.08));
+  border: 1px solid rgba(0, 85, 204, 0.2);
+  border-radius: 16px;
+  padding: 3rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.how-it-works-cta h3 {
+  font-size: 1.8rem;
+  margin: 0;
+  color: #000000;
+  font-weight: 700;
+}
+
+.how-it-works-cta p {
+  font-size: 1.05rem;
+  color: rgba(0, 0, 0, 0.85);
+  margin: 0;
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+.how-it-works-cta .btn-primary {
+  padding: 14px 32px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 1rem;
+  display: inline-block;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.how-it-works-cta .btn-primary:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 85, 204, 0.3);
+}
+
+/* Responsiveness */
+@media (max-width: 900px) {
+  .timeline {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .timeline-connector {
+    width: 60px;
+    height: 60px;
+    margin: -40px auto 0 auto;
+    flex-direction: column;
+  }
+
+  .connector-line {
+    width: 3px;
+    height: 100%;
+  }
+
+  .connector-arrow {
+    transform: rotate(90deg);
+    margin: -6px 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .how-it-works {
+    padding: 3rem 0;
+  }
+
+  .how-it-works-header h2 {
+    font-size: 1.8rem;
+  }
+
+  .step-card {
+    padding: 24px 20px;
+  }
+
+  .step-icon {
+    font-size: 2rem;
+  }
+
+  .step-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .step-card p {
+    font-size: 0.9rem;
+  }
+
+  .how-it-works-cta {
+    padding: 2rem;
+  }
+
+  .how-it-works-cta h3 {
+    font-size: 1.4rem;
+  }
+
+  .how-it-works-cta p {
+    font-size: 0.95rem;
+  }
+}

@@ -1,0 +1,229 @@
+/* What We Do Section */
+.what-we-do {
+  padding: 5rem 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 85, 204, 0.05) 0%,
+    rgba(2, 22, 90, 0.05) 100%
+  );
+}
+
+.what-we-do-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.what-we-do-header h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.what-we-do-header .section-lead {
+  font-size: 1.1rem;
+  color: rgba(0, 0, 0, 0.8);
+  margin: 0;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Content Layout */
+.what-we-do-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  margin-bottom: 4rem;
+  max-width: 1200px;              /* center overall section */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.what-we-do-text {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.what-we-do-text p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: rgba(0, 0, 0, 0.9);
+  margin: 0;
+}
+
+.what-we-do-text strong {
+  color: #02165a;
+  font-weight: 700;
+}
+
+.what-we-do-text .btn-secondary {
+  align-self: flex-start;
+  padding: 12px 28px;
+  background: transparent;
+  color: var(--accent);
+  border: 2px solid var(--accent);
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.what-we-do-text .btn-secondary:hover {
+  background: rgba(2, 22, 90, 0.05);
+  transform: translateY(-2px);
+}
+
+/* Pillars Container */
+.pillars-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.pillar-card {
+  background: rgba(0, 0, 0, 0.04);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 85, 204, 0.2);
+  border-radius: 14px;
+  padding: 24px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.pillar-card:hover {
+  background: rgba(0, 0, 0, 0.06);
+  border-color: rgba(0, 85, 204, 0.4);
+  transform: translateX(8px);
+  box-shadow: 0 8px 24px rgba(0, 85, 204, 0.15);
+}
+
+.pillar-icon {
+  font-size: 2.5rem;
+  min-width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pillar-card h3 {
+  font-size: 1.2rem;
+  margin: 0 0 8px 0;
+  color: #000000;
+  font-weight: 700;
+}
+
+.pillar-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: rgba(0, 0, 0, 0.75);
+  line-height: 1.6;
+}
+
+/* Bottom Results Section */
+.what-we-do-bottom {
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0, 85, 204, 0.15);
+  border-radius: 16px;
+  padding: 3rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.what-we-do-bottom h3 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  color: var(--accent);
+}
+
+.result-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.result-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.result-check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  border-radius: 50%;
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.result-item p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: rgba(0, 0, 0, 0.85);
+  line-height: 1.5;
+}
+
+.result-item p strong {
+  color: #02165a;
+  font-weight: 700;
+}
+
+/* Responsiveness */
+@media (max-width: 900px) {
+  .what-we-do-content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .result-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .what-we-do {
+    padding: 3rem 0;
+  }
+
+  .what-we-do-header h2 {
+    font-size: 1.8rem;
+  }
+
+  .what-we-do-text p {
+    font-size: 1rem;
+  }
+
+  .pillar-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .pillar-icon {
+    font-size: 2rem;
+  }
+
+  .what-we-do-bottom {
+    padding: 2rem;
+  }
+
+  .result-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}

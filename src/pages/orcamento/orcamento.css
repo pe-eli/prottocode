@@ -1,491 +1,577 @@
+/* ============================================
+   ORCAMENTO PAGE - Complete Redesign
+   Colors matched to home page theme
+   ============================================ */
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-input[type=number] {
+input[type="number"] {
   -moz-appearance: textfield;
   appearance: textfield;
 }
 
+/* Page Container */
 .orcamento-page {
-  --bg-light: #0c1424;
-  --text-dark: #e6eef8;
-  --text-muted: #e6eef8;
-  --primary: #2563eb;
-  --primary-hover: #1d4ed8;
-  --border: #e5e7eb;
-  --card-bg: #0f1724;
-  background: var(--bg-light);
-  color: var(--text-dark);
-  font-family: Inter, system-ui, sans-serif;
   min-height: 100vh;
-  place-items: center;
-  margin-top: 2%;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 20px 3rem;
+  font-family: Inter, system-ui, -apple-system, sans-serif;
 }
 
-.servicos-grid {
-  margin-top: 2%;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 24px;
-  width: 100%;
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  align-items: stretch;
-  padding: 0 20px;
+/* ============================================
+   PROGRESS BAR
+   ============================================ */
+
+.progress-bar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin-bottom: 2.5rem;
+  padding: 0 1rem;
 }
 
-.servico-card {
+.progress-step {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  padding: 32px 28px;
-  border-radius: 18px;
-  background: linear-gradient(135deg, rgba(110, 231, 183, 0.03), rgba(96, 165, 250, 0.02));
-  backdrop-filter: blur(12px);
-  border: 1.5px solid rgba(110, 231, 183, 0.12);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-  text-align: center;
   align-items: center;
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-}
-
-.servico-card::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  right: -50%;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle, rgba(110, 231, 183, 0.15) 0%, transparent 70%);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  z-index: 0;
-}
-
-.servico-card::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, transparent, rgba(110, 231, 183, 0.8), transparent);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-.servico-card:hover {
-  box-shadow: 0 12px 40px rgba(110, 231, 183, 0.25);
-  transform: translateY(-8px);
-  border-color: rgba(110, 231, 183, 0.25);
-  background: linear-gradient(135deg, rgba(110, 231, 183, 0.08), rgba(96, 165, 250, 0.05));
-}
-
-.servico-card:hover::before {
-  opacity: 1;
-}
-
-.servico-card:hover::after {
-  opacity: 1;
-}
-
-.servico-card > * {
+  gap: 8px;
   position: relative;
   z-index: 1;
 }
 
-.servico-card h2 {
-  font-size: 1.35rem;
-  font-weight: 800;
-  margin: 0 0 16px;
-  letter-spacing: 0.5px;
-  background: linear-gradient(135deg, #6ee7b7, #60a5fa);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  transition: all 0.3s ease;
-}
-
-.servico-card:hover h2 {
-  transform: scale(1.05);
-}
-
-.servico-card p {
-  font-size: 0.98rem;
-  color: rgba(255, 255, 255, 0.75);
-  margin-bottom: 20px;
-  line-height: 1.6;
-  min-height: 60px;
+.step-circle {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.orcamento-page .btn {
-  display: inline-block;
-  width: 70%;
-  text-align: center;
-  padding: 12px 14px;
-  border-radius: 10px;
   font-weight: 700;
-  font-size: 0.95rem;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  border: none;
-  letter-spacing: 0.5px;
+  font-size: 0.9rem;
+  background: rgba(0, 0, 0, 0.04);
+  border: 2px solid rgba(0, 0, 0, 0.12);
+  color: var(--muted);
+  transition: all 0.4s ease;
 }
 
-.orcamento-page .btn-primary {
-  background: linear-gradient(90deg,var(--accent),var(--accent-2));
-  color: #0f1724;
-  border: none;
-  display: flex;
-  place-self: center;
-}
-
-.btn-proximo {
-  display: flex;
-  place-self: center;
-  margin-top: 1rem;
-  width: 10rem;
-  height: 2.5rem;
-  background-color: rgba(110, 231, 183, 0.1);
-  color: var(--accent);
-  border: 1.5px solid var(--accent);
-  border-radius: 10px;
-  font-size: 0.85rem;
-  font-weight: 700;
-  cursor: pointer;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.3s ease;
-  letter-spacing: 0.5px;
-}
-
-.btn-voltar {
-  display: flex;
-  place-self: center;
-  margin-top: 1rem;
-  width: 10rem;
-  height: 2.5rem;
-  background-color: rgba(255, 255, 255, 0.05);
-  color: white;
-  border: 1.5px solid rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
-  font-size: 0.85rem;
-  font-weight: 700;
-  cursor: pointer;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.3s ease;
-  letter-spacing: 0.5px;
-}
-
-.btn-proximo:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(110, 231, 183, 0.25);
-}
-
-.btn-voltar:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
-}
-
-
-.orcamento-page .btn-primary:hover {
-  background: var(--primary-hover);
-  background: linear-gradient(90deg,var(--accent),var(--accent-2));
-  color: #0f1724;
-  transform: translateY(0);
-  transition: box-shadow 0.2s ease;
-}
-
-.card-selecionado {
-  background-color: rgba(110, 231, 183, 0.15);
-  border: 2px solid rgba(110, 231, 183, 0.3);
-  box-shadow: 0 8px 20px rgba(110, 231, 183, 0.2);
-}
-
-.btn-selecionado {
+.step-circle.active {
   background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  color: #0a0e27;
-  border: none;
-  display: inline-block;
-  width: 70%;
-  text-align: center;
-  padding: 12px 14px;
-  border-radius: 10px;
-  font-weight: 700;
-  font-size: 0.95rem;
-  cursor: pointer;
+  border-color: var(--accent);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(2, 22, 90, 0.3);
+}
+
+.step-circle.completed {
+  background: var(--accent-2);
+  border-color: var(--accent-2);
+  color: var(--accent);
+}
+
+.step-label {
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-weight: 500;
   transition: all 0.3s ease;
-  margin-top: auto;
-  letter-spacing: 0.5px;
+  white-space: nowrap;
 }
 
-.btn-naoselecionado {
-  background: rgba(255, 255, 255, 0.05);
-  color: white;
-  border: 1.5px solid rgba(255, 255, 255, 0.2);
-  display: inline-block;
-  width: 70%;
-  text-align: center;
-  padding: 12px 14px;
-  border-radius: 10px;
+.step-label.active {
+  color: var(--accent);
   font-weight: 700;
+}
+
+.progress-line {
+  flex: 1;
+  height: 3px;
+  background: rgba(0, 0, 0, 0.08);
+  margin: 0 12px;
+  margin-top: 20px;
+  border-radius: 2px;
+  transition: background 0.5s ease;
+  max-width: 120px;
+}
+
+.progress-line.filled {
+  background: linear-gradient(90deg, var(--accent-2), var(--accent));
+}
+
+/* ============================================
+   STEP CONTENT
+   ============================================ */
+
+.step-content {
+  animation: orcFadeUp 0.45s ease forwards;
+}
+
+.step-content h1,
+.step-content h2 {
+  text-align: center;
+  margin: 0 0 6px;
+  font-size: 1.7rem;
+  color: #000;
+  letter-spacing: -0.3px;
+}
+
+.step-subtitle {
+  text-align: center;
+  color: var(--muted);
+  margin: 0 0 1.75rem;
   font-size: 0.95rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin-top: auto;
-  letter-spacing: 0.5px;
 }
 
-.btn-naoselecionado:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.3);
+.error-msg {
+  text-align: center;
+  color: #dc2626;
+  font-weight: 600;
+  margin: 0 0 1rem;
+  font-size: 0.9rem;
 }
 
-.extras-grid {
-  margin-top: 5vh;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+/* ============================================
+   SERVICE LIST - VERTICAL
+   ============================================ */
+
+.servicos-list {
+  display: flex;
+  flex-direction: column;
   gap: 10px;
-
-  width: 100%;           /* ocupa toda a largura */
-  max-width: 900px;      /* controla até onde a grid pode crescer */
-  margin-left: auto;     /* centraliza horizontalmente */
-  margin-right: auto;    /* centraliza horizontalmente */
-  justify-items: center; /* centraliza os itens dentro das células */
 }
 
-.extra-card {
-  cursor: pointer;
-  background-color: rgba(255, 255, 255, 0.03);
-  border: 1.5px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
+.servico-item {
   display: flex;
-  justify-content: center;
   align-items: center;
-  width: 100%;
-  max-width: 280px;
-  height: 5rem;
-  padding: 0.8rem;
-  text-align: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  background: rgba(0, 0, 0, 0.025);
+  border: 1.5px solid rgba(0, 0, 0, 0.07);
+  border-radius: 12px;
+  cursor: pointer;
   transition: all 0.3s ease;
 }
 
-.extra-card:hover {
-  box-shadow: 0 8px 24px rgba(110, 231, 183, 0.15);
-  transform: translateY(-4px);
-  border-color: rgba(110, 231, 183, 0.2);
+.servico-item:hover {
+  border-color: rgba(2, 22, 90, 0.2);
+  background: rgba(2, 22, 90, 0.03);
+  box-shadow: 0 4px 16px rgba(2, 22, 90, 0.08);
 }
 
-.selecionado {
-  background-color: rgba(110, 231, 183, 0.15);
-  border: 2px solid rgba(110, 231, 183, 0.3);
-  font-size: 1rem;
+.servico-item.selected {
+  border-color: var(--accent);
+  background: rgba(2, 22, 90, 0.05);
+  box-shadow: 0 4px 20px rgba(2, 22, 90, 0.12);
+}
+
+.servico-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.servico-info h3 {
+  margin: 0 0 4px;
+  font-size: 1.05rem;
   font-weight: 700;
-}
-.card-selecionar{
-  font-size: 1rem;
+  color: #000;
 }
 
-.res-servico {
-  background-color: rgba(110, 231, 183, 0.1);
+.servico-info p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.servico-check {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 0, 0, 0.12);
   display: flex;
-  flex-direction: column;
-  padding: 0.8rem;
-  border-radius: 12px;
-  width: 60%;
-  text-align: center;
   align-items: center;
-  margin-top: 8px;
-  border: 1px solid rgba(110, 231, 183, 0.2);
-}
-
-.res-extra {
-  width: 100%;
-  border-radius: 12px;
-  place-self: center;
   justify-content: center;
-  align-items: center;
-  background-color: rgba(110, 231, 183, 0.08);
-  padding: 0.8rem;
-  text-align: center;
-  margin-top: 8px;
-  list-style: none;
-  border: 1px solid rgba(110, 231, 183, 0.15);
+  transition: all 0.3s ease;
+  margin-left: 16px;
 }
-.resumo-orcamento {
+
+.servico-check.checked {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  border-color: var(--accent);
+  color: #fff;
+  font-size: 0.7rem;
+}
+
+/* ============================================
+   EXTRAS LIST
+   ============================================ */
+
+.extras-list {
   display: flex;
   flex-direction: column;
+  gap: 8px;
+}
+
+.extra-item {
+  display: flex;
   align-items: center;
-  width: 30%;
-  padding: 1.5rem;
-  background-color: rgba(255, 255, 255, 0.04);
-  border: 1.5px solid rgba(110, 231, 183, 0.2);
-  border-radius: 24px;
-  margin-top: 3rem;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: rgba(0, 0, 0, 0.025);
+  border: 1.5px solid rgba(0, 0, 0, 0.07);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.93rem;
+  color: #000;
+}
+
+.extra-item:hover {
+  border-color: rgba(2, 22, 90, 0.2);
+  background: rgba(2, 22, 90, 0.03);
+}
+
+.extra-item.selected {
+  border-color: var(--accent);
+  background: rgba(2, 22, 90, 0.05);
+  font-weight: 600;
+}
+
+.extra-check {
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  border-radius: 6px;
+  border: 2px solid rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  margin-left: 16px;
+}
+
+.extra-check.checked {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  border-color: var(--accent);
+  color: #fff;
+  font-size: 0.6rem;
+}
+
+.extra-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.ai-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #000;
+  background: rgba(2, 22, 90, 0.08);
+  border: 1px solid rgba(110, 231, 183, 0.3);
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+/* ============================================
+   STEP ACTIONS
+   ============================================ */
+
+.step-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.75rem;
+}
+
+.btn-next {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 36px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.3px;
+}
+
+.btn-next:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(2, 22, 90, 0.25);
+}
+
+.btn-back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 28px;
+  background: rgba(0, 0, 0, 0.03);
+  color: var(--muted);
+  border: 1.5px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-back:hover {
+  background: rgba(0, 0, 0, 0.06);
+  border-color: rgba(0, 0, 0, 0.18);
+}
+
+/* ============================================
+   SUMMARY CARD (Step 3)
+   ============================================ */
+
+.resumo-card {
+  background: rgba(255, 255, 255, 0.6);
+  border: 1.5px solid rgba(2, 22, 90, 0.1);
+  border-radius: 16px;
+  padding: 2rem;
   backdrop-filter: blur(10px);
 }
-.res-input{
-  background-color: transparent;
-  border: none;
-  text-align: center;
-  color: white;
+
+.resumo-section {
+  margin-bottom: 1.5rem;
 }
+
+.resumo-section h4 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--muted);
+  margin: 0 0 10px;
+  font-weight: 600;
+}
+
+.resumo-servico {
+  background: rgba(2, 22, 90, 0.05);
+  border: 1px solid rgba(2, 22, 90, 0.1);
+  padding: 14px 18px;
+  border-radius: 10px;
+  font-weight: 600;
+  color: var(--accent);
+  font-size: 1rem;
+}
+
+.resumo-extras-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.resumo-extras-list li {
+  background: rgba(2, 22, 90, 0.03);
+  border: 1px solid rgba(2, 22, 90, 0.07);
+  padding: 11px 16px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: #000;
+}
+
+.resumo-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-field label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #000;
+  margin-bottom: 6px;
+}
+
+.form-field input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1.5px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.5);
+  font-size: 0.95rem;
+  color: #000;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.form-field input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 16px rgba(2, 22, 90, 0.1);
+  background: #fff;
+}
+
+.form-field input::placeholder {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.resumo-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.btn-submit {
+  flex: 1;
+  padding: 14px 24px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.3px;
+}
+
+.btn-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(2, 22, 90, 0.25);
+}
+
+/* ============================================
+   POPUP
+   ============================================ */
+
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.popup-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  max-width: 380px;
+  width: 90%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.popup-card p {
+  font-size: 1.1rem;
+  margin: 0 0 1.5rem;
+  color: #000;
+  font-weight: 500;
+}
+
+.popup-card button {
+  padding: 11px 36px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.popup-card button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(2, 22, 90, 0.25);
+}
+
+/* ============================================
+   ANIMATION
+   ============================================ */
+
+@keyframes orcFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
 @media (max-width: 600px) {
+  .orcamento-page {
+    padding: 1.5rem 16px 0;
+  }
+
+  .step-content h1,
+  .step-content h2 {
+    font-size: 1.35rem;
+  }
+
+  .step-subtitle {
+    font-size: 0.88rem;
+  }
+
+  .servico-item {
+    padding: 16px 16px;
+  }
+
+  .servico-info h3 {
+    font-size: 0.95rem;
+  }
+
+  .servico-info p {
+    font-size: 0.82rem;
+  }
+
+  .step-label {
+    font-size: 0.68rem;
+  }
+
+  .step-circle {
+    width: 36px;
+    height: 36px;
+    font-size: 0.8rem;
+  }
+
+  .progress-line {
+    margin: 0 6px;
+    margin-top: 17px;
+  }
+
+  .resumo-card {
+    padding: 1.5rem;
+  }
+
+  .resumo-actions {
+    flex-direction: column;
+  }
+
+  .btn-submit {
+    width: 100%;
+  }
+
   *:hover {
     box-shadow: none !important;
     transform: none !important;
   }
-
-  .orcamento-page {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .orcamento-header h1 {
-    font-size: 1.6rem;
-  }
-
-  .servicos-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    align-items: stretch;
-    width: 95%;
-  }
-
-  .servico-card {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 14px;
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .servico-card h2 {
-    font-size: 1rem;
-  }
-
-  .servico-card p {
-    font-size: 0.8rem;
-    text-align: center;
-    width: 120%;
-    max-height: 60px;
-    margin: 0 0 12px 0;
-  }
-
-  .btn-naoselecionado {
-    font-size: 0.7rem;
-    min-height: 25px;
-    padding: 6px 8px;
-    margin: 0;
-    margin-top: 10%;
-  }
-
-  .btn-selecionado {
-    font-size: 0.7rem;
-    min-height: 25px;
-    padding: 6px 8px;
-    margin: 0;
-    margin-top: 10%;
-  }
-
-  .resumo-orcamento {
-    width: 90%;
-  }
-
-  .linha {
-    margin: 5vh 0;
-  }
-
-  .res-servico {
-    background-color: rgba(110, 231, 183, 0.08);
-    padding: 0.5rem;
-    border-radius: 12px;
-    width: 95%;
-    text-align: center;
-  }
-
-  .res-extra {
-    width: 20rem;
-    border-radius: 12px;
-    place-self: center;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(110, 231, 183, 0.08);
-    padding: 0.5rem;
-    text-align: center;
-    margin-top: 8px;
-  }
-
-  .orcamento-page h1 {
-    text-align: center;
-  }
-
-  .form-orcamento {
-    margin-top: 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
 }
-
-.res-input{
-  background-color: transparent;
-  border: none;
-  text-align: center;
-  color: white;
-}
-.form-orcamento {
-  margin-top: 1rem;
-  display: flex;
-  gap: 1rem;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1rem;
-}
-
-.form-group label {
-  font-weight: 700;
-  margin-bottom: 0.35rem;
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 0.95rem;
-  letter-spacing: 0.3px;
-}
-
-.form-group input {
-  padding: 10px;
-  border-radius: 8px;
-  border: 1.5px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.04);
-  color: white;
-  transition: all 0.3s ease;
-  font-family: inherit;
-}
-
-.form-group input:focus {
-  outline: none;
-  border-color: var(--accent);
-  background: rgba(255, 255, 255, 0.06);
-  box-shadow: 0 0 15px rgba(110, 231, 183, 0.2);
-}
-
-

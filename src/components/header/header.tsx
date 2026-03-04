@@ -19,8 +19,8 @@ const Header: React.FC = () => {
           </div>
         </div>
         <nav className="nav">
-          <a href="#services">Serviços</a>
-          <a href="#contact">Contato</a>
+          <Link to="/servicos">Serviços</Link>
+          <Link to="/contato">Contato</Link>
           <a href="#" className="btn btn-outline">
             Portfólio
           </a>

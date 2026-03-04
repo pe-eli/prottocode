@@ -1,57 +1,90 @@
 import React from "react";
+import "./services.css";
 
-const services = [
+interface Benefit {
+  icon: string;
+  title: string;
+  situation: string;
+  result: string;
+}
+
+const benefits: Benefit[] = [
   {
-    title: "Redução de Custos",
-    desc: "Eliminate tarefas manuais e repetitivas, reduzindo custos operacionais significativamente.",
-    points: ["Menos horas de trabalho manual", "Diminui erros e retrabalho", "ROI mensurável"],
+    icon: "💰",
+    title: "Você economiza dinheiro real",
+    situation: "Seu pessoal gasta horas todos os dias fazendo tarefas chatas e repetitivas (digitação, envio de documentos, conferência de dados).",
+    result: "Com automação, isso acontece sozinho. Sua equipe fica livre para fazer trabalhos que realmente importam. Menos gasto, mais lucro.",
   },
   {
-    title: "Eficiência Operacional",
-    desc: "Accelerate seus processos com workflows inteligentes que trabalham 24/7.",
-    points: ["Processos até 10x mais rápidos", "Sem pausa ou erros humanos", "Escalabilidade imediata"],
+    icon: "⏰",
+    title: "Seu negócio não dorme mais",
+    situation: "Ofertas, pedidos e mensagens chegam fora do horário. Seus clientes esperam ou procuram concorrentes.",
+    result: "A automação trabalha 24 horas. Pedidos são processados à noite, clientes recebem respostas sempre, seu dinheiro não para.",
   },
   {
-    title: "Tomada de Decisão",
-    desc: "Dados em tempo real para decisões estratégicas mais inteligentes e baseadas em fatos.",
-    points: ["Relatórios automáticos", "Insights em tempo real", "Previsões precisas"],
+    icon: "📊",
+    title: "Você entende seus números",
+    situation: "Difícil saber se a empresa está crescendo, onde está o dinheiro, o que está vendendo mais ou menos.",
+    result: "Relatórios automáticos mostram tudo claro e simples. Você toma decisões com confiança, sem adivinhar.",
   },
   {
-    title: "Experiência do Cliente",
-    desc: "Atendimento disponível sempre que o cliente precisa, com respostas instantâneas.",
-    points: ["Suporte 24/7 com IA", "Personalização automática", "Satisfação aumentada"],
+    icon: "😊",
+    title: "Seus clientes ficam mais felizes",
+    situation: "Clientes esperando resposta, pedidos com atraso, problemas não resolvidos. Ficam irritados e vão embora.",
+    result: "Respostas rápidas, pedidos certos e na hora. Clientes voltam e indicam para outros. Negócio cresce naturalmente.",
   },
   {
-    title: "Escalabilidade Simples",
-    desc: "Cresça seu negócio sem multiplicar sua equipe ou infraestrutura.",
-    points: ["Sem limitações operacionais", "Cresce com sua empresa", "Sem novos investimentos"],
+    icon: "📈",
+    title: "Você cresce sem complicação",
+    situation: "Crescer significa contratar mais gente, treinar, gastar mais. Rápido fica caro e complicado.",
+    result: "Automação cresce com você, sem custos extras. Se vende 10 ou 1000 pedidos por dia, o sistema executa tudo igual.",
   },
   {
-    title: "Segurança e Conformidade",
-    desc: "Proteja dados com sistemas seguros que atendem normas de segurança internacional.",
-    points: ["Criptografia de dados", "Backup automático", "Conformidade garantida"],
+    icon: "🔒",
+    title: "Seus dados ficam seguros",
+    situation: "Planilhas com senhas, informações de clientes soltas, risco de perder tudo em um problema técnico.",
+    result: "Tudo guardado de forma segura. Backup automático. Seus dados estão garantidos, conforme a lei.",
   },
 ];
 
 const Services: React.FC = () => {
   return (
-    <section id="services" className="services container">
-      <h2>Vantagens de Automatizar com a Prottocode</h2>
-      <p className="section-sub">Transforme seu negócio com soluções de IA que geram resultados concretos.</p>
-      <div className="cards">
-        {services.map((s) => (
-          <article key={s.title} className="card">
-            <h3>{s.title}</h3>
-          <p style={{textAlign:"center"}}>{s.desc}</p>
-            <ul>
-              {s.points.map((p) => (
-                <li key={p}>{p}</li>
-              ))}
-            </ul>
-            <a href="/orcamento" className="service-link">Saiba mais →</a>
+    <section id="beneficios" className="services-section">
+      <div className="container">
+        <div className="section-header">
+          <h2>O que muda no seu negócio</h2>
+          <p>
+            Automação é simples: você deixa de fazer tarefas chatas à mão.
+            Você se concentra em crescimento. A máquina cuida do resto.
+          </p>
+        </div>
 
-          </article>
-        ))}
+        <div className="benefits-list">
+          {benefits.map((benefit, index) => (
+            <div
+              key={index}
+              className={`benefit-item ${index % 2 === 0 ? "left" : "right"}`}
+            >
+              <div className="benefit-icon">{benefit.icon}</div>
+              <div className="benefit-content">
+                <h3>{benefit.title}</h3>
+                <p className="situation">
+                  <strong>Antes:</strong> {benefit.situation}
+                </p>
+                <p className="result">
+                  <strong>Depois:</strong> {benefit.result}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="benefits-cta">
+          <p>Entendeu o impacto? Vamos conversar sobre seu negócio específico.</p>
+          <a href="/orcamento" className="btn-primary">
+            Falar com especialista
+          </a>
+        </div>
       </div>
     </section>
   );

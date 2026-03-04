@@ -1,0 +1,238 @@
+/* Social Proof Section */
+.social-proof {
+  padding: 5rem 0;
+  background: rgba(0, 0, 0, 0.01);
+  border-top: 1px solid rgba(2, 22, 90, 0.1);
+  border-bottom: 1px solid rgba(2, 22, 90, 0.1);
+}
+
+.proof-section {
+  margin-bottom: 4rem;
+}
+
+.proof-section:last-child {
+  margin-bottom: 0;
+}
+
+.proof-section h2 {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 3rem;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Stats Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background: rgba(0, 0, 0, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(2, 22, 90, 0.15);
+  border-radius: 16px;
+  padding: 32px 24px;
+  text-align: center;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.stat-card:hover {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(2, 22, 90, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(2, 22, 90, 0.15);
+}
+
+.stat-number {
+  font-size: 3rem;
+  font-weight: 800;
+  margin: 0;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.1;
+}
+
+.stat-label {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #000000;
+  margin: 0;
+  letter-spacing: 0.3px;
+}
+
+.stat-description {
+  font-size: 0.95rem;
+  color: rgba(0, 0, 0, 0.7);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Testimonials Grid */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 2rem;
+}
+
+.testimonial-card {
+  background: rgba(0, 0, 0, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(2, 22, 90, 0.15);
+  border-radius: 16px;
+  padding: 28px 24px;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+}
+
+.testimonial-card::before {
+  content: '"';
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  font-size: 4rem;
+  color: rgba(2, 22, 90, 0.1);
+  font-weight: 700;
+}
+
+.testimonial-card:hover {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(2, 22, 90, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(2, 22, 90, 0.15);
+}
+
+.stars {
+  color: var(--accent);
+  font-size: 1rem;
+  letter-spacing: 3px;
+  margin: 0;
+}
+
+.testimonial-quote {
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.9);
+  line-height: 1.6;
+  margin: 0;
+  font-style: italic;
+  position: relative;
+  z-index: 1;
+  padding-right: 20px;
+}
+
+.testimonial-author {
+  margin-top: 8px;
+}
+
+.author-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #000000;
+  margin: 0 0 4px 0;
+}
+
+.author-role {
+  font-size: 0.85rem;
+  color: rgba(0, 0, 0, 0.6);
+  margin: 0;
+}
+
+/* Logo Section */
+.logo-section-title {
+  text-align: center;
+  font-size: 1.2rem;
+  color: rgba(0, 0, 0, 0.8);
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+
+.logos-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 16px;
+  border: 1px solid rgba(2, 22, 90, 0.1);
+}
+
+.logo-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  background: rgba(0, 0, 0, 0.03);
+  border: 2px dashed rgba(2, 22, 90, 0.2);
+  border-radius: 12px;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.logo-placeholder:hover {
+  border-color: rgba(2, 22, 90, 0.4);
+  background: rgba(2, 22, 90, 0.04);
+}
+
+/* Responsiveness */
+@media (max-width: 900px) {
+  .stats-grid,
+  .testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .logo-placeholder {
+    height: 70px;
+  }
+}
+
+@media (max-width: 600px) {
+  .social-proof {
+    padding: 3rem 0;
+  }
+
+  .proof-section {
+    margin-bottom: 3rem;
+  }
+
+  .proof-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+  }
+
+  .stats-grid,
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .stat-number {
+    font-size: 2.5rem;
+  }
+
+  .logos-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    padding: 1.5rem;
+  }
+
+  .logo-placeholder {
+    height: 60px;
+    font-size: 0.8rem;
+  }
+}

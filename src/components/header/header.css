@@ -1,22 +1,31 @@
+/* ============================================
+   SITE HEADER — fundo #012c6d, 95% opaco
+   ============================================ */
 .site-header {
-  backdrop-filter: blur(6px);
   position: sticky;
   top: 0;
   z-index: 40;
-  border-bottom: 1px solid rgba(255,255,255,0.03);
+  background: rgba(1, 44, 109, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   animation: fadeIn 0.6s ease;
 }
+
 .header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 14px 0;
 }
+
+/* --- MARCA / LOGO --- */
 .brand {
   display: flex;
   gap: 12px;
   align-items: center;
 }
+
 .logo {
   width: 52px;
   height: 52px;
@@ -32,36 +41,53 @@
 .logo img {
   width: 100%;
   height: 100%;
-  object-fit: contain; 
+  object-fit: contain;
 }
 
 .logo:hover {
   transform: rotate(6deg) scale(1.05);
 }
+
+/* texto abaixo do logo */
 .brand-text small {
   display: block;
-  color: var(--muted);
+  color: rgba(255, 255, 255, 0.7);
   font-size: 12px;
 }
+
+/* ícone de marca da Prottocode (caso haja nome em texto) */
+.brand-text strong,
+.brand-name {
+  color: #ffffff;
+}
+
+/* --- NAVEGAÇÃO --- */
 .nav a {
   margin-left: 18px;
-  color: var(--muted);
+  color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
   position: relative;
-  transition: color 0.3s ease;
+  transition: color 0.25s ease;
 }
+
+/* sublinhado gradiente no hover */
 .nav a::after {
   content: '';
   position: absolute;
-  left: 0; bottom: -4px;
+  left: 0;
+  bottom: -4px;
   width: 0%;
   height: 2px;
-  background: linear-gradient(90deg,var(--accent),var(--accent-2));
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
   transition: width 0.3s ease;
 }
+
 .nav a:hover {
-  color: #fff;
+  color: #ffffff;
 }
+
 .nav a:hover::after {
   width: 100%;
 }
@@ -74,46 +100,56 @@
   border-radius: 10px;
   font-weight: 600;
   cursor: pointer;
-  transition: transform .18s ease, box-shadow .18s ease, background 0.3s ease;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.3s ease;
 }
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  border-radius: 10px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: transform .18s ease, box-shadow .18s ease, background 0.3s ease;
-}
+
+/* Botão primário (gradiente) */
 .btn-primary {
-  background: linear-gradient(90deg,var(--accent),var(--accent-2));
-  color: #042531;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: #ffffff;
   border: none;
   border-radius: 10px;
   text-decoration: none;
-  display: flex;
-  padding: 10px 6rem;
-  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 2rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.3px;
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(96,165,250,0.3);
+  box-shadow: 0 6px 20px rgba(1, 44, 109, 0.5);
 }
+
+/* Botão fantasma (contorno branco leve) */
 .btn-ghost {
-  display: flex;
   background: transparent;
-  border: 1px solid rgba(255,255,255,0.06);
-  color: var(--muted);
-  margin: 1rem;
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.85);
   text-decoration: none;
-  padding: 10px 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 1.5rem;
   border-radius: 10px;
   font-weight: 600;
-  align-items: center;
+  font-size: 0.9rem;
+  transition: all 0.25s ease;
 }
+
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.55);
+  color: #ffffff;
+}
+
+/* Botão outline genérico */
 .btn-outline {
-  border: 1px solid rgba(255,255,255,0.06);
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
   padding: 8px 12px;
   border-radius: 8px;
+  color: rgba(255, 255, 255, 0.8);
 }

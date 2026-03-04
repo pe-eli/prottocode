@@ -51,7 +51,7 @@
 
 .btn-primary:hover {
   transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgba(96, 165, 250, 0.4);
+  box-shadow: 0 12px 32px rgba(2, 22, 90, 0.35);
 }
 
 .btn-primary:hover::before {
@@ -59,8 +59,8 @@
 }
 .btn-ghost {
   display: flex;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1.5px solid rgba(110, 231, 183, 0.3);
+  background: rgba(0, 0, 0, 0.02);
+  border: 1.5px solid rgba(2, 22, 90, 0.3);
   color: var(--accent);
   margin: 1rem;
   text-decoration: none;
@@ -72,13 +72,13 @@
 }
 
 .btn-ghost:hover {
-  background: rgba(110, 231, 183, 0.1);
+  background: rgba(2, 22, 90, 0.06);
   border-color: var(--accent);
-  box-shadow: 0 8px 20px rgba(110, 231, 183, 0.2);
+  box-shadow: 0 8px 20px rgba(2, 22, 90, 0.15);
   transform: translateY(-2px);
 }
 .btn-outline {
-  border: 1px solid rgba(255,255,255,0.06);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   padding: 8px 12px;
   border-radius: 8px;
 }
@@ -150,21 +150,27 @@ h1 {
   grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
   gap: 18px;
   margin-top: 20px;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  justify-items: center;
 }
 .card {
   display: flex;
   flex-direction: column;
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(0, 0, 0, 0.04);
   backdrop-filter: blur(10px);
   padding: 24px;
   border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   transform: translateY(0);
   transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   align-items: center;
   justify-content: center;
   position: relative;
   overflow: hidden;
+  width: 100%;
+  max-width: 280px;
 }
 
 .card::before {
@@ -174,15 +180,15 @@ h1 {
   right: -50%;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle, rgba(110, 231, 183, 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(2, 22, 90, 0.08) 0%, transparent 70%);
   opacity: 0;
   transition: opacity 0.4s ease;
 }
 
 .card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 12px 32px rgba(110, 231, 183, 0.15);
-  border-color: rgba(110, 231, 183, 0.2);
+  box-shadow: 0 12px 32px rgba(2, 22, 90, 0.15);
+  border-color: rgba(2, 22, 90, 0.2);
 }
 
 .card:hover::before {
@@ -193,7 +199,7 @@ h1 {
   margin-top: 10px;
   padding: 8px 14px;
   background: linear-gradient(90deg, var(--accent), var(--accent-2));
-  color: #042531;
+  color: #ffffff;
   font-weight: 500;
   border-radius: 8px;
   text-decoration: none;
@@ -213,15 +219,15 @@ h1 {
 }
 
 .test-card {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(0, 0, 0, 0.04);
   backdrop-filter: blur(20px);
   padding: 28px;
   border-radius: 18px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   animation: fadeUp 0.6s ease;
-  color: #fff;
-  border: 1px solid rgba(110, 231, 183, 0.1);
+  color: #000000;
+  border: 1px solid rgba(2, 22, 90, 0.1);
   position: relative;
   overflow: hidden;
 }
@@ -233,7 +239,7 @@ h1 {
   left: -50%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(110, 231, 183, 0.1), transparent);
+  background: linear-gradient(135deg, rgba(2, 22, 90, 0.06), transparent);
   opacity: 0;
   transition: opacity 0.4s ease;
 }
@@ -252,15 +258,15 @@ h1 {
 .test-card p {
   margin: 0;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(0, 0, 0, 0.8);
   position: relative;
   z-index: 1;
 }
 
 .test-card:hover {
   transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 12px 32px rgba(110, 231, 183, 0.25);
-  border-color: rgba(110, 231, 183, 0.3);
+  box-shadow: 0 12px 32px rgba(2, 22, 90, 0.2);
+  border-color: rgba(2, 22, 90, 0.25);
 }
 
 .test-card:hover::before {
@@ -288,9 +294,9 @@ h1 {
   justify-content: space-between;
   align-items: center;
   padding: 32px;
-  background: linear-gradient(135deg, rgba(96, 165, 250, 0.1), rgba(110, 231, 183, 0.06));
+  background: linear-gradient(135deg, rgba(2, 22, 90, 0.07), rgba(0, 85, 204, 0.05));
   border-radius: 16px;
-  border: 1px solid rgba(110, 231, 183, 0.2);
+  border: 1px solid rgba(2, 22, 90, 0.15);
   animation: fadeUp 0.8s ease;
   backdrop-filter: blur(10px);
   position: relative;
@@ -315,7 +321,7 @@ h1 {
 
 .cta-card .btn-primary {
   background: var(--gradient-primary);
-  color: #0a0e27;
+  color: #ffffff;
   font-weight: 700;
   position: relative;
   z-index: 1;
@@ -323,7 +329,7 @@ h1 {
 
 .cta-card .btn-primary:hover {
   background: var(--gradient-secondary);
-  box-shadow: 0 12px 32px rgba(96, 165, 250, 0.4);
+  box-shadow: 0 12px 32px rgba(2, 22, 90, 0.35);
 }
 
 /* --- FORM CONTATO --- */
@@ -342,8 +348,8 @@ h1 {
   justify-self: center;
 }
 .form-grid input, .form-grid textarea {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1.5px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.04);
+  border: 1.5px solid rgba(0, 0, 0, 0.12);
   padding: 14px;
   border-radius: 10px;
   color: inherit;
@@ -353,19 +359,19 @@ h1 {
 }
 
 .form-grid input::placeholder, .form-grid textarea::placeholder {
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(0, 0, 0, 0.45);
 }
 
 .form-grid input:focus, .form-grid textarea:focus {
   outline: none;
   border-color: var(--accent);
-  background: rgba(255, 255, 255, 0.06);
-  box-shadow: 0 0 20px rgba(110, 231, 183, 0.2);
+  background: rgba(0, 0, 0, 0.06);
+  box-shadow: 0 0 20px rgba(2, 22, 90, 0.15);
 }
 
 /* --- FOOTER --- */
 .site-footer {
-  border-top: 1px solid rgba(255,255,255,0.03);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
   padding: 28px 0;
   margin-top: 40px;
 }
@@ -426,7 +432,7 @@ h1 {
   }
 .btn-primary {
   background: linear-gradient(90deg, var(--accent), var(--accent-2));
-  color: #042531;
+  color: #ffffff;
   border: none;
   border-radius: 10px;
   text-decoration: none;
@@ -441,8 +447,8 @@ h1 {
 
 .btn-ghost {
   background: transparent;
-  border: 1px solid rgba(255,255,255,0.06);
-  color: var(--muted);
+  border: 1px solid rgba(2, 22, 90, 0.25);
+  color: var(--accent);
   border-radius: 10px;
   text-decoration: none;
   display: inline-flex;         /* melhor que flex sozinho */
@@ -450,7 +456,7 @@ h1 {
   justify-content: center;      /* centraliza horizontalmente */
   padding: 0.75rem 0rem;        /* padding proporcional */
   font-weight: 600;
-  white-space: nowrap;  
+  white-space: nowrap;
   width: 70%;
   margin: 0;
   margin-bottom: 18px;
