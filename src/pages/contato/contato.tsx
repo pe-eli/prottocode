@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import emailjs from "emailjs-com";
 import {
   FaWhatsapp,
   FaInstagram,
   FaEnvelope,
   FaClock,
-  FaMapMarkerAlt,
 } from "react-icons/fa";
 import Header from "../../components/header/header";
 import Footer from "../../components/footer/footer";

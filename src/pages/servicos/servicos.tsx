@@ -27,21 +27,21 @@ interface ServiceDetail {
 
 const serviceDetails: ServiceDetail[] = [
   {
-    icon: <FaCog />,
-    title: "Automação de Processos",
+    icon: <FaGlobe />,
+    title: "Website Profissional",
     tagline:
-      "Integração de sistemas e eliminação de tarefas repetitivas. Ideal para fluxos operacionais complexos.",
+      "Site profissional com funcionalidades inteligentes e automações integradas.",
     description:
-      "Seu pessoal gasta horas todos os dias fazendo tarefas chatas e repetitivas. Com automação, isso acontece sozinho. Sua equipe fica livre para trabalhos que realmente importam — menos gasto, mais lucro.",
+      "Mais do que um site bonito — um sistema que trabalha por você. Atenda visitantes, colete leads e converta clientes automaticamente, sem intervenção manual.",
     features: [
-      { name: "Agendamento automático de tarefas" },
+      { name: "Integração com WhatsApp, Telegram ou Facebook" },
+      { name: "Dashboard de monitoramento de acessos" },
       { name: "Notificações e alertas personalizados" },
-      { name: "Dashboard de monitoramento em tempo real" },
-      { name: "Exportação de dados em múltiplos formatos" },
       { name: "Relatórios automáticos por e-mail" },
-      { name: "Detecção inteligente de gargalos no fluxo", ai: true },
-      { name: "Otimização automática de rotas de processo", ai: true },
-      { name: "Previsão de falhas e manutenção preventiva", ai: true },
+      { name: "Chatbot integrado para atendimento ao visitante", ai: true },
+      { name: "Personalização dinâmica de conteúdo por perfil", ai: true },
+      { name: "Otimização automática de SEO e performance", ai: true },
+      { name: "Geração de textos e descrições com IA", ai: true },
     ],
   },
   {
@@ -60,6 +60,24 @@ const serviceDetails: ServiceDetail[] = [
       { name: "Geração automática de respostas contextuais", ai: true },
       { name: "Aprendizado contínuo com base nas interações", ai: true },
       { name: "Classificação automática de intenções do cliente", ai: true },
+    ],
+  },
+  {
+    icon: <FaCog />,
+    title: "Automação de Processos",
+    tagline:
+      "Integração de sistemas e eliminação de tarefas repetitivas. Ideal para fluxos operacionais complexos.",
+    description:
+      "Seu pessoal gasta horas todos os dias fazendo tarefas chatas e repetitivas. Com automação, isso acontece sozinho. Sua equipe fica livre para trabalhos que realmente importam — menos gasto, mais lucro.",
+    features: [
+      { name: "Agendamento automático de tarefas" },
+      { name: "Notificações e alertas personalizados" },
+      { name: "Dashboard de monitoramento em tempo real" },
+      { name: "Exportação de dados em múltiplos formatos" },
+      { name: "Relatórios automáticos por e-mail" },
+      { name: "Detecção inteligente de gargalos no fluxo", ai: true },
+      { name: "Otimização automática de rotas de processo", ai: true },
+      { name: "Previsão de falhas e manutenção preventiva", ai: true },
     ],
   },
   {
@@ -99,24 +117,6 @@ const serviceDetails: ServiceDetail[] = [
         ai: true,
       },
       { name: "Extração semântica de informações de documentos", ai: true },
-    ],
-  },
-  {
-    icon: <FaGlobe />,
-    title: "Website Automatizado",
-    tagline:
-      "Site profissional com funcionalidades inteligentes e automações integradas.",
-    description:
-      "Mais do que um site bonito — um sistema que trabalha por você. Atenda visitantes, colete leads e converta clientes automaticamente, sem intervenção manual.",
-    features: [
-      { name: "Integração com WhatsApp, Telegram ou Facebook" },
-      { name: "Dashboard de monitoramento de acessos" },
-      { name: "Notificações e alertas personalizados" },
-      { name: "Relatórios automáticos por e-mail" },
-      { name: "Chatbot integrado para atendimento ao visitante", ai: true },
-      { name: "Personalização dinâmica de conteúdo por perfil", ai: true },
-      { name: "Otimização automática de SEO e performance", ai: true },
-      { name: "Geração de textos e descrições com IA", ai: true },
     ],
   },
   {
