@@ -291,7 +291,7 @@ export default function Orcamento() {
             </div>
 
             <div className="step-actions">
-              <button className="btn-next" onClick={handleNext}>
+              <button className="btn-primary" onClick={handleNext}>
                 Próximo
               </button>
             </div>
@@ -340,10 +340,10 @@ export default function Orcamento() {
             </div>
 
             <div className="step-actions">
-              <button className="btn-back" onClick={handleBack}>
+              <button className="btn-ghost" onClick={handleBack}>
                 Voltar
               </button>
-              <button className="btn-next" onClick={handleNext}>
+              <button className="btn-primary" onClick={handleNext}>
                 Próximo
               </button>
             </div>
@@ -404,10 +404,10 @@ export default function Orcamento() {
               {error && <p className="error-msg">{error}</p>}
 
               <div className="resumo-actions">
-                <button className="btn-back" onClick={handleBack}>
+                <button className="btn-ghost" onClick={handleBack}>
                   Voltar
                 </button>
-                <button className="btn-submit" onClick={handleSend}>
+                <button className="btn-primary" onClick={handleSend}>
                   Solicitar Proposta
                 </button>
               </div>

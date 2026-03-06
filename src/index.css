@@ -1,15 +1,64 @@
+/* ============================================
+   DESIGN TOKENS — Light (default) + Dark
+   Palette: #e5eeff, #012c6d, #02165a, #379170
+   ============================================ */
+
 :root {
-  --bg: #0a0e27;
-  --card: rgba(255,255,255,0.05);
-  --muted: #5a6580;
-  --accent: #02165a;
-  --accent-2: #6ee7b7;
-  --gradient-primary: linear-gradient(135deg, #02165a, #6ee7b7);
-  --gradient-secondary: linear-gradient(135deg, #6ee7b7, #02165a);
-  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.15);
-  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.25);
-  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.35);
+  /* Raw palette */
+  --color-light:   #e5eeff;
+  --color-navy:    #012c6d;
+  --color-deep:    #02165a;
+  --color-green:   #379170;
+
+  /* Semantic tokens — Light theme */
+  --bg:              #e5eeff;
+  --bg-surface:      #ffffff;
+  --bg-card:         rgba(2, 22, 90, 0.04);
+  --text:            #0a0e27;
+  --text-secondary:  rgba(10, 14, 39, 0.7);
+  --text-inverse:    #ffffff;
+  --muted:           #5a6580;
+  --accent:          #02165a;
+  --accent-2:        #379170;
+  --accent-light:    #012c6d;
+  --gradient-primary:   linear-gradient(135deg, #02165a, #379170);
+  --gradient-secondary: linear-gradient(135deg, #379170, #02165a);
+  --border:          rgba(2, 22, 90, 0.12);
+  --border-strong:   rgba(2, 22, 90, 0.25);
+  --shadow-sm:       0 4px 12px rgba(2, 22, 90, 0.08);
+  --shadow-md:       0 8px 24px rgba(2, 22, 90, 0.12);
+  --shadow-lg:       0 12px 32px rgba(2, 22, 90, 0.18);
+  --hero-bg:         #050a30;
+  --header-bg:       rgba(1, 44, 109, 0.95);
+  --chart-line:      #5b8def;
+  --chart-green:     #4aeaae;
 }
+
+[data-theme="dark"] {
+  --bg:              #0a0e27;
+  --bg-surface:      #111836;
+  --bg-card:         rgba(255, 255, 255, 0.04);
+  --text:            #e5eeff;
+  --text-secondary:  rgba(229, 238, 255, 0.7);
+  --text-inverse:    #0a0e27;
+  --muted:           #8a95b0;
+  --accent:          #379170;
+  --accent-2:        #5b8def;
+  --accent-light:    #012c6d;
+  --gradient-primary:   linear-gradient(135deg, #379170, #5b8def);
+  --gradient-secondary: linear-gradient(135deg, #5b8def, #379170);
+  --border:          rgba(255, 255, 255, 0.08);
+  --border-strong:   rgba(255, 255, 255, 0.15);
+  --shadow-sm:       0 4px 12px rgba(0, 0, 0, 0.2);
+  --shadow-md:       0 8px 24px rgba(0, 0, 0, 0.3);
+  --shadow-lg:       0 12px 32px rgba(0, 0, 0, 0.4);
+  --hero-bg:         #060b22;
+  --header-bg:       rgba(6, 11, 34, 0.95);
+}
+
+/* ============================================
+   BASE
+   ============================================ */
 
 html {
   height: 100%;
@@ -27,9 +76,90 @@ body, #root {
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  background: #e5eeff;
-  color: #000000;
+  background: var(--bg);
+  color: var(--text);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* ============================================
+   GLOBAL BUTTON SYSTEM
+   Base + 4 variants: primary, secondary, ghost, outline
+   ============================================ */
+
+/* Base — shared by every button */
+.btn,
+.btn-primary,
+.btn-secondary,
+.btn-ghost,
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  white-space: nowrap;
+  line-height: 1;
+}
+
+/* Primary — gradient fill, white text */
+.btn-primary {
+  background: var(--gradient-primary);
+  color: var(--text-inverse);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Secondary — outline, accent border, transparent bg */
+.btn-secondary {
+  background: transparent;
+  color: var(--accent);
+  border: 2px solid var(--accent);
+}
+
+.btn-secondary:hover {
+  background: var(--bg-card);
+  transform: translateY(-2px);
+}
+
+/* Ghost — subtle transparent, light border */
+.btn-ghost {
+  background: transparent;
+  color: var(--accent);
+  border: 1.5px solid var(--border-strong);
+}
+
+.btn-ghost:hover {
+  background: var(--bg-card);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+/* Outline — minimal, used for nav items */
+.btn-outline {
+  background: transparent;
+  color: inherit;
+  border: 1.5px solid var(--border);
+  padding: 8px 16px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.btn-outline:hover {
+  border-color: var(--border-strong);
+  background: var(--bg-card);
 }

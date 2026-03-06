@@ -3,7 +3,7 @@
   padding: 5rem 0;
   background: linear-gradient(
     135deg,
-    rgba(0, 85, 204, 0.08),
+    rgba(2, 22, 90, 0.06),
     rgba(2, 22, 90, 0.08)
   );
   position: relative;
@@ -19,7 +19,7 @@
   height: 500px;
   background: radial-gradient(
     circle,
-    rgba(0, 85, 204, 0.1) 0%,
+    rgba(2, 22, 90, 0.08) 0%,
     transparent 70%
   );
   border-radius: 50%;
@@ -52,11 +52,11 @@
   inset: 0;
   background: linear-gradient(
     135deg,
-    rgba(0, 0, 0, 0.04),
-    rgba(0, 0, 0, 0.01)
+    var(--bg-card),
+    transparent
   );
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(0, 85, 204, 0.2);
+  border: 1px solid var(--border-strong);
   border-radius: 20px;
 }
 
@@ -75,7 +75,7 @@
 .cta-content h2 {
   font-size: 2.8rem;
   margin: 0;
-  color: #000000;
+  color: var(--text);
   line-height: 1.2;
   font-weight: 800;
 }
@@ -91,7 +91,7 @@
 /* CTA Lead */
 .cta-lead {
   font-size: 1.2rem;
-  color: rgba(0, 0, 0, 0.9);
+  color: var(--text);
   max-width: 700px;
   margin: 0;
   line-height: 1.8;
@@ -100,18 +100,18 @@
 /* CTA Highlight */
 .cta-highlight {
   font-size: 1.1rem;
-  color: rgba(0, 0, 0, 0.85);
+  color: var(--text-secondary);
   max-width: 700px;
   margin: 0;
   line-height: 1.8;
   padding: 20px;
-  background: rgba(0, 85, 204, 0.08);
+  background: var(--bg-card);
   border-left: 3px solid var(--accent);
   border-radius: 8px;
 }
 
 .cta-highlight strong {
-  color: #02165a;
+  color: var(--accent);
   font-weight: 700;
 }
 
@@ -129,45 +129,18 @@
   padding: 0 44px;
   height: 48px;
   font-size: 0.88rem;
-  font-weight: 700;
   border-radius: 8px;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  cursor: pointer;
-  border: none;
   min-width: 200px;
-  white-space: nowrap;
-}
-
-.cta-buttons .btn-primary {
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  color: #ffffff;
-  box-shadow: 0 8px 24px rgba(0, 85, 204, 0.3);
-}
-
-.cta-buttons .btn-primary:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 40px rgba(2, 22, 90, 0.35);
 }
 
 .cta-buttons .btn-secondary {
-  background: transparent;
-  color: #000000;
-  border: 2px solid var(--accent);
-}
-
-.cta-buttons .btn-secondary:hover {
-  background: rgba(0, 85, 204, 0.15);
-  transform: translateY(-2px);
+  color: var(--text);
 }
 
 /* CTA Footer */
 .cta-footer {
   font-size: 0.95rem;
-  color: rgba(0, 0, 0, 0.75);
+  color: var(--text-secondary);
   margin: 0;
   line-height: 1.8;
 }
@@ -183,9 +156,9 @@
 }
 
 .signal {
-  background: rgba(0, 0, 0, 0.04);
+  background: var(--bg-card);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(0, 85, 204, 0.15);
+  border: 1px solid var(--border);
   border-radius: 12px;
   padding: 24px 20px;
   text-align: center;
@@ -197,8 +170,8 @@
 }
 
 .signal:hover {
-  background: rgba(0, 0, 0, 0.06);
-  border-color: rgba(0, 85, 204, 0.3);
+  background: var(--bg-card);
+  border-color: var(--border-strong);
   transform: translateY(-4px);
 }
 
@@ -211,7 +184,7 @@
 
 .signal p {
   font-size: 0.95rem;
-  color: rgba(0, 0, 0, 0.8);
+  color: var(--text-secondary);
   margin: 0;
   line-height: 1.5;
   font-weight: 600;

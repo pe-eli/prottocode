@@ -1,0 +1,228 @@
+/* ============================================
+   HERO CHART — animated financial graph
+   ============================================ */
+
+.hero-chart {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  aspect-ratio: 5 / 3;
+  opacity: 0;
+  animation: chartFadeIn 1.2s ease 0.4s forwards;
+}
+
+@keyframes chartFadeIn {
+  to { opacity: 1; }
+}
+
+/* ---- SVG canvas ---- */
+.chart-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* ---- Grid lines ---- */
+.chart-grid line {
+  stroke: rgba(91, 141, 239, 0.08);
+  stroke-width: 1;
+  stroke-dasharray: 6 4;
+}
+
+.chart-grid-v line {
+  stroke: rgba(91, 141, 239, 0.05);
+  stroke-width: 1;
+  stroke-dasharray: 4 8;
+}
+
+/* ---- Area fill ---- */
+.chart-area {
+  opacity: 0;
+  animation: areaReveal 2s ease 0.8s forwards;
+}
+
+@keyframes areaReveal {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ---- Lines ---- */
+.chart-line {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.chart-line.main {
+  stroke: var(--chart-line);
+  stroke-width: 2.5;
+  stroke-dasharray: 1200;
+  stroke-dashoffset: 1200;
+  animation: drawLine 2.5s ease 0.5s forwards;
+}
+
+.chart-line.secondary {
+  stroke: rgba(74, 234, 174, 0.4);
+  stroke-width: 1.5;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: drawLine 3s ease 0.8s forwards;
+}
+
+@keyframes drawLine {
+  to { stroke-dashoffset: 0; }
+}
+
+/* ---- Data dots ---- */
+.chart-dots .dot {
+  fill: var(--chart-line);
+  opacity: 0;
+}
+
+.dot.d1 { animation: dotAppear 0.4s ease 1.2s forwards, dotPulse 3s ease 1.6s infinite; }
+.dot.d2 { animation: dotAppear 0.4s ease 1.5s forwards, dotPulse 3s ease 2.0s infinite; }
+.dot.d3 { animation: dotAppear 0.4s ease 1.8s forwards, dotPulse 3s ease 2.3s infinite; }
+.dot.d4 { animation: dotAppear 0.4s ease 2.1s forwards, dotPulse 3s ease 2.6s infinite; }
+.dot.d5 { animation: dotAppear 0.4s ease 2.4s forwards, dotPulse 3s ease 2.9s infinite; }
+.dot.d6 { animation: dotAppear 0.4s ease 2.7s forwards, dotPulse 3s ease 3.2s infinite; }
+
+@keyframes dotAppear {
+  from { opacity: 0; transform: scale(0); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes dotPulse {
+  0%, 100% { r: 4; opacity: 1; }
+  50%      { r: 7; opacity: 0.6; }
+}
+
+/* ---- Candlestick bars ---- */
+.chart-candles rect {
+  opacity: 0;
+  animation: candleGrow 0.5s ease forwards;
+}
+
+.candle.green { fill: rgba(74, 234, 174, 0.5); }
+.candle.red   { fill: rgba(239, 91, 91, 0.4); }
+
+.chart-candles rect:nth-child(1) { animation-delay: 1.3s; }
+.chart-candles rect:nth-child(2) { animation-delay: 1.6s; }
+.chart-candles rect:nth-child(3) { animation-delay: 1.9s; }
+.chart-candles rect:nth-child(4) { animation-delay: 2.2s; }
+.chart-candles rect:nth-child(5) { animation-delay: 2.5s; }
+
+@keyframes candleGrow {
+  from { opacity: 0; transform: scaleY(0); }
+  to   { opacity: 1; transform: scaleY(1); }
+}
+
+/* ---- Floating labels ---- */
+.chart-labels {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.chart-label {
+  position: absolute;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--chart-green);
+  background: rgba(5, 10, 48, 0.7);
+  backdrop-filter: blur(4px);
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(74, 234, 174, 0.25);
+  opacity: 0;
+  white-space: nowrap;
+}
+
+.chart-label.l1 {
+  top: 52%;
+  right: 56%;
+  animation: labelFloat 0.5s ease 2.0s forwards, labelBob 4s ease 2.5s infinite;
+}
+
+.chart-label.l2 {
+  top: 28%;
+  right: 28%;
+  animation: labelFloat 0.5s ease 2.4s forwards, labelBob 4s ease 3.0s infinite;
+}
+
+.chart-label.l3 {
+  top: 5%;
+  right: 2%;
+  font-size: 13px;
+  color: var(--chart-line);
+  border-color: rgba(91, 141, 239, 0.3);
+  animation: labelFloat 0.5s ease 2.8s forwards, labelBob 4s ease 3.4s infinite;
+}
+
+@keyframes labelFloat {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes labelBob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-4px); }
+}
+
+/* ---- Floating particles ---- */
+.chart-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(91, 141, 239, 0.6);
+  animation: particleDrift linear infinite;
+}
+
+.p1 { left: 10%; top: 30%; animation-duration: 7s; animation-delay: 0s; }
+.p2 { left: 30%; top: 60%; animation-duration: 9s; animation-delay: 1s; background: rgba(74, 234, 174, 0.5); }
+.p3 { left: 55%; top: 20%; animation-duration: 6s; animation-delay: 2s; }
+.p4 { left: 75%; top: 50%; animation-duration: 8s; animation-delay: 0.5s; background: rgba(74, 234, 174, 0.4); }
+.p5 { left: 90%; top: 15%; animation-duration: 10s; animation-delay: 3s; width: 2px; height: 2px; }
+.p6 { left: 45%; top: 75%; animation-duration: 7.5s; animation-delay: 1.5s; }
+
+@keyframes particleDrift {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(1);
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(30px, -60px) scale(0.5);
+  }
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 900px) {
+  .hero-chart {
+    max-width: none;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: unset;
+  }
+}
+
+@media (max-width: 600px) {
+  .chart-label {
+    font-size: 9px;
+    padding: 2px 6px;
+  }
+}

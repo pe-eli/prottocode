@@ -1,7 +1,7 @@
 /* How It Works Section */
 .how-it-works {
   padding: 5rem 0;
-  background: rgba(0, 0, 0, 0.01);
+  background: transparent;
 }
 
 .how-it-works-header {
@@ -20,7 +20,7 @@
 
 .how-it-works-header .section-lead {
   font-size: 1.1rem;
-  color: rgba(0, 0, 0, 0.8);
+  color: var(--text-secondary);
   margin: 0;
   max-width: 600px;
   margin: 0 auto;
@@ -48,9 +48,9 @@
 
 /* Step Card */
 .step-card {
-  background: rgba(0, 0, 0, 0.04);
+  background: var(--bg-card);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(0, 85, 204, 0.15);
+  border: 1px solid var(--border);
   border-radius: 16px;
   padding: 32px 24px;
   width: 100%;
@@ -67,10 +67,10 @@
 }
 
 .step-card:hover {
-  background: rgba(0, 0, 0, 0.06);
-  border-color: rgba(0, 85, 204, 0.3);
+  background: var(--bg-card);
+  border-color: var(--border-strong);
   transform: translateY(-8px);
-  box-shadow: 0 12px 40px rgba(0, 85, 204, 0.2);
+  box-shadow: var(--shadow-lg);
 }
 
 .step-icon {
@@ -99,13 +99,13 @@
 .step-card h3 {
   font-size: 1.3rem;
   margin: 0;
-  color: #000000;
+  color: var(--text);
   font-weight: 700;
 }
 
 .step-card p {
   font-size: 0.95rem;
-  color: rgba(0, 0, 0, 0.75);
+  color: var(--text-secondary);
   line-height: 1.6;
   margin: 0;
 }
@@ -129,8 +129,8 @@
 
 /* CTA Section */
 .how-it-works-cta {
-  background: linear-gradient(135deg, rgba(0, 85, 204, 0.08), rgba(2, 22, 90, 0.08));
-  border: 1px solid rgba(0, 85, 204, 0.2);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
   border-radius: 16px;
   padding: 3rem;
   text-align: center;
@@ -143,13 +143,13 @@
 .how-it-works-cta h3 {
   font-size: 1.8rem;
   margin: 0;
-  color: #000000;
+  color: var(--text);
   font-weight: 700;
 }
 
 .how-it-works-cta p {
   font-size: 1.05rem;
-  color: rgba(0, 0, 0, 0.85);
+  color: var(--text-secondary);
   margin: 0;
   max-width: 600px;
   line-height: 1.6;
@@ -171,7 +171,7 @@
 
 .how-it-works-cta .btn-primary:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(0, 85, 204, 0.3);
+  box-shadow: var(--shadow-lg);
 }
 
 /* Responsiveness */

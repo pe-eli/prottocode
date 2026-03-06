@@ -1,9 +1,9 @@
 /* Social Proof Section */
 .social-proof {
   padding: 5rem 0;
-  background: rgba(0, 0, 0, 0.01);
-  border-top: 1px solid rgba(2, 22, 90, 0.1);
-  border-bottom: 1px solid rgba(2, 22, 90, 0.1);
+  background: transparent;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 }
 
 .proof-section {
@@ -33,9 +33,9 @@
 }
 
 .stat-card {
-  background: rgba(0, 0, 0, 0.03);
+  background: var(--bg-card);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(2, 22, 90, 0.15);
+  border: 1px solid var(--border);
   border-radius: 16px;
   padding: 32px 24px;
   text-align: center;
@@ -46,10 +46,10 @@
 }
 
 .stat-card:hover {
-  background: rgba(0, 0, 0, 0.05);
-  border-color: rgba(2, 22, 90, 0.3);
+  background: var(--bg-card);
+  border-color: var(--border-strong);
   transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(2, 22, 90, 0.15);
+  box-shadow: var(--shadow-lg);
 }
 
 .stat-number {
@@ -66,14 +66,14 @@
 .stat-label {
   font-size: 1.1rem;
   font-weight: 700;
-  color: #000000;
+  color: var(--text);
   margin: 0;
   letter-spacing: 0.3px;
 }
 
 .stat-description {
   font-size: 0.95rem;
-  color: rgba(0, 0, 0, 0.7);
+  color: var(--text-secondary);
   margin: 0;
   line-height: 1.4;
 }
@@ -87,9 +87,9 @@
 }
 
 .testimonial-card {
-  background: rgba(0, 0, 0, 0.03);
+  background: var(--bg-card);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(2, 22, 90, 0.15);
+  border: 1px solid var(--border);
   border-radius: 16px;
   padding: 28px 24px;
   transition: all 0.3s ease;
@@ -105,15 +105,15 @@
   top: -10px;
   left: 20px;
   font-size: 4rem;
-  color: rgba(2, 22, 90, 0.1);
+  color: var(--border);
   font-weight: 700;
 }
 
 .testimonial-card:hover {
-  background: rgba(0, 0, 0, 0.05);
-  border-color: rgba(2, 22, 90, 0.3);
+  background: var(--bg-card);
+  border-color: var(--border-strong);
   transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(2, 22, 90, 0.15);
+  box-shadow: var(--shadow-lg);
 }
 
 .stars {
@@ -125,7 +125,7 @@
 
 .testimonial-quote {
   font-size: 1rem;
-  color: rgba(0, 0, 0, 0.9);
+  color: var(--text);
   line-height: 1.6;
   margin: 0;
   font-style: italic;
@@ -141,13 +141,13 @@
 .author-name {
   font-size: 0.95rem;
   font-weight: 700;
-  color: #000000;
+  color: var(--text);
   margin: 0 0 4px 0;
 }
 
 .author-role {
   font-size: 0.85rem;
-  color: rgba(0, 0, 0, 0.6);
+  color: var(--text-secondary);
   margin: 0;
 }
 
@@ -155,7 +155,7 @@
 .logo-section-title {
   text-align: center;
   font-size: 1.2rem;
-  color: rgba(0, 0, 0, 0.8);
+  color: var(--text-secondary);
   margin-bottom: 2rem;
   font-weight: 600;
 }
@@ -165,9 +165,9 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
   padding: 2rem;
-  background: rgba(0, 0, 0, 0.02);
+  background: var(--bg-card);
   border-radius: 16px;
-  border: 1px solid rgba(2, 22, 90, 0.1);
+  border: 1px solid var(--border);
 }
 
 .logo-placeholder {
@@ -175,18 +175,18 @@
   align-items: center;
   justify-content: center;
   height: 80px;
-  background: rgba(0, 0, 0, 0.03);
-  border: 2px dashed rgba(2, 22, 90, 0.2);
+  background: var(--bg-card);
+  border: 2px dashed var(--border);
   border-radius: 12px;
-  color: rgba(0, 0, 0, 0.5);
+  color: var(--muted);
   font-size: 0.9rem;
   font-weight: 500;
   transition: all 0.3s ease;
 }
 
 .logo-placeholder:hover {
-  border-color: rgba(2, 22, 90, 0.4);
-  background: rgba(2, 22, 90, 0.04);
+  border-color: var(--border-strong);
+  background: var(--bg-card);
 }
 
 /* Responsiveness */

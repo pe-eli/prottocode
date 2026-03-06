@@ -1,4 +1,5 @@
 import React from "react";
+import HeroChart from "./HeroChart";
 import "./hero.css";
 
 const Hero: React.FC = () => {
@@ -7,11 +8,12 @@ const Hero: React.FC = () => {
       <div className="container hero-inner">
         <div className="hero-left">
           <h1>
+            <span className="accent">
             Aumente sua receita
-            <span className="accent"> sem aumentar sua equipe</span>
+             sem aumentar sua equipe</span>
           </h1>
           <p className="lead">
-            A inteligência artificial está transformando negócios. Processe pedidos, atenda clientes e gere insights automaticamente. Enquanto sua concorrência passa dias em tarefas manuais, você já virou noite gerando receita.
+            Deixe a inteligência artificial cuidar do operacional enquanto você foca em fazer seu negócio crescer.
           </p>
 
           <div className="hero-ctas">
@@ -23,7 +25,9 @@ const Hero: React.FC = () => {
             </a>
           </div>
         </div>
-        <div className="hero-right"></div>
+        <div className="hero-right">
+          <HeroChart />
+        </div>
       </div>
 
       {/* Seção de Soluções Principais - Redesenhada */}
@@ -39,7 +43,7 @@ const Hero: React.FC = () => {
             <h3>Website Profissional</h3>
             <p>Site completo e personalizado com automações integradas. Design moderno que converte visitantes em clientes.</p>
             <span className="product-badge available">Sob medida</span>
-            <a href="/orcamento" className="product-cta">Saiba mais →</a>
+            <a href="/orcamento" className="product-cta">Ver modelos →</a>
           </div>
           <div className="product-card">
             <div className="product-icon">
@@ -50,7 +54,7 @@ const Hero: React.FC = () => {
             <h3>Chatbot com IA</h3>
             <p>Atenda clientes 24/7. Inteligência que aprende com cada conversa.</p>
             <span className="product-badge available">24/7</span>
-            <a href="/orcamento" className="product-cta">Saiba mais →</a>
+            <a href="/orcamento" className="product-cta">Faça o teste →</a>
           </div>
           <div className="product-card">
             <div className="product-icon">

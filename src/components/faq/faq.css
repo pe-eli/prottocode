@@ -1,7 +1,7 @@
 /* FAQ Section */
 .faq {
   padding: 5rem 0;
-  background: rgba(0, 0, 0, 0.01);
+  background: transparent;
 }
 
 .faq-header {
@@ -20,7 +20,7 @@
 
 .faq-header .section-lead {
   font-size: 1.1rem;
-  color: rgba(0, 0, 0, 0.8);
+  color: var(--text-secondary);
   margin: 0;
   max-width: 600px;
   margin: 0 auto;
@@ -37,22 +37,22 @@
 
 /* FAQ Item */
 .faq-item {
-  background: rgba(0, 0, 0, 0.04);
-  border: 1px solid rgba(0, 85, 204, 0.15);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
   border-radius: 12px;
   overflow: hidden;
   transition: all 0.3s ease;
 }
 
 .faq-item:hover {
-  border-color: rgba(0, 85, 204, 0.25);
-  background: rgba(0, 0, 0, 0.06);
+  border-color: var(--border-strong);
+  background: var(--bg-card);
 }
 
 .faq-item.open {
-  background: rgba(0, 0, 0, 0.06);
-  border-color: rgba(0, 85, 204, 0.3);
-  box-shadow: 0 8px 24px rgba(0, 85, 204, 0.15);
+  background: var(--bg-card);
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-md);
 }
 
 /* FAQ Question Button */
@@ -70,13 +70,13 @@
 }
 
 .faq-question:hover {
-  background: rgba(0, 85, 204, 0.03);
+  background: var(--bg-card);
 }
 
 .faq-question span:first-child {
   font-size: 1.05rem;
   font-weight: 700;
-  color: #000000;
+  color: var(--text);
   text-align: left;
   flex: 1;
   line-height: 1.5;
@@ -92,14 +92,14 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: rgba(0, 85, 204, 0.1);
+  background: var(--bg-card);
   flex-shrink: 0;
   transition: all 0.3s ease;
 }
 
 .faq-item.open .faq-icon {
   transform: rotate(45deg);
-  background: rgba(0, 85, 204, 0.2);
+  background: var(--bg-card);
 }
 
 /* FAQ Answer */
@@ -118,14 +118,14 @@
 .faq-answer p {
   font-size: 0.95rem;
   line-height: 1.8;
-  color: rgba(0, 0, 0, 0.8);
+  color: var(--text-secondary);
   margin: 0;
 }
 
 /* FAQ CTA */
 .faq-cta {
-  background: linear-gradient(135deg, rgba(0, 85, 204, 0.06), rgba(2, 22, 90, 0.08));
-  border: 1px solid rgba(0, 85, 204, 0.2);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
   border-radius: 16px;
   padding: 3rem;
   text-align: center;
@@ -140,13 +140,13 @@
 .faq-cta h3 {
   font-size: 1.6rem;
   margin: 0;
-  color: #000000;
+  color: var(--text);
   font-weight: 700;
 }
 
 .faq-cta p {
   font-size: 1rem;
-  color: rgba(0, 0, 0, 0.85);
+  color: var(--text-secondary);
   margin: 0;
   line-height: 1.6;
 }
@@ -166,7 +166,7 @@
 }
 
 .faq-cta .btn-secondary:hover {
-  background: rgba(0, 85, 204, 0.1);
+  background: var(--bg-card);
   transform: translateY(-2px);
 }
 
