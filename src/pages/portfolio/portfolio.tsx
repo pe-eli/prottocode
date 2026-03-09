@@ -22,19 +22,19 @@ const Portfolio: React.FC = () => {
 
           <div className="portfolio-cards">
             <div className="portfolio-card">
-              <div className="portfolio-card-icon">🌐</div>
-              <h3>Websites Profissionais</h3>
-              <p>Sites modernos com design responsivo e integrações inteligentes.</p>
-            </div>
-            <div className="portfolio-card">
-              <div className="portfolio-card-icon">🤖</div>
+              <div className="portfolio-card-icon">⚙️</div>
               <h3>Automações com IA</h3>
               <p>Fluxos automatizados que economizam tempo e aumentam conversões.</p>
             </div>
             <div className="portfolio-card">
-              <div className="portfolio-card-icon">📊</div>
-              <h3>Dashboards & Analytics</h3>
+              <div className="portfolio-card-icon">🧠</div>
+              <h3>Inteligência Artificial</h3>
               <p>Painéis de dados em tempo real para decisões mais inteligentes.</p>
+            </div>
+            <div className="portfolio-card">
+              <div className="portfolio-card-icon">🔗</div>
+              <h3>Websites & Integrações</h3>
+              <p>Sites modernos com design responsivo e integrações inteligentes.</p>
             </div>
           </div>
 
