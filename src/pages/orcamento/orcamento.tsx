@@ -29,7 +29,7 @@ const servicos: Servico[] = [
     id: 2,
     nome: "Chatbot com IA",
     descricao:
-      "Atendimento ao cliente 24/7 com respostas inteligentes e personalizadas.",
+      "Atendimento ao cliente 24h por dia com respostas inteligentes e personalizadas.",
   },
   {
     id: 3,

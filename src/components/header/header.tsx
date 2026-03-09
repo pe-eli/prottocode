@@ -38,9 +38,9 @@ const Header: React.FC = () => {
         <nav className="nav">
           <Link to="/servicos">Serviços</Link>
           <Link to="/contato">Contato</Link>
-          <a href="#" className="btn btn-outline">
+          <Link to="/portfolio" className="btn btn-outline">
             Portfólio
-          </a>
+          </Link>
           <ThemeToggle />
         </nav>
 
@@ -63,9 +63,9 @@ const Header: React.FC = () => {
         <nav className="side-nav">
           <Link to="/servicos" onClick={() => setMenuOpen(false)}>Serviços</Link>
           <Link to="/contato" onClick={() => setMenuOpen(false)}>Contato</Link>
-          <a href="#" className="btn btn-outline" onClick={() => setMenuOpen(false)}>
+          <Link to="/portfolio" className="btn btn-outline" onClick={() => setMenuOpen(false)}>
             Portfólio
-          </a>
+          </Link>
         </nav>
       </aside>
     </header>

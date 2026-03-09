@@ -198,12 +198,12 @@ export default function Contato() {
                       <h4>WhatsApp</h4>
                       <p>Atendimento rápido e direto</p>
                       <a
-                        href="https://wa.me/5524999348783"
+                        href="https://wa.me/5537998409691"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="contato-info-link"
                       >
-                        (24) 99934-8783
+                        (37) 9840-9691
                       </a>
                     </div>
                   </div>
@@ -237,7 +237,7 @@ export default function Contato() {
                         href="mailto:contato@prottocode.com"
                         className="contato-info-link"
                       >
-                        contato@prottocode.com
+                        prottocode@gmail.com
                       </a>
                     </div>
                   </div>
