@@ -86,7 +86,7 @@ const FAQ: React.FC = () => {
         <div className="faq-cta">
           <h3>Ainda tem dúvidas?</h3>
           <p>Fale direto com nosso time. Estamos aqui para responder tudo.</p>
-          <a href="https://wa.me/5524999348783" className="btn-secondary">
+          <a href="https://wa.me/5537998409691" className="btn-secondary">
             Fale Conosco pelo WhatsApp
           </a>
         </div>

@@ -27,7 +27,7 @@ const FinalCTA: React.FC = () => {
               <a href="/orcamento" className="btn-primary">
                 Solicitar Proposta Agora
               </a>
-              <a href="https://wa.me/5524999348783" className="btn-secondary">
+              <a href="https://wa.me/5537998409691" className="btn-secondary">
                 Conversar pelo WhatsApp
               </a>
             </div>

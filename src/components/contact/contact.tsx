@@ -87,7 +87,7 @@ const Contact: React.FC = () => {
 
       <div className="extra-contact">
         <a
-          href="https://wa.me/5524999348783"
+          href="https://wa.me/5537998409691"
           target="_blank"
           rel="noopener noreferrer"
           className="contact-btn whatsapp"

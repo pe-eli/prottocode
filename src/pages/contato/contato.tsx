@@ -305,7 +305,7 @@ export default function Contato() {
                   Estamos prontos para atender você.
                 </p>
                 <a
-                  href="https://wa.me/5524999348783"
+                  href="https://wa.me/5537998409691"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="contato-whatsapp-btn"

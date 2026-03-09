@@ -69,7 +69,7 @@ const Footer: React.FC = () => {
               <h4>Contato</h4>
               <ul className="contact-list">
                 <li>
-                  <a href="https://wa.me/5524999348783" className="contact-link">
+                  <a href="https://wa.me/5537998409691" className="contact-link">
                     <FaWhatsapp /> WhatsApp
                   </a>
                 </li>
