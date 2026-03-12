@@ -15,10 +15,10 @@ const formatPrice = (value: number) =>
   value.toLocaleString("pt-BR", {
     style: "currency",
     currency: "BRL",
-    minimumFractionDigits: 0,
+    minimumFractionDigits: 2,
   });
 
-const stepLabels = ["Serviço", "Pacote & Extras", "Confirmação"];
+const stepLabels = ["Serviço", "Pacotes", "Extras", "Confirmação"];
 
 export default function Orcamento() {
   const [step, setStep] = useState(1);
@@ -82,7 +82,11 @@ export default function Orcamento() {
       setError("Selecione um serviço para continuar.");
       return;
     }
-    if (step === 3) {
+    if (step === 2 && !pacoteId) {
+      setError("Selecione um pacote para continuar.");
+      return;
+    }
+    if (step === 4) {
       handleSend();
     } else {
       setError("");
@@ -214,27 +218,15 @@ export default function Orcamento() {
           </div>
         )}
 
-        {/* Step 2 - Pacote & Extras */}
+        {/* Step 2 - Pacotes */}
         {step === 2 && (
           <div className="step-content">
             <h2>Escolha seu pacote</h2>
             <p className="step-subtitle">
-              Selecione um pacote ou personalize seus extras
+              Selecione uma opção para começar
             </p>
 
-            <div className="pacotes-grid">
-              <div
-                className={`pacote-card ${pacoteId === null ? "selected" : ""}`}
-                onClick={() => handleSelectPacote(null)}
-              >
-                <div className="pacote-header">
-                  <h3>Personalizado</h3>
-                  <div className={`pacote-radio ${pacoteId === null ? "checked" : ""}`}>
-                    {pacoteId === null && <FaCheck />}
-                  </div>
-                </div>
-                <p>Escolha extras individualmente sem pacote</p>
-              </div>
+            <div className="pacotes-grid-horizontal">
               {pacotes.map((p) => (
                 <div
                   key={p.id}
@@ -242,7 +234,7 @@ export default function Orcamento() {
                   onClick={() => handleSelectPacote(p.id)}
                 >
                   <div className="pacote-header">
-                    <h3>{p.nome}</h3>
+                    <h3>{p.id === "starter" ? "Iniciante" : p.id === "pro" ? "Profissional" : "Premium"}</h3>
                     <div className={`pacote-radio ${pacoteId === p.id ? "checked" : ""}`}>
                       {pacoteId === p.id && <FaCheck />}
                     </div>
@@ -268,7 +260,25 @@ export default function Orcamento() {
               ))}
             </div>
 
-            <h3 className="extras-heading">Extras adicionais</h3>
+            <div className="step-actions">
+              <button className="btn-ghost" onClick={handleBack}>
+                Voltar
+              </button>
+              <button className="btn-primary" onClick={handleNext}>
+                Próximo
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* Step 3 - Extras */}
+        {step === 3 && (
+          <div className="step-content">
+            <h2>Adicione extras (opcional)</h2>
+            <p className="step-subtitle">
+              Potencialize sua solução com funcionalidades adicionais
+            </p>
+
             <div className="extras-list">
               {extras.map((extra) => {
                 const isInPackage = pacoteExtrasIds.includes(extra.id);
@@ -330,8 +340,8 @@ export default function Orcamento() {
           </div>
         )}
 
-        {/* Step 3 - Confirmation */}
-        {step === 3 && (
+        {/* Step 4 - Confirmation */}
+        {step === 4 && (
           <div className="step-content">
             <h2>Confirme sua solicitação</h2>
             <p className="step-subtitle">
@@ -353,7 +363,7 @@ export default function Orcamento() {
                 <div className="resumo-section">
                   <h4>Pacote</h4>
                   <div className="resumo-pacote">
-                    <span>{pacote.nome}</span>
+                    <span>{pacote.id === "starter" ? "Iniciante" : pacote.id === "pro" ? "Profissional" : "Premium"}</span>
                     {pacote.descontoExtras > 0 && (
                       <span className="resumo-desconto-badge">
                         {(pacote.descontoExtras * 100).toFixed(0)}% desconto

@@ -60,6 +60,19 @@ export default function Contato() {
   const [sending, setSending] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
+  const formatarTelefone = (valor: string) => {
+    const numeros = valor.replace(/\D/g, "").slice(0, 11);
+    if (numeros.length <= 10) {
+      return numeros
+        .replace(/^(\d{2})(\d)/, "($1) $2")
+        .replace(/(\d{4})(\d)/, "$1-$2");
+    } else {
+      return numeros
+        .replace(/^(\d{2})(\d)/, "($1) $2")
+        .replace(/(\d{5})(\d)/, "$1-$2");
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name || !email || !message) return;
@@ -70,10 +83,12 @@ export default function Contato() {
         "service_7dz39lq",
         "template_wxfinwi",
         {
+          to_email: "seu@email.com",
           from_name: name,
           from_email: email,
-          company,
-          message: `${message}\n\nWhatsApp: ${whatsapp || "Não informado"}`,
+          company: company || "Não informado",
+          whatsapp: whatsapp || "Não informado",
+          message,
         },
         "Zx_ej2NKTM3Xb0rlr"
       );
@@ -152,7 +167,7 @@ export default function Contato() {
                         type="text"
                         placeholder="(00) 00000-0000"
                         value={whatsapp}
-                        onChange={(e) => setWhatsapp(e.target.value)}
+                        onChange={(e) => setWhatsapp(formatarTelefone(e.target.value))}
                       />
                     </div>
                     <div className="contato-field">

@@ -69,7 +69,7 @@ input[type="number"] {
 .step-circle.completed {
   background: var(--accent-2);
   border-color: var(--accent-2);
-  color: var(--accent);
+  color: #fff;
 }
 
 .step-label {
@@ -156,7 +156,7 @@ input[type="number"] {
 
 .servico-item:hover {
   border-color: rgba(2, 22, 90, 0.2);
-  background: rgba(2, 22, 90, 0.03);
+  background: rgba(255, 255, 255, 0.05);
   box-shadow: 0 4px 16px rgba(2, 22, 90, 0.08);
 }
 
@@ -206,6 +206,34 @@ input[type="number"] {
 }
 
 /* ============================================
+   PACOTES GRID - HORIZONTAL
+   ============================================ */
+
+.pacotes-grid-horizontal {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 1.5rem;
+  flex-wrap: nowrap;
+}
+
+@media (max-width: 600px) {
+  .pacotes-grid-horizontal {
+    flex-wrap: wrap;
+  }
+}
+
+
+.pacotes-grid-horizontal .pacote-card {
+  flex: 1;
+  min-width: 0;
+}
+
+.pacote-card:hover {
+  border-color: rgba(2, 22, 90, 0.15);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* ============================================
    EXTRAS LIST
    ============================================ */
 
@@ -225,13 +253,13 @@ input[type="number"] {
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-size: 0.93rem;
+  font-size: 0.9rem;
   color: var(--text);
 }
 
 .extra-item:hover {
   border-color: rgba(2, 22, 90, 0.2);
-  background: rgba(2, 22, 90, 0.03);
+  background: rgba(255, 255, 255, 0.03);
 }
 
 .extra-item.selected {
@@ -314,10 +342,18 @@ input[type="number"] {
 
 .resumo-card {
   background: var(--bg-surface);
-  border: 1.5px solid rgba(2, 22, 90, 0.1);
+  border: 1.5px solid rgba(2, 22, 90, 0.15);
   border-radius: 16px;
   padding: 2rem;
   backdrop-filter: blur(10px);
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .resumo-card {
+    border-color: rgba(110, 231, 183, 0.1);
+    background: rgba(15, 23, 42, 0.8);
+  }
 }
 
 .resumo-section {
@@ -333,6 +369,13 @@ input[type="number"] {
   font-weight: 600;
 }
 
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .resumo-section h4 {
+    color: rgba(148, 163, 184, 0.9);
+  }
+}
+
 .resumo-servico {
   background: rgba(2, 22, 90, 0.05);
   border: 1px solid rgba(2, 22, 90, 0.1);
@@ -341,6 +384,14 @@ input[type="number"] {
   font-weight: 600;
   color: var(--accent);
   font-size: 1rem;
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .resumo-servico {
+    background: rgba(110, 231, 183, 0.08);
+    border-color: rgba(110, 231, 183, 0.15);
+  }
 }
 
 .resumo-extras-list {
@@ -359,6 +410,14 @@ input[type="number"] {
   border-radius: 8px;
   font-size: 0.9rem;
   color: var(--text);
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .resumo-extras-list li {
+    background: rgba(71, 85, 105, 0.3);
+    border-color: rgba(110, 231, 183, 0.1);
+  }
 }
 
 .resumo-form {
@@ -388,15 +447,21 @@ input[type="number"] {
   box-sizing: border-box;
 }
 
-.form-field input:focus {
-  outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 16px rgba(2, 22, 90, 0.1);
-  background: var(--bg-surface);
-}
-
 .form-field input::placeholder {
   color: var(--muted);
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .form-field input {
+    background: rgba(30, 41, 59, 0.6);
+    border-color: rgba(110, 231, 183, 0.15);
+  }
+  
+  .form-field input:focus {
+    border-color: rgba(110, 231, 183, 0.3);
+    background: rgba(30, 41, 59, 0.8);
+  }
 }
 
 .resumo-actions {
@@ -610,7 +675,7 @@ input[type="number"] {
 
 .servico-preco {
   margin-top: 8px;
-  font-size: 0.93rem;
+  font-size: 0.95rem;
   font-weight: 700;
   color: var(--accent);
 }
@@ -618,7 +683,7 @@ input[type="number"] {
 .extra-preco {
   padding-left: 12px;
   margin-right: 12px;
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   font-weight: 700;
   color: var(--accent);
   white-space: nowrap;
@@ -631,6 +696,14 @@ input[type="number"] {
   border-radius: 12px;
   padding: 16px 20px;
   margin-top: 1.25rem;
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .preco-resumo-step2 {
+    border-color: rgba(110, 231, 183, 0.08);
+    background: rgba(30, 41, 59, 0.5);
+  }
 }
 
 .preco-line {
@@ -651,6 +724,13 @@ input[type="number"] {
   height: 1px;
   background: var(--border);
   margin: 8px 0;
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .preco-divider {
+    background: rgba(110, 231, 183, 0.08);
+  }
 }
 
 .preco-line.preco-destaque {
@@ -737,6 +817,14 @@ input[type="number"] {
   margin-bottom: 1.5rem;
 }
 
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .resumo-financeiro {
+    background: rgba(30, 41, 59, 0.4);
+    border-color: rgba(110, 231, 183, 0.1);
+  }
+}
+
 .resumo-financeiro h4 {
   font-size: 0.8rem;
   text-transform: uppercase;
@@ -744,6 +832,13 @@ input[type="number"] {
   color: var(--muted);
   margin: 0 0 12px;
   font-weight: 600;
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .resumo-financeiro h4 {
+    color: rgba(148, 163, 184, 0.9);
+  }
 }
 
 .resumo-fin-line {
@@ -764,6 +859,13 @@ input[type="number"] {
   height: 1px;
   background: rgba(2, 22, 90, 0.12);
   margin: 10px 0;
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .resumo-fin-divider {
+    background: rgba(110, 231, 183, 0.08);
+  }
 }
 
 .resumo-fin-line.resumo-fin-destaque {
@@ -797,6 +899,18 @@ input[type="number"] {
   margin-bottom: 4px;
   color: #92400e;
   font-weight: 700;
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .disclaimer-msg {
+    background: rgba(180, 83, 9, 0.15);
+    border-color: rgba(180, 83, 9, 0.3);
+  }
+  
+  .disclaimer-msg strong {
+    color: #fbbf24;
+  }
 }
 
 /* Secondary button (PDF) */

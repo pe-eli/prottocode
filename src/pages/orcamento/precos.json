@@ -7,6 +7,12 @@
 
   "servicos": [
     {
+      "id": "website",
+      "nome": "Website Inteligente",
+      "precoBase": 3000,
+      "descricao": "Website profissional com integrações e automações."
+    },
+    {
       "id": "automacao",
       "nome": "Automação Inteligente de Processos",
       "precoBase": 4500,
@@ -23,12 +29,6 @@
       "nome": "Inteligência de Dados para Negócios",
       "precoBase": 4000,
       "descricao": "Dashboards e análises inteligentes para tomada de decisão."
-    },
-    {
-      "id": "website",
-      "nome": "Website Inteligente",
-      "precoBase": 3000,
-      "descricao": "Website profissional com integrações e automações."
     }
   ],
 
@@ -49,31 +49,8 @@
       "preco": 700
     },
     {
-      "id": "transferenciaHumano",
-      "nome": "Transferência para atendente humano",
-      "preco": 600
-    },
-    {
-      "id": "detecaoGargalos",
-      "nome": "Detecção inteligente de gargalos",
-      "preco": 1000,
-      "ai": true
-    },
-    {
-      "id": "previsaoFalhas",
-      "nome": "Previsão de falhas e manutenção",
-      "preco": 1200,
-      "ai": true
-    },
-    {
       "id": "aprendizadoIA",
       "nome": "Aprendizado contínuo do chatbot",
-      "preco": 1200,
-      "ai": true
-    },
-    {
-      "id": "previsaoTendencias",
-      "nome": "Previsão de tendências de dados",
       "preco": 1200,
       "ai": true
     },
@@ -103,7 +80,7 @@
       "id": "ai",
       "nome": "AI Premium",
       "descricao": "Inclui recursos avançados de inteligência artificial.",
-      "extrasInclusos": ["dashboard", "relatorios", "detecaoGargalos"],
+      "extrasInclusos": ["dashboard", "relatorios", "aprendizadoIA"],
       "descontoExtras": 0.15
     }
   ],
