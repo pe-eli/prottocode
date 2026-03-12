@@ -1,0 +1,115 @@
+{
+  "empresa": {
+    "nome": "Prottocode",
+    "moeda": "BRL",
+    "suportePadraoMensal": 350
+  },
+
+  "servicos": [
+    {
+      "id": "automacao",
+      "nome": "Automação Inteligente de Processos",
+      "precoBase": 4500,
+      "descricao": "Automatização de tarefas operacionais e integração de sistemas."
+    },
+    {
+      "id": "chatbot",
+      "nome": "Atendimento Automatizado com IA",
+      "precoBase": 3500,
+      "descricao": "Chatbot inteligente para atendimento e qualificação de clientes."
+    },
+    {
+      "id": "dados",
+      "nome": "Inteligência de Dados para Negócios",
+      "precoBase": 4000,
+      "descricao": "Dashboards e análises inteligentes para tomada de decisão."
+    },
+    {
+      "id": "website",
+      "nome": "Website Inteligente",
+      "precoBase": 3000,
+      "descricao": "Website profissional com integrações e automações."
+    }
+  ],
+
+  "extras": [
+    {
+      "id": "dashboard",
+      "nome": "Dashboard de monitoramento em tempo real",
+      "preco": 900
+    },
+    {
+      "id": "relatorios",
+      "nome": "Relatórios automáticos por e-mail",
+      "preco": 400
+    },
+    {
+      "id": "whatsapp",
+      "nome": "Integração com WhatsApp",
+      "preco": 700
+    },
+    {
+      "id": "transferenciaHumano",
+      "nome": "Transferência para atendente humano",
+      "preco": 600
+    },
+    {
+      "id": "detecaoGargalos",
+      "nome": "Detecção inteligente de gargalos",
+      "preco": 1000,
+      "ai": true
+    },
+    {
+      "id": "previsaoFalhas",
+      "nome": "Previsão de falhas e manutenção",
+      "preco": 1200,
+      "ai": true
+    },
+    {
+      "id": "aprendizadoIA",
+      "nome": "Aprendizado contínuo do chatbot",
+      "preco": 1200,
+      "ai": true
+    },
+    {
+      "id": "previsaoTendencias",
+      "nome": "Previsão de tendências de dados",
+      "preco": 1200,
+      "ai": true
+    },
+    {
+      "id": "treinamento",
+      "nome": "Treinamento da equipe",
+      "preco": 700
+    }
+  ],
+
+  "pacotes": [
+    {
+      "id": "starter",
+      "nome": "Starter",
+      "descricao": "Solução básica para iniciar automação.",
+      "extrasInclusos": ["dashboard"],
+      "descontoExtras": 0
+    },
+    {
+      "id": "pro",
+      "nome": "Pro",
+      "descricao": "Automação mais completa com recursos avançados.",
+      "extrasInclusos": ["dashboard", "relatorios"],
+      "descontoExtras": 0.1
+    },
+    {
+      "id": "ai",
+      "nome": "AI Premium",
+      "descricao": "Inclui recursos avançados de inteligência artificial.",
+      "extrasInclusos": ["dashboard", "relatorios", "detecaoGargalos"],
+      "descontoExtras": 0.15
+    }
+  ],
+
+  "mensalidade": {
+    "suporte": 350,
+    "manutencaoPercentualProjeto": 0.05
+  }
+}
