@@ -290,9 +290,11 @@ export default function Orcamento() {
                     onClick={() => toggleExtra(extra.id)}
                   >
                     <span className="extra-label">
-                      {extra.nome}
-                      {extra.ai && <span className="ai-tag">IA</span>}
-                      {isInPackage && <span className="included-tag">Incluso</span>}
+                      <span className="extra-titulo">{extra.nome}</span>
+                      <span className="extra-badges">
+                        {extra.ai && <span className="ai-tag">IA</span>}
+                        {isInPackage && <span className="included-tag">Incluso</span>}
+                      </span>
                     </span>
                     <span className="extra-preco">{formatPrice(extra.preco)}</span>
                     <div className={`extra-check ${isSelected ? "checked" : ""}`}>
