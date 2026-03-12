@@ -108,14 +108,21 @@ export default function Orcamento() {
     }
     setError("");
 
+    const extrasFormatted = selectedExtrasData
+      .map((e) => `${e.nome} (${formatPrice(e.preco)})`)
+      .join(", ") || "Nenhum";
+
     const templateParams = {
-      nome,
-      telefone,
-      servico: servico?.nome || "Não informado",
-      pacote: pacote?.nome || "Personalizado",
-      extras: selectedExtrasData.map((e) => `${e.nome} (${formatPrice(e.preco)})`).join(", ") || "Nenhum",
-      totalProjeto: formatPrice(totalProjeto),
-      mensalidade: formatPrice(mensalidadeValor),
+      to_email: "contato@prottocode.com",
+      from_name: nome,
+      whatsapp: telefone,
+      message: [
+        `Serviço: ${servico?.nome || "Não informado"}`,
+        `Pacote: ${pacote ? (pacote.id === "starter" ? "Iniciante" : pacote.id === "pro" ? "Profissional" : "Premium") : "Nenhum"}`,
+        `Extras: ${extrasFormatted}`,
+        `Total do projeto: ${formatPrice(totalProjeto)}`,
+        `Mensalidade: ${formatPrice(mensalidadeValor)}/mês`,
+      ].join("\n"),
     };
 
     setLoading(true);
@@ -123,8 +130,8 @@ export default function Orcamento() {
 
     emailjs
       .send(
-        "service_7dz39lq",
-        "template_o8kzazt",
+        "service_q2fbg57",
+        "template_qzqdjyv",
         templateParams,
         "Zx_ej2NKTM3Xb0rlr"
       )
