@@ -15,96 +15,41 @@
 
 
 /* --- HERO --- */
+/* --- HERO --- */
 .hero {
   padding: 0 0 30px;
 }
-.hero-inner {
-  display: flex;
-  gap: 40px;
-  align-items: center;
-  animation: fadeUp 0.8s ease forwards;
-  background: var(--hero-bg);
-  position: relative;
-  overflow: hidden;
-  padding: 100px 40px 130px 150px;
-  border-radius: 0;
-  max-width: none;
-  margin: 0;
-}
 
-/* Animated background */
-.hero-inner::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: 
-    radial-gradient(ellipse at 20% 50%, rgba(0, 40, 171, 0.25) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 20%, rgba(0, 64, 39, 0.2) 0%, transparent 50%),
-    radial-gradient(ellipse at 60% 80%, rgba(0, 40, 171, 0.15) 0%, transparent 50%);
-  animation: heroGlow 8s ease-in-out infinite alternate;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.hero-inner::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 2px,
-    rgba(255, 255, 255, 0.015) 2px,
-    rgba(255, 255, 255, 0.015) 4px
-  );
-  z-index: 0;
-  pointer-events: none;
-}
-
-@keyframes heroGlow {
-  0% {
-    transform: translate(0, 0) rotate(0deg);
-  }
-  50% {
-    transform: translate(-3%, 2%) rotate(1deg);
-  }
-  100% {
-    transform: translate(2%, -1%) rotate(-1deg);
-  }
-}
-
-.hero-inner > * {
-  position: relative;
-  z-index: 1;
-}
-
-.hero-left {
-  flex: 1;
-}
-.hero-right {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-}
 h1 {
-  font-size: 44px;
-  line-height: 1.03;
-  margin: 0;
-  color: var(--text-inverse);
+  font-size: 3.5rem;
+  line-height: 1.08;
+  margin: 0 0 1.5rem;
+  max-width: 800px;
+  letter-spacing: -0.03em;
+  font-weight: 700;
 }
+
+.hero-headline {
+  background: linear-gradient(to bottom, #ffffff, rgba(255, 255, 255, 0.65));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 .accent {
   background: linear-gradient(90deg, var(--chart-line), var(--chart-green));
   -webkit-background-clip: text;
   background-clip: text;
+  -webkit-text-fill-color: transparent;
   color: transparent;
 }
+
 .lead {
-  color: rgba(255, 255, 255, 0.7);
-  margin-top: 18px;
-  max-width: 560px;
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0 0 2.5rem;
+  max-width: 600px;
+  font-size: 1.1rem;
+  line-height: 1.7;
 }
 .hero-actions {
   margin-top: 22px;
@@ -405,32 +350,11 @@ h1 {
 /* --- RESPONSIVO --- */
 @media (max-width: 900px) {
   .hero-inner {
-    flex-direction: column-reverse;
-    text-align: center;
-    padding: 40px 20px;
-    position: relative;
+    padding: 100px 24px 60px;
   }
 
-  /* Chart becomes a background overlay */
-  .hero-right {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0;
-    opacity: 0.15;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .hero-left {
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    z-index: 1;
+  h1 {
+    font-size: 2.8rem;
   }
 
   .hero-actions {
@@ -449,10 +373,10 @@ h1 {
 
 @media (max-width: 600px) {
   h1 {
-    font-size: 32px;
+    font-size: 2rem;
   }
   .lead {
-    font-size: 15px;
+    font-size: 0.95rem;
   }
   .logo {
     width: 44px;

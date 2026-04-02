@@ -7,18 +7,10 @@ import { FaCheck } from "react-icons/fa";
 import precosData from "./precos.json";
 import { gerarPdfOrcamento } from "./gerarPdf";
 import type { PdfOrcamentoData } from "./gerarPdf";
+import { useLanguage } from "../../i18n/LanguageContext";
 import "./orcamento.css";
 
 const { servicos, extras, pacotes, mensalidade } = precosData;
-
-const formatPrice = (value: number) =>
-  value.toLocaleString("pt-BR", {
-    style: "currency",
-    currency: "BRL",
-    minimumFractionDigits: 2,
-  });
-
-const stepLabels = ["Serviço", "Pacotes", "Extras", "Confirmação"];
 
 export default function Orcamento() {
   const [step, setStep] = useState(1);
@@ -30,8 +22,16 @@ export default function Orcamento() {
   const [error, setError] = useState("");
   const [popupMsg, setPopupMsg] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const { t } = useLanguage();
 
   const navigate = useNavigate();
+
+  const formatPrice = (value: number) =>
+    value.toLocaleString(t.orcamentoPage.locale, {
+      style: "currency",
+      currency: "BRL",
+      minimumFractionDigits: 2,
+    });
 
   const servico = servicos.find((s) => s.id === servicoId) ?? null;
   const pacote = pacotes.find((p) => p.id === pacoteId) ?? null;
@@ -66,59 +66,42 @@ export default function Orcamento() {
   const formatarTelefone = (valor: string) => {
     const numeros = valor.replace(/\D/g, "").slice(0, 11);
     if (numeros.length <= 10) {
-      return numeros
-        .replace(/^(\d{2})(\d)/, "($1) $2")
-        .replace(/(\d{4})(\d)/, "$1-$2");
+      return numeros.replace(/^(\d{2})(\d)/, "($1) $2").replace(/(\d{4})(\d)/, "$1-$2");
     } else {
-      return numeros
-        .replace(/^(\d{2})(\d)/, "($1) $2")
-        .replace(/(\d{5})(\d)/, "$1-$2");
+      return numeros.replace(/^(\d{2})(\d)/, "($1) $2").replace(/(\d{5})(\d)/, "$1-$2");
     }
+  };
+
+  const getPackageName = (id: string) => {
+    if (id === "starter") return t.orcamentoPage.packageNames.starter;
+    if (id === "pro") return t.orcamentoPage.packageNames.pro;
+    return t.orcamentoPage.packageNames.premium;
   };
 
   const handleNext = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
-    if (step === 1 && !servicoId) {
-      setError("Selecione um serviço para continuar.");
-      return;
-    }
-    if (step === 2 && !pacoteId) {
-      setError("Selecione um pacote para continuar.");
-      return;
-    }
-    if (step === 4) {
-      handleSend();
-    } else {
-      setError("");
-      setStep((prev) => prev + 1);
-    }
+    if (step === 1 && !servicoId) { setError(t.orcamentoPage.errorService); return; }
+    if (step === 2 && !pacoteId) { setError(t.orcamentoPage.errorPackage); return; }
+    if (step === 4) { handleSend(); } else { setError(""); setStep((prev) => prev + 1); }
   };
 
   const handleBack = () => {
-    if (step > 1) {
-      setStep((prev) => prev - 1);
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
+    if (step > 1) { setStep((prev) => prev - 1); window.scrollTo({ top: 0, behavior: "smooth" }); }
   };
 
   const handleSend = () => {
-    if (!nome || !telefone) {
-      setError("Preencha nome e WhatsApp antes de enviar.");
-      return;
-    }
+    if (!nome || !telefone) { setError(t.orcamentoPage.errorFields); return; }
     setError("");
 
-    const extrasFormatted = selectedExtrasData
-      .map((e) => `${e.nome} (${formatPrice(e.preco)})`)
-      .join(", ") || "Nenhum";
+    const extrasFormatted = selectedExtrasData.map((e) => `${e.nome} (${formatPrice(e.preco)})`).join(", ") || "Nenhum";
 
     const templateParams = {
       to_email: "contato@prottocode.com",
       from_name: nome,
       whatsapp: telefone,
       message: [
-        `Serviço: ${servico?.nome || "Não informado"}`,
-        `Pacote: ${pacote ? (pacote.id === "starter" ? "Iniciante" : pacote.id === "pro" ? "Profissional" : "Premium") : "Nenhum"}`,
+        `Serviço: ${servico?.nome || "N/A"}`,
+        `Pacote: ${pacote ? getPackageName(pacote.id) : "N/A"}`,
         `Extras: ${extrasFormatted}`,
         `Total do projeto: ${formatPrice(totalProjeto)}`,
         `Mensalidade: ${formatPrice(mensalidadeValor)}/mês`,
@@ -126,25 +109,12 @@ export default function Orcamento() {
     };
 
     setLoading(true);
-    setPopupMsg("Enviando sua proposta...");
+    setPopupMsg(t.orcamentoPage.sendingProposal);
 
-    emailjs
-      .send(
-        "service_q2fbg57",
-        "template_qzqdjyv",
-        templateParams,
-        "Zx_ej2NKTM3Xb0rlr"
-      )
-      .then(
-        () => {
-          setLoading(false);
-          setPopupMsg("Proposta enviada com sucesso!");
-        },
-        () => {
-          setLoading(false);
-          setPopupMsg("Erro ao enviar. Tente novamente.");
-        }
-      );
+    emailjs.send("service_q2fbg57", "template_qzqdjyv", templateParams, "Zx_ej2NKTM3Xb0rlr").then(
+      () => { setLoading(false); setPopupMsg(t.orcamentoPage.successProposal); },
+      () => { setLoading(false); setPopupMsg(t.orcamentoPage.errorProposal); }
+    );
   };
 
   return (
@@ -153,347 +123,208 @@ export default function Orcamento() {
       <div className="orcamento-page">
         {/* Progress Bar */}
         <div className="progress-bar">
-          {stepLabels.map((label, index) => {
+          {t.orcamentoPage.stepLabels.map((label, index) => {
             const stepNum = index + 1;
             const isCompleted = step > stepNum;
             const isActive = step === stepNum;
             return (
               <Fragment key={stepNum}>
-                {index > 0 && (
-                  <div
-                    className={`progress-line ${step >= stepNum ? "filled" : ""}`}
-                  />
-                )}
+                {index > 0 && <div className={`progress-line ${step >= stepNum ? "filled" : ""}`} />}
                 <div className="progress-step">
-                  <div
-                    className={`step-circle ${isActive ? "active" : ""} ${isCompleted ? "completed" : ""}`}
-                  >
+                  <div className={`step-circle ${isActive ? "active" : ""} ${isCompleted ? "completed" : ""}`}>
                     {isCompleted ? <FaCheck /> : stepNum}
                   </div>
-                  <span
-                    className={`step-label ${isActive || isCompleted ? "active" : ""}`}
-                  >
-                    {label}
-                  </span>
+                  <span className={`step-label ${isActive || isCompleted ? "active" : ""}`}>{label}</span>
                 </div>
               </Fragment>
             );
           })}
         </div>
 
-        {/* Step 1 - Service Selection */}
+        {/* Step 1 */}
         {step === 1 && (
           <div className="step-content">
-            <h1>Qual automação você precisa?</h1>
-            <p className="step-subtitle">
-              Escolha a solução ideal para o seu negócio
-            </p>
+            <h1>{t.orcamentoPage.step1Title}</h1>
+            <p className="step-subtitle">{t.orcamentoPage.step1Subtitle}</p>
             {error && <p className="error-msg">{error}</p>}
-
             <div className="servicos-list">
               {servicos.map((s) => (
-                <div
-                  key={s.id}
-                  className={`servico-item ${servicoId === s.id ? "selected" : ""}`}
-                  onClick={() => {
-                    if (servicoId !== s.id) {
-                      setServicoId(s.id);
-                      setPacoteId(null);
-                      setExtrasIds([]);
-                    }
-                  }}
-                >
+                <div key={s.id} className={`servico-item ${servicoId === s.id ? "selected" : ""}`}
+                  onClick={() => { if (servicoId !== s.id) { setServicoId(s.id); setPacoteId(null); setExtrasIds([]); } }}>
                   <div className="servico-info">
                     <h3>{s.nome}</h3>
                     <p>{s.descricao}</p>
-                    <div className="servico-preco">A partir de {formatPrice(s.precoBase)}</div>
+                    <div className="servico-preco">{t.orcamentoPage.step1StartingAt} {formatPrice(s.precoBase)}</div>
                   </div>
-                  <div
-                    className={`servico-check ${servicoId === s.id ? "checked" : ""}`}
-                  >
+                  <div className={`servico-check ${servicoId === s.id ? "checked" : ""}`}>
                     {servicoId === s.id && <FaCheck />}
                   </div>
                 </div>
               ))}
             </div>
-
             <div className="step-actions">
-              <button className="btn-primary" onClick={handleNext}>
-                Próximo
-              </button>
+              <button className="btn-primary" onClick={handleNext}>{t.orcamentoPage.next}</button>
             </div>
           </div>
         )}
 
-        {/* Step 2 - Pacotes */}
+        {/* Step 2 */}
         {step === 2 && (
           <div className="step-content">
-            <h2>Escolha seu pacote</h2>
-            <p className="step-subtitle">
-              Selecione uma opção para começar
-            </p>
-
+            <h2>{t.orcamentoPage.step2Title}</h2>
+            <p className="step-subtitle">{t.orcamentoPage.step2Subtitle}</p>
             <div className="pacotes-grid-horizontal">
               {pacotes.map((p) => (
-                <div
-                  key={p.id}
-                  className={`pacote-card ${pacoteId === p.id ? "selected" : ""}`}
-                  onClick={() => handleSelectPacote(p.id)}
-                >
+                <div key={p.id} className={`pacote-card ${pacoteId === p.id ? "selected" : ""}`} onClick={() => handleSelectPacote(p.id)}>
                   <div className="pacote-header">
-                    <h3>{p.id === "starter" ? "Iniciante" : p.id === "pro" ? "Profissional" : "Premium"}</h3>
-                    <div className={`pacote-radio ${pacoteId === p.id ? "checked" : ""}`}>
-                      {pacoteId === p.id && <FaCheck />}
-                    </div>
+                    <h3>{getPackageName(p.id)}</h3>
+                    <div className={`pacote-radio ${pacoteId === p.id ? "checked" : ""}`}>{pacoteId === p.id && <FaCheck />}</div>
                   </div>
                   <p>{p.descricao}</p>
                   {p.descontoExtras > 0 && (
-                    <span className="pacote-desconto-badge">
-                      {(p.descontoExtras * 100).toFixed(0)}% desconto nos extras
-                    </span>
+                    <span className="pacote-desconto-badge">{(p.descontoExtras * 100).toFixed(0)}% {t.orcamentoPage.discountExtras}</span>
                   )}
                   <div className="pacote-extras-inclusos">
-                    <span className="pacote-extras-title">Incluso:</span>
+                    <span className="pacote-extras-title">{t.orcamentoPage.included}</span>
                     {p.extrasInclusos.map((eid) => {
                       const extra = extras.find((e) => e.id === eid);
-                      return extra ? (
-                        <span key={eid} className="pacote-extra-item">
-                          {extra.nome}
-                        </span>
-                      ) : null;
+                      return extra ? <span key={eid} className="pacote-extra-item">{extra.nome}</span> : null;
                     })}
                   </div>
                 </div>
               ))}
             </div>
-
             <div className="step-actions">
-              <button className="btn-ghost" onClick={handleBack}>
-                Voltar
-              </button>
-              <button className="btn-primary" onClick={handleNext}>
-                Próximo
-              </button>
+              <button className="btn-ghost" onClick={handleBack}>{t.orcamentoPage.back}</button>
+              <button className="btn-primary" onClick={handleNext}>{t.orcamentoPage.next}</button>
             </div>
           </div>
         )}
 
-        {/* Step 3 - Extras */}
+        {/* Step 3 */}
         {step === 3 && (
           <div className="step-content">
-            <h2>Adicione extras (opcional)</h2>
-            <p className="step-subtitle">
-              Potencialize sua solução com funcionalidades adicionais
-            </p>
-
+            <h2>{t.orcamentoPage.step3Title}</h2>
+            <p className="step-subtitle">{t.orcamentoPage.step3Subtitle}</p>
             <div className="extras-list">
               {extras.map((extra) => {
                 const isInPackage = pacoteExtrasIds.includes(extra.id);
                 const isSelected = allSelectedExtraIds.includes(extra.id);
                 return (
-                  <div
-                    key={extra.id}
-                    className={`extra-item ${isSelected ? "selected" : ""} ${isInPackage ? "locked" : ""}`}
-                    onClick={() => toggleExtra(extra.id)}
-                  >
+                  <div key={extra.id} className={`extra-item ${isSelected ? "selected" : ""} ${isInPackage ? "locked" : ""}`} onClick={() => toggleExtra(extra.id)}>
                     <span className="extra-label">
                       <span className="extra-titulo">{extra.nome}</span>
                       <span className="extra-badges">
-                        {extra.ai && <span className="ai-tag">IA</span>}
-                        {isInPackage && <span className="included-tag">Incluso</span>}
+                        {(extra as { ai?: boolean }).ai && <span className="ai-tag">{t.orcamentoPage.aiTag}</span>}
+                        {isInPackage && <span className="included-tag">{t.orcamentoPage.includedTag}</span>}
                       </span>
                     </span>
                     <span className="extra-preco">{formatPrice(extra.preco)}</span>
-                    <div className={`extra-check ${isSelected ? "checked" : ""}`}>
-                      {isSelected && <FaCheck />}
-                    </div>
+                    <div className={`extra-check ${isSelected ? "checked" : ""}`}>{isSelected && <FaCheck />}</div>
                   </div>
                 );
               })}
             </div>
-
             <div className="preco-resumo-step2">
-              <div className="preco-line">
-                <span>Serviço base</span>
-                <span>{formatPrice(precoBase)}</span>
-              </div>
-              <div className="preco-line">
-                <span>Extras ({selectedExtrasData.length})</span>
-                <span>{formatPrice(totalExtras)}</span>
-              </div>
+              <div className="preco-line"><span>{t.orcamentoPage.baseService}</span><span>{formatPrice(precoBase)}</span></div>
+              <div className="preco-line"><span>{t.orcamentoPage.extras} ({selectedExtrasData.length})</span><span>{formatPrice(totalExtras)}</span></div>
               {desconto > 0 && (
                 <div className="preco-line desconto-line">
-                  <span>Desconto pacote ({(desconto * 100).toFixed(0)}%)</span>
+                  <span>{t.orcamentoPage.packageDiscount} ({(desconto * 100).toFixed(0)}%)</span>
                   <span>- {formatPrice(totalExtras - totalExtrasComDesconto)}</span>
                 </div>
               )}
               <div className="preco-divider" />
-              <div className="preco-line preco-destaque">
-                <span>Pagamento único</span>
-                <span>{formatPrice(totalProjeto)}</span>
-              </div>
-              <div className="preco-line preco-mensal">
-                <span>Mensal (manutenção)</span>
-                <span>{formatPrice(mensalidadeValor)}/mês</span>
-              </div>
+              <div className="preco-line preco-destaque"><span>{t.orcamentoPage.oneTimePayment}</span><span>{formatPrice(totalProjeto)}</span></div>
+              <div className="preco-line preco-mensal"><span>{t.orcamentoPage.monthly}</span><span>{formatPrice(mensalidadeValor)}/mês</span></div>
             </div>
-
             <div className="step-actions">
-              <button className="btn-ghost" onClick={handleBack}>
-                Voltar
-              </button>
-              <button className="btn-primary" onClick={handleNext}>
-                Próximo
-              </button>
+              <button className="btn-ghost" onClick={handleBack}>{t.orcamentoPage.back}</button>
+              <button className="btn-primary" onClick={handleNext}>{t.orcamentoPage.next}</button>
             </div>
           </div>
         )}
 
-        {/* Step 4 - Confirmation */}
+        {/* Step 4 */}
         {step === 4 && (
           <div className="step-content">
-            <h2>Confirme sua solicitação</h2>
-            <p className="step-subtitle">
-              Revise os detalhes e envie sua proposta
-            </p>
-
+            <h2>{t.orcamentoPage.step4Title}</h2>
+            <p className="step-subtitle">{t.orcamentoPage.step4Subtitle}</p>
             <div className="resumo-card">
               <div className="resumo-section">
-                <h4>Serviço</h4>
+                <h4>{t.orcamentoPage.serviceLabel}</h4>
                 <div className="resumo-servico">
                   <span>{servico?.nome}</span>
-                  {servico && (
-                    <span className="resumo-preco-base">{formatPrice(servico.precoBase)}</span>
-                  )}
+                  {servico && <span className="resumo-preco-base">{formatPrice(servico.precoBase)}</span>}
                 </div>
               </div>
-
               {pacote && (
                 <div className="resumo-section">
-                  <h4>Pacote</h4>
+                  <h4>{t.orcamentoPage.packageLabel}</h4>
                   <div className="resumo-pacote">
-                    <span>{pacote.id === "starter" ? "Iniciante" : pacote.id === "pro" ? "Profissional" : "Premium"}</span>
+                    <span>{getPackageName(pacote.id)}</span>
                     {pacote.descontoExtras > 0 && (
-                      <span className="resumo-desconto-badge">
-                        {(pacote.descontoExtras * 100).toFixed(0)}% desconto
-                      </span>
+                      <span className="resumo-desconto-badge">{(pacote.descontoExtras * 100).toFixed(0)}% {t.orcamentoPage.discount.toLowerCase()}</span>
                     )}
                   </div>
                 </div>
               )}
-
               {selectedExtrasData.length > 0 && (
                 <div className="resumo-section">
-                  <h4>Extras</h4>
+                  <h4>{t.orcamentoPage.extrasLabel}</h4>
                   <ul className="resumo-extras-list">
                     {selectedExtrasData.map((e) => (
                       <li key={e.id}>
-                        <span>
-                          {e.nome}
-                          {pacoteExtrasIds.includes(e.id) && (
-                            <span className="resumo-incluso-tag"> (incluso)</span>
-                          )}
-                        </span>
+                        <span>{e.nome}{pacoteExtrasIds.includes(e.id) && <span className="resumo-incluso-tag"> {t.orcamentoPage.includedInPackage}</span>}</span>
                         <span className="resumo-extra-preco">{formatPrice(e.preco)}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
               )}
-
               <div className="resumo-financeiro">
-                <h4>Resumo financeiro</h4>
-                <div className="resumo-fin-line">
-                  <span>Serviço base</span>
-                  <span>{formatPrice(precoBase)}</span>
-                </div>
-                <div className="resumo-fin-line">
-                  <span>Total extras</span>
-                  <span>{formatPrice(totalExtras)}</span>
-                </div>
+                <h4>{t.orcamentoPage.financialSummary}</h4>
+                <div className="resumo-fin-line"><span>{t.orcamentoPage.baseService}</span><span>{formatPrice(precoBase)}</span></div>
+                <div className="resumo-fin-line"><span>{t.orcamentoPage.totalExtras}</span><span>{formatPrice(totalExtras)}</span></div>
                 {desconto > 0 && (
                   <div className="resumo-fin-line desconto-line">
-                    <span>Desconto ({(desconto * 100).toFixed(0)}%)</span>
+                    <span>{t.orcamentoPage.discount} ({(desconto * 100).toFixed(0)}%)</span>
                     <span>- {formatPrice(totalExtras - totalExtrasComDesconto)}</span>
                   </div>
                 )}
                 <div className="resumo-fin-divider" />
-                <div className="resumo-fin-line resumo-fin-destaque">
-                  <span>Pagamento único</span>
-                  <span>{formatPrice(totalProjeto)}</span>
-                </div>
-                <div className="resumo-fin-line resumo-fin-mensal">
-                  <span>Mensal (manutenção)</span>
-                  <span>{formatPrice(mensalidadeValor)}/mês</span>
-                </div>
+                <div className="resumo-fin-line resumo-fin-destaque"><span>{t.orcamentoPage.oneTimePayment}</span><span>{formatPrice(totalProjeto)}</span></div>
+                <div className="resumo-fin-line resumo-fin-mensal"><span>{t.orcamentoPage.monthly}</span><span>{formatPrice(mensalidadeValor)}/mês</span></div>
               </div>
-
               <div className="resumo-section">
-                <h4>Seus dados</h4>
+                <h4>{t.orcamentoPage.yourData}</h4>
                 <div className="resumo-form">
                   <div className="form-field">
-                    <label>Nome *</label>
-                    <input
-                      type="text"
-                      placeholder="Seu nome completo"
-                      value={nome}
-                      onChange={(e) => setNome(e.target.value)}
-                    />
+                    <label>{t.orcamentoPage.nameLabel}</label>
+                    <input type="text" placeholder={t.orcamentoPage.namePlaceholder} value={nome} onChange={(e) => setNome(e.target.value)} />
                   </div>
                   <div className="form-field">
-                    <label>WhatsApp *</label>
-                    <input
-                      type="text"
-                      placeholder="(00) 00000-0000"
-                      value={telefone}
-                      onChange={(e) =>
-                        setTelefone(formatarTelefone(e.target.value))
-                      }
-                    />
+                    <label>{t.orcamentoPage.whatsappLabel}</label>
+                    <input type="text" placeholder={t.orcamentoPage.whatsappPlaceholder} value={telefone} onChange={(e) => setTelefone(formatarTelefone(e.target.value))} />
                   </div>
                 </div>
               </div>
-
               {error && <p className="error-msg">{error}</p>}
-
-              <div className="disclaimer-msg">
-                <strong>Nenhum pagamento é realizado nesta página.</strong> Após o envio, sua solicitação será analisada pela nossa equipe e entraremos em contato para apresentar uma proposta personalizada.
-              </div>
-
+              <div className="disclaimer-msg"><strong>{t.orcamentoPage.disclaimer}</strong></div>
               <div className="resumo-actions">
-                <button className="btn-ghost" onClick={handleBack}>
-                  Voltar
-                </button>
-                <button
-                  className="btn-secondary"
-                  onClick={async () => {
-                    if (!servico || !nome || !telefone) {
-                      setError("Preencha nome e WhatsApp para gerar o PDF.");
-                      return;
-                    }
-                    const pdfData: PdfOrcamentoData = {
-                      nomeCliente: nome,
-                      telefone,
-                      servico: { nome: servico.nome, precoBase: servico.precoBase },
-                      pacote: pacote ? { nome: pacote.nome, desconto: pacote.descontoExtras } : null,
-                      extras: selectedExtrasData.map((e) => ({
-                        nome: e.nome,
-                        preco: e.preco,
-                        incluso: pacoteExtrasIds.includes(e.id),
-                      })),
-                      totalExtras,
-                      totalExtrasComDesconto,
-                      totalProjeto,
-                      mensalidade: mensalidadeValor,
-                    };
-                    await gerarPdfOrcamento(pdfData);
-                  }}
-                >
-                  Baixar PDF
-                </button>
-                <button className="btn-primary" onClick={handleSend}>
-                  Solicitar Proposta
-                </button>
+                <button className="btn-ghost" onClick={handleBack}>{t.orcamentoPage.back}</button>
+                <button className="btn-secondary" onClick={async () => {
+                  if (!servico || !nome || !telefone) { setError(t.orcamentoPage.errorPdfFields); return; }
+                  const pdfData: PdfOrcamentoData = {
+                    nomeCliente: nome, telefone,
+                    servico: { nome: servico.nome, precoBase: servico.precoBase },
+                    pacote: pacote ? { nome: getPackageName(pacote.id), desconto: pacote.descontoExtras } : null,
+                    extras: selectedExtrasData.map((e) => ({ nome: e.nome, preco: e.preco, incluso: pacoteExtrasIds.includes(e.id) })),
+                    totalExtras, totalExtrasComDesconto, totalProjeto, mensalidade: mensalidadeValor,
+                  };
+                  await gerarPdfOrcamento(pdfData, t.orcamentoPage.pdfLabels, t.orcamentoPage.locale);
+                }}>{t.orcamentoPage.downloadPdf}</button>
+                <button className="btn-primary" onClick={handleSend}>{t.orcamentoPage.requestProposal}</button>
               </div>
             </div>
           </div>
@@ -505,20 +336,9 @@ export default function Orcamento() {
             <div className="popup-card">
               <p>{popupMsg}</p>
               {!loading && (
-                <button
-                  onClick={() => {
-                    setPopupMsg(null);
-                    setNome("");
-                    setTelefone("");
-                    setServicoId(null);
-                    setPacoteId(null);
-                    setExtrasIds([]);
-                    setStep(1);
-                    navigate("/");
-                  }}
-                >
-                  OK
-                </button>
+                <button onClick={() => {
+                  setPopupMsg(null); setNome(""); setTelefone(""); setServicoId(null); setPacoteId(null); setExtrasIds([]); setStep(1); navigate("/");
+                }}>OK</button>
               )}
             </div>
           </div>

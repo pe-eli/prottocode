@@ -17,7 +17,7 @@ input[type="number"] {
 /* Page Container */
 .orcamento-page {
   min-height: 100vh;
-  max-width: 720px;
+  max-width: 830px;
   margin: 0 auto;
   padding: 2rem 20px 3rem;
   font-family: Inter, system-ui, -apple-system, sans-serif;

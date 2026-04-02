@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useLanguage } from "../i18n/LanguageContext";
 import "./themeToggle.css";
 
 const ThemeToggle: React.FC = () => {
@@ -7,6 +8,7 @@ const ThemeToggle: React.FC = () => {
     if (saved) return saved === "dark";
     return window.matchMedia("(prefers-color-scheme: dark)").matches;
   });
+  const { t } = useLanguage();
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
@@ -17,7 +19,7 @@ const ThemeToggle: React.FC = () => {
     <button
       className="theme-toggle"
       onClick={() => setDark((d) => !d)}
-      aria-label={dark ? "Mudar para tema claro" : "Mudar para tema escuro"}
+      aria-label={dark ? t.themeToggle.lightLabel : t.themeToggle.darkLabel}
     >
       {dark ? (
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

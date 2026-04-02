@@ -1,6 +1,89 @@
-/* Hero Products Section */
+/* ============================================
+   HERO — Video Background, Badge, Products, CTAs
+   ============================================ */
 
-/* Headline do hero — accent com gradiente claro para fundo escuro */
+/* --- SCROLL-CONTROLLED VIDEO --- */
+.hero-video-scroll {
+  position: relative;
+}
+
+.hero-video-sticky {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.hero-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: cover;
+}
+
+.hero-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(5, 10, 48, 0.85) 0%,
+    rgba(5, 10, 48, 0.5) 50%,
+    rgba(5, 10, 48, 0.15) 100%
+  );
+  z-index: 1;
+}
+
+.hero-video-content {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 120px 60px 80px;
+  text-align: left;
+  max-width: 700px;
+}
+
+.hero-video-content h1 {
+  text-align: left;
+}
+
+.hero-video-content .lead {
+  text-align: left;
+}
+
+.hero-video-content .hero-ctas {
+  justify-content: flex-start;
+}
+
+@media (max-width: 768px) {
+  .hero-video-content {
+    padding: 100px 24px 60px;
+    max-width: 100%;
+    align-items: center;
+    text-align: center;
+  }
+  .hero-video-content h1,
+  .hero-video-content .lead {
+    text-align: center;
+  }
+  .hero-video-content .hero-ctas {
+    justify-content: center;
+  }
+  .hero-video-overlay {
+    background: rgba(5, 10, 48, 0.7);
+  }
+}
+
+/* Hero heading accent (gradient on dark bg) */
 .hero h1 .accent {
   background: linear-gradient(90deg, var(--chart-line), var(--chart-green));
   -webkit-background-clip: text;
@@ -9,11 +92,84 @@
   color: transparent;
 }
 
+/* --- BADGE PILL --- */
+.hero-badge {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 8px 20px;
+  border-radius: 100px;
+  border: 1px solid rgba(91, 141, 239, 0.3);
+  background: rgba(91, 141, 239, 0.08);
+  backdrop-filter: blur(8px);
+  margin-bottom: 2rem;
+  animation: fadeUp 0.6s ease forwards;
+}
+
+.hero-badge span {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+  white-space: nowrap;
+}
+
+.hero-badge a {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.hero-badge a:hover {
+  color: #ffffff;
+}
+
+/* --- HERO VISUAL (chart with glow) --- */
+.hero-visual {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin-top: 3rem;
+}
+
+.hero-glow {
+  position: absolute;
+  top: -40%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 130%;
+  height: 130%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(91, 141, 239, 0.2) 0%,
+    rgba(74, 234, 174, 0.08) 40%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-chart-wrapper {
+  position: relative;
+  z-index: 1;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(91, 141, 239, 0.15);
+  background: rgba(5, 10, 48, 0.5);
+  padding: 32px;
+}
+
+/* --- PRODUCT CARDS --- */
 .hero-products {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
-  max-width: 1000px;              /* limit width and center */
+  max-width: 1000px;
   margin: 0 auto;
   justify-items: center;
 }
@@ -21,7 +177,7 @@
 .product-card {
   background: var(--bg-card);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(0, 85, 204, 0.15);
+  border: 1px solid var(--border);
   border-radius: 16px;
   padding: 28px 24px;
   transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -40,30 +196,19 @@
   right: -50%;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle, rgba(0, 85, 204, 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(2, 22, 90, 0.1) 0%, transparent 70%);
   opacity: 0;
   transition: opacity 0.4s ease;
 }
 
 .product-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 12px 32px rgba(0, 85, 204, 0.2);
-  border-color: rgba(0, 85, 204, 0.3);
-  background: var(--bg-card);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--border-strong);
 }
 
 .product-card:hover::before {
   opacity: 1;
-}
-
-.product-card.featured {
-  border: 2px solid;
-  border-image: linear-gradient(135deg, var(--accent), var(--accent-2)) 1;
-  background: linear-gradient(135deg, rgba(2, 22, 90, 0.12), rgba(0, 85, 204, 0.08));
-}
-
-.product-card.featured:hover {
-  box-shadow: 0 12px 40px rgba(2, 22, 90, 0.35);
 }
 
 .product-icon {
@@ -75,8 +220,8 @@
   width: 52px;
   height: 52px;
   border-radius: 12px;
-  background: linear-gradient(135deg, rgba(0, 85, 204, 0.15), rgba(2, 22, 90, 0.1));
-  border: 1px solid rgba(0, 85, 204, 0.2);
+  background: linear-gradient(135deg, rgba(2, 22, 90, 0.15), rgba(2, 22, 90, 0.1));
+  border: 1px solid var(--border);
 }
 
 .product-icon svg {
@@ -141,16 +286,15 @@
 
 .product-cta:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0, 85, 204, 0.3);
+  box-shadow: var(--shadow-md);
 }
 
-/* Hero CTAs */
+/* --- HERO CTAs --- */
 .hero-ctas {
   display: flex;
   flex-direction: row;
   gap: 16px;
-  margin: 2rem 0 2rem 0;
-  justify-content: flex-start;
+  justify-content: center;
 }
 
 .hero-ctas .btn-primary,
@@ -186,6 +330,17 @@
   color: #ffffff;
 }
 
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+  .hero-visual {
+    max-width: 100%;
+  }
+
+  .hero-chart-wrapper {
+    padding: 20px;
+  }
+}
+
 @media (max-width: 768px) {
   .hero-products {
     grid-template-columns: 1fr;
@@ -203,3 +358,27 @@
   }
 }
 
+@media (max-width: 600px) {
+  .hero-badge {
+    padding: 6px 14px;
+    gap: 8px;
+  }
+
+  .hero-badge span,
+  .hero-badge a {
+    font-size: 0.75rem;
+  }
+
+  .hero-visual {
+    margin-top: 2rem;
+  }
+
+  .hero-chart-wrapper {
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  .hero-ctas {
+    width: 100%;
+  }
+}

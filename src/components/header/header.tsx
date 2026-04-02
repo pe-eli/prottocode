@@ -3,10 +3,13 @@ import logoImg from "../../assets/meu-logo.png";
 import "./header.css"
 import { Link, useLocation } from "react-router-dom";
 import ThemeToggle from "../ThemeToggle";
+import LanguageToggle from "../../i18n/LanguageToggle";
+import { useLanguage } from "../../i18n/LanguageContext";
 
 const Header: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
+  const { t } = useLanguage();
 
   useEffect(() => {
     setMenuOpen(false);
@@ -32,20 +35,22 @@ const Header: React.FC = () => {
           </div>
           <div className="brand-text">
             <strong>Prottocode</strong>
-            <small>Soluções com IA</small>
+            <small>{t.header.brandSubtitle}</small>
           </div>
         </div>
         <nav className="nav">
-          <Link to="/servicos">Serviços</Link>
-          <Link to="/contato">Contato</Link>
+          <Link to="/servicos">{t.header.services}</Link>
+          <Link to="/contato">{t.header.contact}</Link>
           <Link to="/portfolio" className="btn btn-outline">
-            Portfólio
+            {t.header.portfolio}
           </Link>
           <ThemeToggle />
+          <LanguageToggle />
         </nav>
 
         <div className="mobile-actions">
           <ThemeToggle />
+          <LanguageToggle />
           <button
             className={`hamburger ${menuOpen ? "open" : ""}`}
             onClick={() => setMenuOpen((o) => !o)}
@@ -61,10 +66,10 @@ const Header: React.FC = () => {
       {menuOpen && <div className="side-overlay" onClick={() => setMenuOpen(false)} />}
       <aside className={`side-menu ${menuOpen ? "open" : ""}`}>
         <nav className="side-nav">
-          <Link to="/servicos" onClick={() => setMenuOpen(false)}>Serviços</Link>
-          <Link to="/contato" onClick={() => setMenuOpen(false)}>Contato</Link>
+          <Link to="/servicos" onClick={() => setMenuOpen(false)}>{t.header.services}</Link>
+          <Link to="/contato" onClick={() => setMenuOpen(false)}>{t.header.contact}</Link>
           <Link to="/portfolio" className="btn btn-outline" onClick={() => setMenuOpen(false)}>
-            Portfólio
+            {t.header.portfolio}
           </Link>
         </nav>
       </aside>

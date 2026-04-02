@@ -2,18 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FaWhatsapp, FaInstagram, FaEnvelope, FaBolt, FaLock, FaFileContract, FaShieldAlt } from "react-icons/fa";
 import logoImg from "../../assets/meu-logo.png";
+import { useLanguage } from "../../i18n/LanguageContext";
 import "./footer.css";
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
+  const { t } = useLanguage();
 
   return (
     <footer className="site-footer">
-      {/* Main Footer Content */}
       <div className="footer-main">
         <div className="container">
           <div className="footer-grid">
-            {/* Brand Column */}
             <div className="footer-column">
               <div className="footer-brand">
                 <div className="footer-logo">
@@ -21,88 +21,48 @@ const Footer: React.FC = () => {
                 </div>
                 <div>
                   <h3>Prottocode</h3>
-                  <p>Automação Inteligente com IA</p>
+                  <p>{t.footer.brandSubtitle}</p>
                 </div>
               </div>
-              <p className="footer-description">
-                Transformando processos manuais em automações inteligentes que crescem com seu negócio.
-              </p>
+              <p className="footer-description">{t.footer.description}</p>
             </div>
-
-            {/* Quick Links */}
             <div className="footer-column">
-              <h4>Soluções</h4>
+              <h4>{t.footer.solutionsTitle}</h4>
               <ul>
-                <li>
-                  <Link to="/servicos">Serviços</Link>
-                </li>
-                <li>
-                  <Link to="/orcamento">Solicitar Proposta</Link>
-                </li>
-                <li>
-                  <Link to="/contato">Contato</Link>
-                </li>
+                <li><Link to="/servicos">{t.footer.links.services}</Link></li>
+                <li><Link to="/orcamento">{t.footer.links.requestProposal}</Link></li>
+                <li><Link to="/contato">{t.footer.links.contact}</Link></li>
               </ul>
             </div>
-
-            {/* Legal & Info */}
             <div className="footer-column">
-              <h4>Empresa</h4>
+              <h4>{t.footer.companyTitle}</h4>
               <ul>
-                <li>
-                  <Link to="/">Home</Link>
-                </li>
-                <li>
-                  <Link to="/servicos">Por Que Prottocode?</Link>
-                </li>
-                <li>
-                  <Link to="/contato">Contato</Link>
-                </li>
-                <li>
-                  <Link to="/privacidade">Política de Privacidade</Link>
-                </li>
+                <li><Link to="/">{t.footer.links.home}</Link></li>
+                <li><Link to="/servicos">{t.footer.links.whyProttocode}</Link></li>
+                <li><Link to="/contato">{t.footer.links.contact}</Link></li>
+                <li><Link to="/privacidade">{t.footer.links.privacyPolicy}</Link></li>
               </ul>
             </div>
-
-            {/* Contact & Social */}
             <div className="footer-column">
-              <h4>Contato</h4>
+              <h4>{t.footer.contactTitle}</h4>
               <ul className="contact-list">
-                <li>
-                  <a href="https://wa.me/5537998409691" className="contact-link">
-                    <FaWhatsapp /> WhatsApp
-                  </a>
-                </li>
-                <li>
-                  <a href="mailto:contato@prottocode.com" className="contact-link">
-                    <FaEnvelope /> Email
-                  </a>
-                </li>
-                <li>
-                  <a href="https://instagram.com/prottocode" className="contact-link">
-                    <FaInstagram /> Instagram
-                  </a>
-                </li>
+                <li><a href="https://wa.me/5537998409691" className="contact-link"><FaWhatsapp /> WhatsApp</a></li>
+                <li><a href="mailto:contato@prottocode.com" className="contact-link"><FaEnvelope /> Email</a></li>
+                <li><a href="https://instagram.com/prottocode" className="contact-link"><FaInstagram /> Instagram</a></li>
               </ul>
-              <p className="response-time">
-                <FaBolt /> Resposta em até 24h
-              </p>
+              <p className="response-time"><FaBolt /> {t.footer.responseTime}</p>
             </div>
           </div>
         </div>
       </div>
-
-      {/* Footer Bottom */}
       <div className="footer-bottom">
         <div className="container">
           <div className="footer-bottom-content">
-            <p className="copyright">
-              © {currentYear} Prottocode. Todos os direitos reservados.
-            </p>
+            <p className="copyright">© {currentYear} Prottocode. {t.footer.copyright}</p>
             <div className="trust-badges">
-              <span className="badge"><FaLock /> HTTPS Seguro</span>
-              <span className="badge"><FaFileContract /> LGPD Compliant</span>
-              <span className="badge"><FaShieldAlt /> Dados Protegidos</span>
+              <span className="badge"><FaLock /> {t.footer.badges.secure}</span>
+              <span className="badge"><FaFileContract /> {t.footer.badges.lgpd}</span>
+              <span className="badge"><FaShieldAlt /> {t.footer.badges.dataProtected}</span>
             </div>
           </div>
         </div>
