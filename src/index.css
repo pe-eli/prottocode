@@ -1,59 +1,59 @@
 /* ============================================
    DESIGN TOKENS — Light (default) + Dark
-   Palette: #e5eeff, #012c6d, #02165a, #379170
+   Palette: #0F2854, #1C4D8D, #4988C4, #BDE8F5
    ============================================ */
 
 :root {
   /* Raw palette */
-  --color-light:   #e5eeff;
-  --color-navy:    #012c6d;
-  --color-deep:    #02165a;
-  --color-green:   #379170;
+  --color-deep:    #0F2854;
+  --color-navy:    #1C4D8D;
+  --color-mid:     #4988C4;
+  --color-light:   #BDE8F5;
 
   /* Semantic tokens — Light theme */
-  --bg:              #e5eeff;
+  --bg:              #f7fbfe;
   --bg-surface:      #ffffff;
-  --bg-card:         rgba(2, 22, 90, 0.04);
-  --text:            #0a0e27;
-  --text-secondary:  rgba(10, 14, 39, 0.7);
+  --bg-card:         rgba(15, 40, 84, 0.03);
+  --text:            #0F2854;
+  --text-secondary:  rgba(15, 40, 84, 0.65);
   --text-inverse:    #ffffff;
-  --muted:           #5a6580;
-  --accent:          #02165a;
-  --accent-2:        #379170;
-  --accent-light:    #012c6d;
-  --gradient-primary:   linear-gradient(135deg, #02165a, #379170);
-  --gradient-secondary: linear-gradient(135deg, #379170, #02165a);
-  --border:          rgba(2, 22, 90, 0.12);
-  --border-strong:   rgba(2, 22, 90, 0.25);
-  --shadow-sm:       0 4px 12px rgba(2, 22, 90, 0.08);
-  --shadow-md:       0 8px 24px rgba(2, 22, 90, 0.12);
-  --shadow-lg:       0 12px 32px rgba(2, 22, 90, 0.18);
-  --hero-bg:         #050a30;
-  --header-bg:       rgba(1, 44, 109, 0.95);
-  --chart-line:      #5b8def;
-  --chart-green:     #4aeaae;
+  --muted:           #6b7f9e;
+  --accent:          #1C4D8D;
+  --accent-2:        #4988C4;
+  --accent-light:    #BDE8F5;
+  --gradient-primary:   linear-gradient(135deg, #1C4D8D, #4988C4);
+  --gradient-secondary: linear-gradient(135deg, #4988C4, #1C4D8D);
+  --border:          rgba(15, 40, 84, 0.1);
+  --border-strong:   rgba(15, 40, 84, 0.2);
+  --shadow-sm:       0 2px 8px rgba(15, 40, 84, 0.06);
+  --shadow-md:       0 8px 24px rgba(15, 40, 84, 0.1);
+  --shadow-lg:       0 16px 48px rgba(15, 40, 84, 0.14);
+  --hero-bg:         #0F2854;
+  --header-bg:       rgba(15, 40, 84, 0.95);
+  --chart-line:      #4988C4;
+  --chart-green:     #BDE8F5;
 }
 
 [data-theme="dark"] {
-  --bg:              #0a0e27;
-  --bg-surface:      #111836;
-  --bg-card:         rgba(255, 255, 255, 0.04);
-  --text:            #e5eeff;
-  --text-secondary:  rgba(229, 238, 255, 0.7);
-  --text-inverse:    #0a0e27;
-  --muted:           #8a95b0;
-  --accent:          #379170;
-  --accent-2:        #5b8def;
-  --accent-light:    #012c6d;
-  --gradient-primary:   linear-gradient(135deg, #379170, #5b8def);
-  --gradient-secondary: linear-gradient(135deg, #5b8def, #379170);
-  --border:          rgba(255, 255, 255, 0.08);
-  --border-strong:   rgba(255, 255, 255, 0.15);
-  --shadow-sm:       0 4px 12px rgba(0, 0, 0, 0.2);
+  --bg:              #0a1628;
+  --bg-surface:      #111e36;
+  --bg-card:         rgba(189, 232, 245, 0.04);
+  --text:            #e4eef8;
+  --text-secondary:  rgba(228, 238, 248, 0.65);
+  --text-inverse:    #0F2854;
+  --muted:           #8a9bba;
+  --accent:          #4988C4;
+  --accent-2:        #BDE8F5;
+  --accent-light:    #1C4D8D;
+  --gradient-primary:   linear-gradient(135deg, #4988C4, #BDE8F5);
+  --gradient-secondary: linear-gradient(135deg, #BDE8F5, #4988C4);
+  --border:          rgba(189, 232, 245, 0.08);
+  --border-strong:   rgba(189, 232, 245, 0.16);
+  --shadow-sm:       0 2px 8px rgba(0, 0, 0, 0.2);
   --shadow-md:       0 8px 24px rgba(0, 0, 0, 0.3);
-  --shadow-lg:       0 12px 32px rgba(0, 0, 0, 0.4);
-  --hero-bg:         #060b22;
-  --header-bg:       rgba(6, 11, 34, 0.95);
+  --shadow-lg:       0 16px 48px rgba(0, 0, 0, 0.4);
+  --hero-bg:         #081425;
+  --header-bg:       rgba(10, 22, 40, 0.95);
 }
 
 /* ============================================
@@ -75,13 +75,21 @@ body, #root {
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   background: var(--bg);
   color: var(--text);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   transition: background 0.3s ease, color 0.3s ease;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 700;
+  line-height: 1.15;
 }
 
 /* ============================================
@@ -89,7 +97,6 @@ body {
    Base + 4 variants: primary, secondary, ghost, outline
    ============================================ */
 
-/* Base — shared by every button */
 .btn,
 .btn-primary,
 .btn-secondary,
@@ -99,67 +106,113 @@ body {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 12px 28px;
-  border-radius: 10px;
+  padding: 14px 32px;
+  border-radius: 8px;
+  font-family: 'Lato', sans-serif;
   font-weight: 700;
   font-size: 0.95rem;
   letter-spacing: 0.3px;
   text-decoration: none;
   cursor: pointer;
   border: none;
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: all 0.25s ease;
   white-space: nowrap;
   line-height: 1;
 }
 
-/* Primary — gradient fill, white text */
+/* Primary — solid, high contrast */
 .btn-primary {
-  background: var(--gradient-primary);
-  color: var(--text-inverse);
-  box-shadow: var(--shadow-sm);
+  background: #1C4D8D;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(28, 77, 141, 0.25);
 }
 
 .btn-primary:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
+  background: #0F2854;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(15, 40, 84, 0.3);
 }
 
-/* Secondary — outline, accent border, transparent bg */
+/* Secondary — outline accent */
 .btn-secondary {
   background: transparent;
-  color: var(--accent);
-  border: 2px solid var(--accent);
+  color: #1C4D8D;
+  border: 2px solid #1C4D8D;
 }
 
 .btn-secondary:hover {
-  background: var(--bg-card);
+  background: #1C4D8D;
+  color: #ffffff;
   transform: translateY(-2px);
 }
 
-/* Ghost — subtle transparent, light border */
+/* Ghost — subtle */
 .btn-ghost {
   background: transparent;
-  color: var(--accent);
+  color: #1C4D8D;
   border: 1.5px solid var(--border-strong);
 }
 
 .btn-ghost:hover {
-  background: var(--bg-card);
-  border-color: var(--accent);
+  background: rgba(15, 40, 84, 0.06);
+  border-color: #1C4D8D;
   transform: translateY(-2px);
 }
 
-/* Outline — minimal, used for nav items */
+/* Outline — minimal, nav */
 .btn-outline {
   background: transparent;
   color: inherit;
   border: 1.5px solid var(--border);
-  padding: 8px 16px;
+  padding: 8px 18px;
   font-weight: 600;
   font-size: 0.9rem;
+  border-radius: 6px;
 }
 
 .btn-outline:hover {
   border-color: var(--border-strong);
-  background: var(--bg-card);
+  background: rgba(15, 40, 84, 0.04);
+}
+
+/* ============================================
+   MICRO-INTERACTIONS
+   ============================================ */
+
+/* --- Animated underline for links --- */
+a.link-hover {
+  position: relative;
+  text-decoration: none;
+}
+
+a.link-hover::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 1.5px;
+  background: var(--accent-2);
+  transition: width 0.3s ease;
+}
+
+a.link-hover:hover::after {
+  width: 100%;
+}
+
+/* --- Lenis smooth scroll base --- */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
 }

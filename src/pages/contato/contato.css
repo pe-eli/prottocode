@@ -12,9 +12,14 @@
 
 .contato-hero {
   text-align: center;
-  padding: 4rem 20px 2rem;
+  padding: 7rem 20px 2rem;
   max-width: 700px;
   margin: 0 auto;
+}
+
+.contato-hero .fade-section {
+  width: 100%;
+  text-align: center;
 }
 
 .contato-hero h1 {
@@ -23,6 +28,7 @@
   margin: 0 0 1rem;
   color: var(--text);
   font-weight: 800;
+  text-wrap: balance;
 }
 
 .contato-accent {

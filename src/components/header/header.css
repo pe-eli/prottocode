@@ -1,34 +1,54 @@
 /* ============================================
-   SITE HEADER — fundo #012c6d, 95% opaco
+   FLOATING MINIMALIST HEADER
    ============================================ */
 .site-header {
-  position: sticky;
-  top: 0;
-  z-index: 40;
-  background: var(--header-bg);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  animation: fadeIn 0.6s ease;
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  width: calc(100% - 48px);
+  max-width: 1100px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(15, 40, 84, 0.08);
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(15, 40, 84, 0.06);
+  transition: background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+[data-theme="dark"] .site-header {
+  background: rgba(10, 22, 40, 0.85);
+  border-color: rgba(189, 232, 245, 0.08);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+}
+
+.site-header.scrolled {
+  box-shadow: 0 8px 32px rgba(15, 40, 84, 0.1);
+}
+
+[data-theme="dark"] .site-header.scrolled {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
 }
 
 .header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 0;
+  padding: 10px 24px;
 }
 
-/* --- MARCA / LOGO --- */
+/* --- BRAND / LOGO --- */
 .brand {
   display: flex;
-  gap: 12px;
+  gap: 10px;
   align-items: center;
 }
 
 .logo {
-  width: 54px;
-  height: 54px;
+  width: 40px;
+  height: 40px;
   border-radius: 10px;
   background-color: var(--color-light);
   display: flex;
@@ -52,125 +72,133 @@
 }
 
 .logo:hover {
-  transform: rotateZ(6deg) scale(1.05);
+  transform: scale(1.05);
 }
 
-/* texto abaixo do logo */
 .brand-text small {
   display: block;
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 12px;
+  color: var(--text-secondary);
+  font-size: 11px;
 }
 
-/* ícone de marca da Prottocode (caso haja nome em texto) */
 .brand-text strong,
 .brand-name {
-  color: #ffffff;
+  color: var(--text);
+  font-family: 'Lato', sans-serif;
+  font-size: 0.95rem;
 }
 
-/* --- NAVEGAÇÃO --- */
+[data-theme="dark"] .brand-text strong,
+[data-theme="dark"] .brand-name {
+  color: #e4eef8;
+}
+
+[data-theme="dark"] .brand-text small {
+  color: rgba(228, 238, 248, 0.6);
+}
+
+/* --- NAVIGATION --- */
 .nav {
   display: flex;
   align-items: center;
-  justify-content: center;
-}
-.nav a {
-  margin-left: 18px;
-  color: rgba(255, 255, 255, 0.8);
-  text-decoration: none;
-  font-size: 0.95rem;
-  font-weight: 500;
-  position: relative;
-  transition: color 0.25s ease;
+  gap: 4px;
 }
 
-/* sublinhado gradiente no hover */
-.nav a::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -4px;
-  width: 0%;
-  height: 2px;
-  background: linear-gradient(90deg, var(--accent), var(--accent-2));
-  transition: width 0.3s ease;
+.nav a {
+  padding: 8px 14px;
+  color: var(--text);
+  text-decoration: none;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 .nav a:hover {
-  color: #ffffff;
+  background: rgba(15, 40, 84, 0.06);
+  color: #1C4D8D;
 }
 
-.nav a:hover::after {
-  width: 100%;
+[data-theme="dark"] .nav a {
+  color: rgba(228, 238, 248, 0.85);
 }
 
-/* --- BOTÕES (header-specific: white text on dark bg) --- */
-.site-header .btn-primary {
-  padding: 10px 2rem;
-  font-size: 0.9rem;
+[data-theme="dark"] .nav a:hover {
+  background: rgba(189, 232, 245, 0.08);
+  color: #BDE8F5;
 }
 
-.site-header .btn-primary:hover {
-  box-shadow: 0 6px 20px rgba(1, 44, 109, 0.5);
-}
-
-.site-header .btn-ghost {
-  color: rgba(255, 255, 255, 0.85);
-  border-color: rgba(255, 255, 255, 0.3);
-}
-
-.site-header .btn-ghost:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.55);
-  color: #ffffff;
-}
-
+/* --- HEADER BUTTONS --- */
 .site-header .btn-outline {
-  color: rgba(255, 255, 255, 0.8);
-  border-color: rgba(255, 255, 255, 0.25);
+  color: var(--text);
+  border-color: var(--border);
+  font-size: 0.85rem;
+  padding: 7px 16px;
+  border-radius: 8px;
 }
 
 .site-header .btn-outline:hover {
-  border-color: rgba(255, 255, 255, 0.45);
-  background: rgba(255, 255, 255, 0.08);
+  border-color: #1C4D8D;
+  background: rgba(28, 77, 141, 0.06);
+  color: #1C4D8D;
 }
 
-/* --- MOBILE ACTIONS (hamburger + theme toggle, hidden on desktop) --- */
+[data-theme="dark"] .site-header .btn-outline {
+  color: rgba(228, 238, 248, 0.85);
+  border-color: rgba(189, 232, 245, 0.15);
+}
+
+[data-theme="dark"] .site-header .btn-outline:hover {
+  border-color: #4988C4;
+  background: rgba(73, 136, 196, 0.1);
+  color: #BDE8F5;
+}
+
+/* --- MOBILE ACTIONS --- */
 .mobile-actions {
   display: none;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 }
 
-/* --- HAMBURGER BUTTON --- */
+/* --- HAMBURGER --- */
 .hamburger {
   display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 5px;
-  width: 38px;
-  height: 38px;
+  width: 36px;
+  height: 36px;
   padding: 0;
   background: transparent;
-  border: 1.5px solid rgba(255, 255, 255, 0.25);
-  border-radius: 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
 .hamburger span {
   display: block;
-  width: 18px;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.85);
+  width: 16px;
+  height: 1.5px;
+  background: var(--text);
   border-radius: 2px;
   transition: all 0.3s ease;
   transform-origin: center;
 }
 
+[data-theme="dark"] .hamburger {
+  border-color: rgba(189, 232, 245, 0.15);
+}
+
+[data-theme="dark"] .hamburger span {
+  background: rgba(228, 238, 248, 0.85);
+}
+
 .hamburger.open span:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
+  transform: translateY(6.5px) rotate(45deg);
 }
 
 .hamburger.open span:nth-child(2) {
@@ -178,31 +206,34 @@
 }
 
 .hamburger.open span:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
+  transform: translateY(-6.5px) rotate(-45deg);
 }
 
 /* --- SIDE MENU OVERLAY --- */
 .side-overlay {
   display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 998;
 }
 
 /* --- SIDE MENU --- */
 .side-menu {
+  display: none;
   position: fixed;
   top: 0;
-  right: -280px;
-  width: 280px;
+  right: -300px;
+  width: 300px;
   height: 100vh;
-  background: var(--header-bg);
-  backdrop-filter: blur(12px);
+  background: var(--bg-surface);
   z-index: 999;
-  transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   padding: 80px 24px 32px;
-  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 1px solid var(--border);
+  box-shadow: -8px 0 32px rgba(15, 40, 84, 0.1);
+}
+
+[data-theme="dark"] .side-menu {
+  background: var(--bg-surface);
+  border-left-color: var(--border);
+  box-shadow: -8px 0 32px rgba(0, 0, 0, 0.3);
 }
 
 .side-menu.open {
@@ -212,34 +243,51 @@
 .side-nav {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 4px;
 }
 
 .side-nav a {
   display: block;
   padding: 14px 16px;
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--text);
   text-decoration: none;
-  font-size: 1.05rem;
-  font-weight: 600;
+  font-family: 'Lato', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
   border-radius: 10px;
   transition: all 0.2s ease;
 }
 
 .side-nav a:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: #ffffff;
+  background: rgba(15, 40, 84, 0.05);
+  color: #1C4D8D;
+}
+
+[data-theme="dark"] .side-nav a {
+  color: rgba(228, 238, 248, 0.85);
+}
+
+[data-theme="dark"] .side-nav a:hover {
+  background: rgba(189, 232, 245, 0.06);
+  color: #BDE8F5;
 }
 
 /* --- MOBILE BREAKPOINT --- */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+  .site-header {
+    top: 12px;
+    width: calc(100% - 32px);
+  }
+
   .nav {
     display: none;
   }
+
   .container.header-inner {
     display: flex;
     flex-direction: row;
   }
+
   .mobile-actions {
     display: flex;
   }
@@ -250,23 +298,23 @@
 
   .side-overlay {
     display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 40, 84, 0.3);
+    z-index: 998;
+    backdrop-filter: blur(4px);
+  }
+
+  .side-menu {
+    display: block;
   }
 
   .header-inner {
-    padding: 8px 0;
-  }
-
-  .site-header .container.header-inner {
-    padding-left: 24px;
-    padding-right: 24px;
-  }
-
-  .brand {
-    min-height: 52px;
+    padding: 8px 16px;
   }
 
   .brand .logo {
-    width: 48px;
-    height: 48px;
+    width: 36px;
+    height: 36px;
   }
 }

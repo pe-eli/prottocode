@@ -25,9 +25,14 @@
 
 .servicos-hero {
   text-align: center;
-  padding: 4rem 20px 3rem;
+  padding: 7rem 20px 3rem;
   max-width: 960px;
   margin: 0 auto;
+}
+
+.servicos-hero .fade-section {
+  width: 100%;
+  text-align: center;
 }
 
 .servicos-hero h1 {
@@ -37,7 +42,12 @@
   color: var(--text);
   font-weight: 800;
   letter-spacing: -0.5px;
-  white-space: nowrap;
+  white-space: normal;
+  text-wrap: balance;
+  width: 100%;
+  max-width: none;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .servicos-accent {

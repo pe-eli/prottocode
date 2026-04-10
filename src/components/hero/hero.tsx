@@ -1,14 +1,25 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useMemo } from "react";
 import { useLanguage } from "../../i18n/LanguageContext";
+import Reveal from "../Reveal";
 import "./hero.css";
 
-const SCROLL_PAGES = 3; // how many "screens" of scroll the video occupies
+const STAR_COUNT = 40;
 
 const Hero: React.FC = () => {
   const { t } = useLanguage();
-  const containerRef = useRef<HTMLDivElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [videoDuration, setVideoDuration] = useState(0);
+
+  const stars = useMemo(
+    () =>
+      Array.from({ length: STAR_COUNT }, (_, i) => ({
+        id: i,
+        top: `${Math.random() * 100}%`,
+        left: `${Math.random() * 100}%`,
+        size: Math.random() * 2.5 + 1,
+        delay: Math.random() * 6,
+        duration: Math.random() * 3 + 2,
+      })),
+    [],
+  );
 
   const productIcons = [
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fillRule="evenodd" d="M2.25 5.25a3 3 0 013-3h13.5a3 3 0 013 3V15a3 3 0 01-3 3h-3v.257c0 .597.237 1.17.659 1.591l.621.622a.75.75 0 01-.53 1.28h-9a.75.75 0 01-.53-1.28l.621-.622a2.25 2.25 0 00.659-1.59V18h-3a3 3 0 01-3-3V5.25zm1.5 0v7.5a1.5 1.5 0 001.5 1.5h13.5a1.5 1.5 0 001.5-1.5v-7.5a1.5 1.5 0 00-1.5-1.5H5.25a1.5 1.5 0 00-1.5 1.5z" clipRule="evenodd" /></svg>,
@@ -16,98 +27,79 @@ const Hero: React.FC = () => {
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M21.721 12.752a9.711 9.711 0 00-.945-5.003 12.754 12.754 0 01-4.339 2.708 18.991 18.991 0 01-.214 4.772 17.165 17.165 0 005.498-2.477zM14.634 15.55a17.324 17.324 0 00.332-4.647c-.952.227-1.945.347-2.966.347-1.021 0-2.014-.12-2.966-.347a17.515 17.515 0 00.332 4.647 17.385 17.385 0 005.268 0zM9.772 17.119a18.963 18.963 0 004.456 0A17.182 17.182 0 0112 21.724a17.18 17.18 0 01-2.228-4.605zM7.777 15.23a18.87 18.87 0 01-.214-4.774 12.753 12.753 0 01-4.34-2.708 9.711 9.711 0 00-.944 5.004 17.165 17.165 0 005.498 2.477zM21.356 14.752a9.765 9.765 0 01-7.478 6.817 18.64 18.64 0 001.988-4.718 18.627 18.627 0 005.49-2.098zM2.644 14.752c1.682.971 3.53 1.688 5.49 2.099a18.64 18.64 0 001.988 4.718 9.765 9.765 0 01-7.478-6.816zM13.878 2.43a9.755 9.755 0 016.116 3.986 11.267 11.267 0 01-3.746 2.504 18.63 18.63 0 00-2.37-6.49zM12 2.276a17.152 17.152 0 012.805 7.121c-.897.23-1.837.353-2.805.353-.968 0-1.908-.122-2.805-.353A17.151 17.151 0 0112 2.276zM10.122 2.43a18.629 18.629 0 00-2.37 6.49 11.266 11.266 0 01-3.746-2.504 9.754 9.754 0 016.116-3.985z" /></svg>,
   ];
 
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    const handleLoaded = () => {
-      setVideoDuration(video.duration);
-      video.currentTime = 0;
-    };
-
-    video.addEventListener("loadedmetadata", handleLoaded);
-    if (video.readyState >= 1) handleLoaded();
-
-    return () => video.removeEventListener("loadedmetadata", handleLoaded);
-  }, []);
-
-  useEffect(() => {
-    if (!videoDuration) return;
-    const container = containerRef.current;
-    const video = videoRef.current;
-    if (!container || !video) return;
-
-    let ticking = false;
-
-    const onScroll = () => {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(() => {
-        const rect = container.getBoundingClientRect();
-        const scrollableHeight = container.offsetHeight - window.innerHeight;
-        const scrolled = -rect.top;
-        const progress = Math.min(Math.max(scrolled / scrollableHeight, 0), 1);
-        video.currentTime = progress * videoDuration;
-        ticking = false;
-      });
-    };
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [videoDuration]);
-
   return (
     <section className="hero">
-      {/* Scroll spacer: tall container that pins the video */}
-      <div
-        className="hero-video-scroll"
-        ref={containerRef}
-        style={{ height: `${SCROLL_PAGES * 100}vh` }}
-      >
-        <div className="hero-video-sticky">
-          <video
-            ref={videoRef}
-            className="hero-video"
-            src="/hero.mp4"
-            muted
-            playsInline
-            preload="auto"
+      {/* ---- Background Effects ---- */}
+      <div className="hero-bg" aria-hidden="true">
+        {/* Stars */}
+        {stars.map((s) => (
+          <span
+            key={s.id}
+            className="hero-star"
+            style={{
+              top: s.top,
+              left: s.left,
+              width: s.size,
+              height: s.size,
+              animationDelay: `${s.delay}s`,
+              animationDuration: `${s.duration}s`,
+            }}
           />
-          <div className="hero-video-overlay" />
-          <div className="hero-video-content">
-            <aside className="hero-badge">
-              <span>{t.hero.badge}</span>
-              <a href="/servicos">
-                {t.hero.badgeLink}
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
-                </svg>
-              </a>
-            </aside>
-            <h1>
-              <span className="hero-headline">{t.hero.headlinePrimary}</span><br />
-              <span className="accent">{t.hero.headlineAccent}</span>
-            </h1>
-            <p className="lead">{t.hero.lead}</p>
-            <div className="hero-ctas">
-              <a href="/orcamento" className="btn-primary">{t.hero.ctaPrimary}</a>
-              <a href="#como-funciona" className="btn-ghost">{t.hero.ctaGhost}</a>
-            </div>
-          </div>
-        </div>
+        ))}
+        {/* Glow arcs */}
+        <div className="hero-glow hero-glow--center" />
+        <div className="hero-glow hero-glow--left" />
+        <div className="hero-glow hero-glow--right" />
+        {/* Horizon line */}
+        <div className="hero-horizon" />
       </div>
+
+      {/* ---- Content ---- */}
+      <div className="hero-inner">
+        <Reveal delay={0}>
+          <aside className="hero-badge">
+            <span>{t.hero.badge}</span>
+            <a href="/servicos">
+              {t.hero.badgeLink}
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
+              </svg>
+            </a>
+          </aside>
+        </Reveal>
+        <Reveal delay={0.1}>
+          <h1>
+            <span className="hero-headline">{t.hero.headlinePrimary}</span><br />
+            <span className="accent">{t.hero.headlineAccent}</span>
+          </h1>
+        </Reveal>
+        <Reveal delay={0.2}>
+          <p className="lead">{t.hero.lead}</p>
+        </Reveal>
+        <Reveal delay={0.3}>
+          <div className="hero-ctas">
+            <a href="/orcamento" className="btn-primary">{t.hero.ctaPrimary}</a>
+            <a href="#como-funciona" className="btn-ghost">{t.hero.ctaGhost}</a>
+          </div>
+        </Reveal>
+      </div>
+
+      {/* ---- Product Cards ---- */}
       <div className="container">
-        <h2 style={{ textAlign: "center", marginBottom: "3rem" }}>{t.hero.solutionsTitle}</h2>
+        <Reveal>
+          <h2 style={{ textAlign: "center", marginBottom: "3rem" }}>{t.hero.solutionsTitle}</h2>
+        </Reveal>
         <div className="hero-products">
           {t.hero.products.map((product, index) => (
-            <div className="product-card" key={index}>
-              <div className="product-icon">{productIcons[index]}</div>
-              <h3>{product.title}</h3>
-              <p>{product.description}</p>
-              <span className="product-badge available">{product.badge}</span>
-              <a href="/orcamento" className="product-cta">{product.cta}</a>
-            </div>
+            <Reveal key={index} delay={index * 0.1}>
+              <div className="product-card">
+                <div className="product-icon">{productIcons[index]}</div>
+                <h3>{product.title}</h3>
+                <p>{product.description}</p>
+                <span className="product-badge available">{product.badge}</span>
+                <a href="/orcamento" className="product-cta">{product.cta}</a>
+              </div>
+            </Reveal>
           ))}
         </div>
       </div>

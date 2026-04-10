@@ -3,8 +3,8 @@
   padding: 5rem 0;
   background: linear-gradient(
     135deg,
-    rgba(2, 22, 90, 0.06),
-    rgba(2, 22, 90, 0.08)
+    rgba(15, 40, 84, 0.06),
+    rgba(15, 40, 84, 0.08)
   );
   position: relative;
   overflow: hidden;
@@ -19,7 +19,7 @@
   height: 500px;
   background: radial-gradient(
     circle,
-    rgba(2, 22, 90, 0.08) 0%,
+    rgba(15, 40, 84, 0.08) 0%,
     transparent 70%
   );
   border-radius: 50%;
@@ -35,7 +35,7 @@
   height: 400px;
   background: radial-gradient(
     circle,
-    rgba(2, 22, 90, 0.1) 0%,
+    rgba(15, 40, 84, 0.1) 0%,
     transparent 70%
   );
   border-radius: 50%;
@@ -81,7 +81,7 @@
 }
 
 .cta-content h2 .accent-text {
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  background: linear-gradient(135deg, var(--color-navy), var(--color-mid));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -106,12 +106,12 @@
   line-height: 1.8;
   padding: 20px;
   background: var(--bg-card);
-  border-left: 3px solid var(--accent);
+  border-left: 3px solid var(--color-navy);
   border-radius: 8px;
 }
 
 .cta-highlight strong {
-  color: var(--accent);
+  color: var(--color-navy);
   font-weight: 700;
 }
 

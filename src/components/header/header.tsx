@@ -8,12 +8,20 @@ import { useLanguage } from "../../i18n/LanguageContext";
 
 const Header: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const { t } = useLanguage();
 
   useEffect(() => {
     setMenuOpen(false);
   }, [location]);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     if (menuOpen) {
@@ -25,8 +33,8 @@ const Header: React.FC = () => {
   }, [menuOpen]);
 
   return (
-    <header className="site-header">
-      <div className="container header-inner">
+    <header className={`site-header${scrolled ? " scrolled" : ""}`}>
+      <div className="header-inner">
         <div className="brand">
           <div className="logo">
             <Link to="/">
@@ -35,7 +43,6 @@ const Header: React.FC = () => {
           </div>
           <div className="brand-text">
             <strong>Prottocode</strong>
-            <small>{t.header.brandSubtitle}</small>
           </div>
         </div>
         <nav className="nav">

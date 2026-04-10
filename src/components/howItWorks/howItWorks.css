@@ -12,10 +12,7 @@
 .how-it-works-header h2 {
   font-size: 2.2rem;
   margin-bottom: 1rem;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--color-deep);
 }
 
 .how-it-works-header .section-lead {
@@ -89,7 +86,7 @@
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  background: var(--color-navy);
   color: #ffffff;
   font-size: 1.4rem;
   font-weight: 800;
@@ -123,7 +120,7 @@
   padding: 0 0.5rem;
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--accent);
+  color: var(--color-navy);
   z-index: 1;
 }
 
@@ -157,7 +154,7 @@
 
 .how-it-works-cta .btn-primary {
   padding: 14px 32px;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  background: var(--color-navy);
   color: #ffffff;
   text-decoration: none;
   border-radius: 10px;
