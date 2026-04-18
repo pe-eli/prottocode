@@ -1,92 +1,67 @@
 {
-  "empresa": {
-    "nome": "Prottocode",
-    "moeda": "BRL",
-    "suportePadraoMensal": 350
-  },
-
   "servicos": [
     {
       "id": "website",
       "nome": "Website Inteligente",
-      "precoBase": 3000,
       "descricao": "Website profissional com integrações e automações."
     },
     {
       "id": "automacao",
       "nome": "Automação Inteligente de Processos",
-      "precoBase": 4500,
       "descricao": "Automatização de tarefas operacionais e integração de sistemas."
     },
     {
       "id": "chatbot",
       "nome": "Atendimento Automatizado com IA",
-      "precoBase": 3500,
       "descricao": "Chatbot inteligente para atendimento e qualificação de clientes."
     },
     {
       "id": "dados",
       "nome": "Inteligência de Dados para Negócios",
-      "precoBase": 4000,
       "descricao": "Dashboards e análises inteligentes para tomada de decisão."
     }
   ],
-
   "extras": [
     {
       "id": "dashboard",
-      "nome": "Dashboard de monitoramento em tempo real",
-      "preco": 900
+      "nome": "Dashboard de monitoramento em tempo real"
     },
     {
       "id": "relatorios",
-      "nome": "Relatórios automáticos por e-mail",
-      "preco": 400
+      "nome": "Relatórios automáticos por e-mail"
     },
     {
       "id": "whatsapp",
-      "nome": "Integração com WhatsApp",
-      "preco": 700
+      "nome": "Integração com WhatsApp"
     },
     {
       "id": "aprendizadoIA",
       "nome": "Aprendizado contínuo do ChatBot",
-      "preco": 1200,
       "ai": true
     },
     {
       "id": "treinamento",
-      "nome": "Treinamento da equipe",
-      "preco": 700
+      "nome": "Treinamento da equipe"
     }
   ],
-
   "pacotes": [
     {
       "id": "starter",
       "nome": "Starter",
       "descricao": "Solução básica para iniciar automação.",
-      "extrasInclusos": ["dashboard"],
-      "descontoExtras": 0
+      "extrasInclusos": ["dashboard"]
     },
     {
       "id": "pro",
       "nome": "Pro",
       "descricao": "Automação mais completa com recursos avançados.",
-      "extrasInclusos": ["dashboard", "relatorios"],
-      "descontoExtras": 0.1
+      "extrasInclusos": ["dashboard", "relatorios"]
     },
     {
       "id": "ai",
       "nome": "AI Premium",
       "descricao": "Inclui recursos avançados de inteligência artificial.",
-      "extrasInclusos": ["dashboard", "relatorios", "aprendizadoIA"],
-      "descontoExtras": 0.15
+      "extrasInclusos": ["dashboard", "relatorios", "aprendizadoIA"]
     }
-  ],
-
-  "mensalidade": {
-    "suporte": 350,
-    "manutencaoPercentualProjeto": 0.05
-  }
+  ]
 }

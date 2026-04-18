@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { FaCog, FaComments, FaChartBar, FaDatabase, FaGlobe, FaPlug, FaCheck, FaRobot } from "react-icons/fa";
+import { FaCog, FaComments, FaChartBar, FaDatabase, FaGlobe, FaPlug, FaCheck, FaRobot, FaArrowRight } from "react-icons/fa";
 import Header from "../../components/header/header";
 import Footer from "../../components/footer/footer";
 import HowItWorks from "../../components/howItWorks/HowItWorks";
@@ -39,29 +39,49 @@ export default function Servicos() {
         <section className="servicos-grid-section">
           <div className="container">
             <div className="servicos-grid">
-              {t.servicosPage.serviceDetails.map((service, index) => (
-                <FadeSection key={index} delay={index * 0.1}>
-                  <div className="servicos-card">
-                    <div className="servicos-card-icon">{serviceIcons[index]}</div>
-                    <h3>{service.title}</h3>
-                    <p className="servicos-card-tagline">{service.tagline}</p>
-                    <p className="servicos-card-desc">{service.description}</p>
-                    <div className="servicos-card-features">
-                      <h4>{t.servicosPage.featuresIncluded}</h4>
-                      <ul>
-                        {service.features.map((feat, fi) => (
-                          <li key={fi}>
-                            <FaCheck className="feature-check-icon" />
-                            <span>{feat.name}</span>
-                            {feat.ai && <span className="servicos-ai-tag"><FaRobot /> IA</span>}
-                          </li>
-                        ))}
-                      </ul>
+              {t.servicosPage.serviceDetails.map((service, index) => {
+                const regularFeats = service.features.filter(f => !f.ai).slice(0, 4);
+                const aiFeats = service.features.filter(f => f.ai);
+                return (
+                  <FadeSection key={index} delay={index * 0.12}>
+                    <div className="servicos-card">
+                      <div className="servicos-card-header">
+                        <div className="servicos-card-icon">{serviceIcons[index]}</div>
+                        <h3>{service.title}</h3>
+                        <p className="servicos-card-tagline">{service.tagline}</p>
+                      </div>
+                      <p className="servicos-card-desc">{service.description}</p>
+                      <div className="servicos-card-features">
+                        <h4>{t.servicosPage.featuresIncluded}</h4>
+                        <ul>
+                          {regularFeats.map((feat, fi) => (
+                            <li key={fi}>
+                              <FaCheck className="feature-check-icon" />
+                              <span>{feat.name}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      {aiFeats.length > 0 && (
+                        <div className="servicos-card-ai-chips">
+                          {aiFeats.map((feat, fi) => (
+                            <span key={fi} className="servicos-ai-chip">
+                              <FaRobot className="ai-chip-icon" />
+                              <span>{feat.name}</span>
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                      <div className="servicos-card-footer">
+                        <Link to="/orcamento" className="servicos-card-cta">
+                          {t.servicosPage.requestProposal}
+                          <FaArrowRight className="cta-arrow" />
+                        </Link>
+                      </div>
                     </div>
-                    <Link to="/orcamento" className="servicos-card-cta">{t.servicosPage.requestProposal}</Link>
-                  </div>
-                </FadeSection>
-              ))}
+                  </FadeSection>
+                );
+              })}
             </div>
           </div>
         </section>

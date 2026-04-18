@@ -91,15 +91,18 @@ const Hero: React.FC = () => {
         </Reveal>
         <div className="hero-products">
           {t.hero.products.map((product, index) => (
-            <Reveal key={index} delay={index * 0.1}>
-              <div className="product-card">
-                <div className="product-icon">{productIcons[index]}</div>
-                <h3>{product.title}</h3>
-                <p>{product.description}</p>
-                <span className="product-badge available">{product.badge}</span>
-                <a href="/orcamento" className="product-cta">{product.cta}</a>
-              </div>
-            </Reveal>
+            <div key={index} className="product-card">
+              {product.topBadge ? (
+                <span className="product-top-badge">{product.topBadge}</span>
+              ) : (
+                <span className="product-top-badge-spacer" aria-hidden="true" />
+              )}
+              <div className="product-icon">{productIcons[index]}</div>
+              <h3>{product.title}</h3>
+              <p>{product.description}</p>
+              <span className="product-badge available">{product.badge}</span>
+              <a href="/orcamento" className="product-cta">{product.cta}</a>
+            </div>
           ))}
         </div>
       </div>

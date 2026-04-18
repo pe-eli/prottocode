@@ -73,6 +73,11 @@
   margin: 0 auto;
 }
 
+.what-we-do-cta-duplicate {
+  display: flex;
+  justify-content: center;
+}
+
 .pillar-card {
   background: var(--bg-card);
   backdrop-filter: blur(10px);

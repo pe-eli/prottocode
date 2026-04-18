@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import type { Translations } from "./types";
-import { pt } from "./pt";
-import { en } from "./en";
+import pt from "./pt";
+import en from "./en";
 
 type Language = "pt" | "en";
 
@@ -19,7 +19,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   const [language, setLanguage] = useState<Language>(() => {
     const saved = localStorage.getItem("language");
     if (saved === "pt" || saved === "en") return saved;
-    return navigator.language.startsWith("en") ? "en" : "pt";
+    return "pt";
   });
 
   useEffect(() => {

@@ -39,6 +39,9 @@ const WhatWeDo: React.FC = () => {
             ))}
           </div>
         </div>
+        <div className="what-we-do-cta-duplicate">
+          <Link to="/servicos" className="btn-secondary">{t.whatWeDo.ctaText}</Link>
+        </div>
       </div>
     </section>
   );

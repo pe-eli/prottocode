@@ -248,7 +248,7 @@
   gap: 20px;
   max-width: 1000px;
   margin: 0 auto;
-  justify-items: center;
+  align-items: start;
 }
 
 .product-card {
@@ -258,11 +258,31 @@
   padding: 28px 24px;
   transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
   position: relative;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 24px auto auto 1fr auto auto;
   gap: 12px;
-  min-height: 200px;
+  min-height: 440px;
+  height: 100%;
   overflow: hidden;
+}
+
+.product-top-badge {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--color-mid), var(--color-navy));
+  width: fit-content;
+  margin-bottom: 2px;
+}
+
+.product-top-badge-spacer {
+  display: block;
+  height: 24px;
 }
 
 .product-card:hover {
@@ -301,7 +321,6 @@
   color: var(--text-secondary);
   margin: 0;
   line-height: 1.6;
-  flex-grow: 1;
 }
 
 .product-badge {
@@ -327,7 +346,9 @@
 }
 
 .product-cta {
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-top: 12px;
   padding: 10px 18px;
   background: var(--color-navy);
@@ -335,7 +356,10 @@
   font-weight: 700;
   border-radius: 10px;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 13px;
+  min-height: 54px;
+  width: 100%;
+  line-height: 1.25;
   transition: background 0.2s ease, transform 0.2s ease;
   text-align: center;
   border: none;

@@ -620,18 +620,6 @@ input[type="number"] {
   color: #fff;
 }
 
-.pacote-desconto-badge {
-  display: inline-block;
-  padding: 3px 10px;
-  font-size: 0.72rem;
-  font-weight: 700;
-  color: #059669;
-  background: rgba(5, 150, 105, 0.1);
-  border: 1px solid rgba(5, 150, 105, 0.3);
-  border-radius: 6px;
-  margin-bottom: 8px;
-}
-
 .pacote-extras-inclusos {
   display: flex;
   flex-direction: column;
@@ -697,96 +685,12 @@ input[type="number"] {
   cursor: default;
 }
 
-/* ============================================
-   PRECOS & TOTAL
-   ============================================ */
-
-.servico-preco {
-  margin-top: 8px;
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--accent);
-}
-
-.extra-preco {
-  padding-left: 12px;
-  margin-right: 12px;
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: var(--accent);
-  white-space: nowrap;
-}
-
-/* Step 2 price breakdown */
-.preco-resumo-step2 {
-  background: var(--bg-card);
-  border: 1.5px solid var(--border);
-  border-radius: 12px;
-  padding: 16px 20px;
-  margin-top: 1.25rem;
-}
-
-/* Dark mode adjustments */
-[data-theme="dark"] .preco-resumo-step2 {
-  border-color: rgba(110, 231, 183, 0.08);
-  background: rgba(30, 41, 59, 0.5);
-}
-
-.preco-line {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.9rem;
-  color: var(--text);
-  padding: 4px 0;
-}
-
-.preco-line.desconto-line {
-  color: #059669;
-  font-weight: 600;
-}
-
-.preco-divider {
-  height: 1px;
-  background: var(--border);
-  margin: 8px 0;
-}
-
-/* Dark mode adjustments */
-[data-theme="dark"] .preco-divider {
-  background: rgba(110, 231, 183, 0.08);
-}
-
-.preco-line.preco-destaque {
-  font-weight: 800;
-  font-size: 1.05rem;
-  color: var(--accent);
-  padding-top: 4px;
-}
-
-.preco-line.preco-mensal {
-  font-weight: 600;
-  font-size: 0.9rem;
-  color: var(--muted);
-  padding-bottom: 2px;
-}
-
-/* ============================================
-   RESUMO FINANCIAL (Step 3)
-   ============================================ */
-
 .resumo-servico {
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 4px;
-}
-
-.resumo-preco-base {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--accent);
 }
 
 .resumo-pacote {
@@ -802,16 +706,6 @@ input[type="number"] {
   font-size: 0.95rem;
 }
 
-.resumo-desconto-badge {
-  padding: 2px 8px;
-  font-size: 0.72rem;
-  font-weight: 700;
-  color: #059669;
-  background: rgba(5, 150, 105, 0.1);
-  border: 1px solid rgba(5, 150, 105, 0.3);
-  border-radius: 4px;
-}
-
 .resumo-extras-list li {
   display: flex;
   align-items: center;
@@ -823,81 +717,6 @@ input[type="number"] {
   font-size: 0.78rem;
   font-weight: 600;
   color: #059669;
-}
-
-.resumo-extra-preco {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--accent);
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-.resumo-financeiro {
-  background: linear-gradient(135deg, rgba(2, 22, 90, 0.05), rgba(2, 22, 90, 0.02));
-  border: 1.5px solid rgba(2, 22, 90, 0.12);
-  border-radius: 12px;
-  padding: 18px 20px;
-  margin-bottom: 1.5rem;
-}
-
-/* Dark mode adjustments */
-[data-theme="dark"] .resumo-financeiro {
-  background: rgba(30, 41, 59, 0.4);
-  border-color: rgba(110, 231, 183, 0.1);
-}
-
-.resumo-financeiro h4 {
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 1.2px;
-  color: var(--muted);
-  margin: 0 0 12px;
-  font-weight: 600;
-}
-
-/* Dark mode adjustments */
-[data-theme="dark"] .resumo-financeiro h4 {
-  color: rgba(148, 163, 184, 0.9);
-}
-
-.resumo-fin-line {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.9rem;
-  color: var(--text);
-  padding: 3px 0;
-}
-
-.resumo-fin-line.desconto-line {
-  color: #059669;
-  font-weight: 600;
-}
-
-.resumo-fin-divider {
-  height: 1px;
-  background: rgba(2, 22, 90, 0.12);
-  margin: 10px 0;
-}
-
-/* Dark mode adjustments */
-[data-theme="dark"] .resumo-fin-divider {
-  background: rgba(110, 231, 183, 0.08);
-}
-
-.resumo-fin-line.resumo-fin-destaque {
-  font-weight: 800;
-  font-size: 1.1rem;
-  color: var(--accent);
-  padding-top: 4px;
-}
-
-.resumo-fin-line.resumo-fin-mensal {
-  font-weight: 600;
-  font-size: 0.9rem;
-  color: var(--muted);
-  padding-top: 2px;
 }
 
 /* Disclaimer */
@@ -929,22 +748,6 @@ input[type="number"] {
   color: #fbbf24;
 }
 
-/* Secondary button (PDF) */
-.btn-secondary {
-  padding: 12px 24px;
-  background: var(--bg-card);
-  color: var(--accent);
-  border: 1.5px solid var(--accent);
-  border-radius: 10px;
-  font-weight: 700;
-  cursor: pointer;
-  font-size: 0.9rem;
-  transition: all 0.3s ease;
-}
-
-.btn-secondary:hover {
-  background: rgba(2, 22, 90, 0.05);
-}
 
 /* ============================================
    ANIMATION
@@ -971,13 +774,8 @@ input[type="number"] {
   }
 
   .extra-item {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    grid-template-areas:
-      "label check"
-      "price check";
-    align-items: start;
-    column-gap: 10px;
+    display: flex;
+    align-items: center;
   }
 
   .extra-label {
@@ -997,15 +795,7 @@ input[type="number"] {
     text-overflow: ellipsis;
   }
 
-  .extra-preco {
-    grid-area: price;
-    padding-left: 0;
-    margin-right: 0;
-    margin-top: 2px;
-  }
-
   .extra-check {
-    grid-area: check;
     align-self: center;
     margin-left: 0;
   }
@@ -1061,11 +851,5 @@ input[type="number"] {
   *:hover {
     box-shadow: none !important;
     transform: none !important;
-  }
-}
-
-@media (max-width: 600px) {
-  .preco-resumo-step2 {
-    background: #02165a0a;
   }
 }
