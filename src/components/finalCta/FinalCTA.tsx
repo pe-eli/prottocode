@@ -18,7 +18,7 @@ const FinalCTA: React.FC = () => {
             <p className="cta-lead">{t.finalCta.lead}</p>
             <p className="cta-highlight" dangerouslySetInnerHTML={{ __html: t.finalCta.highlight }} />
             <div className="cta-buttons">
-              <a href="/orcamento" className="btn-primary">{t.finalCta.btnPrimary}</a>
+              <a href="/diagnostico" className="btn-primary">{t.finalCta.btnPrimary}</a>
               <a href="https://wa.me/5537998409691" className="btn-secondary">{t.finalCta.btnSecondary}</a>
             </div>
             <p className="cta-footer" dangerouslySetInnerHTML={{ __html: t.finalCta.footer }} />

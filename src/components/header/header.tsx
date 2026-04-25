@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import logoImg from "../../assets/meu-logo.png";
-import "./header.css"
+import "./header.css";
 import { Link, useLocation } from "react-router-dom";
-import ThemeToggle from "../ThemeToggle";
 import LanguageToggle from "../../i18n/LanguageToggle";
 import { useLanguage } from "../../i18n/LanguageContext";
 
@@ -13,74 +12,98 @@ const Header: React.FC = () => {
   const { t } = useLanguage();
 
   useEffect(() => {
-    setMenuOpen(false);
-  }, [location]);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 8);
+    };
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   useEffect(() => {
-    if (menuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
+    setMenuOpen(false);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    if (!menuOpen) {
+      document.body.style.removeProperty("overflow");
+      return;
     }
-    return () => { document.body.style.overflow = ""; };
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setMenuOpen(false);
+      }
+    };
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleEscape);
+
+    return () => {
+      document.body.style.removeProperty("overflow");
+      window.removeEventListener("keydown", handleEscape);
+    };
   }, [menuOpen]);
 
   return (
-    <header className={`site-header${scrolled ? " scrolled" : ""}`}>
-      <div className="header-inner">
-        <div className="brand">
-          <div className="logo">
-            <Link to="/">
-              <img src={logoImg} alt="Prottocode Logo" />
-            </Link>
+    <>
+      <header className={`site-header${scrolled ? " scrolled" : ""}`}>
+        <div className="header-inner">
+          <div className="brand">
+            <div className="logo">
+              <Link to="/" aria-label="Prottocode Home">
+                <img src={logoImg} alt="Prottocode Logo" />
+              </Link>
+            </div>
+            <div className="brand-text">
+              <strong>Prottocode</strong>
+            </div>
           </div>
-          <div className="brand-text">
-            <strong>Prottocode</strong>
-          </div>
-        </div>
-        <nav className="nav">
-          <Link to="/servicos">{t.header.services}</Link>
-          <Link to="/contato">{t.header.contact}</Link>
-          <Link to="/portfolio" className="btn btn-outline">
-            {t.header.portfolio}
-          </Link>
-          <ThemeToggle />
-          <LanguageToggle />
-        </nav>
 
-        <div className="mobile-actions">
-          <ThemeToggle />
-          <LanguageToggle />
-          <button
-            className={`hamburger ${menuOpen ? "open" : ""}`}
-            onClick={() => setMenuOpen((o) => !o)}
-            aria-label="Menu"
-          >
-            <span />
-            <span />
-            <span />
-          </button>
+          <nav className="nav">
+            <Link to="/servicos">{t.header.services}</Link>
+            <Link to="/contato">{t.header.contact}</Link>
+            <LanguageToggle />
+          </nav>
+
+          <div className="mobile-actions">
+            <LanguageToggle />
+            <button
+              type="button"
+              className={`hamburger ${menuOpen ? "open" : ""}`}
+              onClick={() => setMenuOpen((open) => !open)}
+              aria-label="Menu"
+              aria-expanded={menuOpen}
+              aria-controls="mobile-menu"
+            >
+              <span />
+              <span />
+              <span />
+            </button>
+          </div>
         </div>
-      </div>
+      </header>
 
       {menuOpen && <div className="side-overlay" onClick={() => setMenuOpen(false)} />}
-      <aside className={`side-menu ${menuOpen ? "open" : ""}`}>
+      <aside
+        id="mobile-menu"
+        className={`side-menu ${menuOpen ? "open" : ""}`}
+        aria-hidden={!menuOpen}
+      >
         <nav className="side-nav">
-          <Link to="/servicos" onClick={() => setMenuOpen(false)}>{t.header.services}</Link>
-          <Link to="/contato" onClick={() => setMenuOpen(false)}>{t.header.contact}</Link>
-          <Link to="/portfolio" className="btn btn-outline" onClick={() => setMenuOpen(false)}>
-            {t.header.portfolio}
+          <Link to="/servicos" onClick={() => setMenuOpen(false)}>
+            {t.header.services}
+          </Link>
+          <Link to="/contato" onClick={() => setMenuOpen(false)}>
+            {t.header.contact}
           </Link>
         </nav>
       </aside>
-    </header>
+    </>
   );
 };
 

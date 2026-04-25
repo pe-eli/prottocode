@@ -19,7 +19,13 @@
       "id": "dados",
       "nome": "Inteligência de Dados para Negócios",
       "descricao": "Dashboards e análises inteligentes para tomada de decisão."
+    },
+    {
+      "id": "outro",
+      "nome": "Outro Serviço",
+      "descricao": "Não achou o que queria? Nós podemos criar uma solução personalizada para você."
     }
+
   ],
   "extras": [
     {

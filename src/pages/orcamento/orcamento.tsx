@@ -66,7 +66,8 @@ export default function Orcamento() {
     window.scrollTo({ top: 0, behavior: "smooth" });
     if (step === 1 && !servicoId) { setError(t.orcamentoPage.errorService); return; }
     if (step === 2 && !pacoteId) { setError(t.orcamentoPage.errorPackage); return; }
-    if (step === 4) { handleSend(); } else { setError(""); setStep((prev) => prev + 1); }
+    setError("");
+    setStep((prev) => prev + 1);
   };
 
   const handleBack = () => {
@@ -271,7 +272,18 @@ export default function Orcamento() {
               <p>{popupMsg}</p>
               {!loading && (
                 <button onClick={() => {
-                  setPopupMsg(null); setNome(""); setTelefone(""); setServicoId(null); setPacoteId(null); setExtrasIds([]); setStep(1); navigate("/");
+                  const isSuccess = popupMsg === t.orcamentoPage.successProposal;
+                  setPopupMsg(null);
+
+                  if (isSuccess) {
+                    setNome("");
+                    setTelefone("");
+                    setServicoId(null);
+                    setPacoteId(null);
+                    setExtrasIds([]);
+                    setStep(1);
+                    navigate("/");
+                  }
                 }}>OK</button>
               )}
             </div>

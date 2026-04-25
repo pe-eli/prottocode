@@ -5,6 +5,9 @@ import { LanguageProvider } from './i18n/LanguageContext'
 import './index.css'
 import App from "./App"
 
+document.documentElement.setAttribute("data-theme", "dark")
+window.localStorage.setItem("theme", "dark")
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>

@@ -114,15 +114,15 @@ h1 {
   right: -50%;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle, rgba(15, 40, 84, 0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(148, 180, 193, 0.2) 0%, transparent 70%);
   opacity: 0;
   transition: opacity 0.4s ease;
 }
 
 .card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 12px 32px rgba(15, 40, 84, 0.15);
-  border-color: rgba(15, 40, 84, 0.2);
+  box-shadow: 0 12px 32px rgba(7, 13, 20, 0.36);
+  border-color: var(--border-strong);
 }
 
 .card:hover::before {
@@ -173,7 +173,7 @@ h1 {
   left: -50%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(15, 40, 84, 0.06), transparent);
+  background: linear-gradient(135deg, rgba(148, 180, 193, 0.16), transparent);
   opacity: 0;
   transition: opacity 0.4s ease;
 }
@@ -199,8 +199,8 @@ h1 {
 
 .test-card:hover {
   transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 12px 32px rgba(15, 40, 84, 0.2);
-  border-color: rgba(15, 40, 84, 0.25);
+  box-shadow: 0 12px 32px rgba(7, 13, 20, 0.4);
+  border-color: var(--border-strong);
 }
 
 .test-card:hover::before {
@@ -228,9 +228,9 @@ h1 {
   justify-content: space-between;
   align-items: center;
   padding: 32px;
-  background: linear-gradient(135deg, rgba(15, 40, 84, 0.07), rgba(73, 136, 196, 0.05));
+  background: linear-gradient(135deg, rgba(84, 119, 146, 0.2), rgba(148, 180, 193, 0.14));
   border-radius: 16px;
-  border: 1px solid rgba(15, 40, 84, 0.15);
+  border: 1px solid var(--border);
   animation: fadeUp 0.8s ease;
   backdrop-filter: blur(10px);
   position: relative;
@@ -296,7 +296,7 @@ h1 {
   outline: none;
   border-color: var(--color-mid);
   background: rgba(0, 0, 0, 0.06);
-  box-shadow: 0 0 20px rgba(15, 40, 84, 0.15);
+  box-shadow: 0 0 20px rgba(148, 180, 193, 0.28);
 }
 
 /* --- FOOTER --- */

@@ -2,68 +2,78 @@ import type { Translations } from "./types";
 
 export const pt: Translations = {
   header: {
-    brandSubtitle: "Soluções com IA",
+    brandSubtitle: "Website + WhatsApp",
     services: "Serviços",
     contact: "Contato",
-    portfolio: "Portfólio",
   },
   hero: {
-    badge: "✦ Automação Inteligente com IA",
-    badgeLink: "Conheça",
-    headlinePrimary: "Aumente sua receita",
-    headlineAccent: "sem aumentar sua equipe",
-    lead: "Deixe a inteligência artificial cuidar do operacional enquanto você foca em fazer seu negócio crescer.",
-    ctaPrimary: "Quero começar!",
-    ctaGhost: "Ver como funciona",
-    solutionsTitle: "Nossas principais soluções de IA",
+    badge: "",
+    badgeLink: "",
+    headlinePrimary: "Tecnologia que acelera sua empresa.",
+    headlineAccent: "",
+    lead: "Criamos sistemas, automações e soluções digitais para negócios que querem crescer com tecnologia.",
+    ctaPrimary: "Acelerar minha empresa",
+    ctaGhost: "Conhecer a Prottocode",
+    guarantee: "Diagnóstico gratuito em 20 min • Sem compromisso",
+    solutionsTitle: "Entregamos a tecnologia que seu negócio precisa para crescer",
     products: [
       {
-        title: "Website que Gera Orçamentos",
-        description: "Seu novo site no ar em até 15 dias, com formulário conectado ao WhatsApp e captura automática dos leads qualificados.",
-        badge: "Entrega em até 15 dias",
-        cta: "Ver sites que já converteram →",
+        title: "Sites que fazem mais do que existir.",
+        description: "Projetados para apresentar sua empresa, captar oportunidades e automatizar parte do atendimento desde o primeiro contato.",
+        benefits: [
+          "Seu site organiza informações importantes e transforma visitantes em oportunidades reais.",
+          "Captura automática de leads qualificados (nome, telefone, necessidade)",
+          "Automações que agilizam respostas e reduzem perda de leads."
+          
+        ],
+        badge: "Entrega garantida em até 10 dias corridos",
+        cta: "Quero um site que vende →",
+        href: "/site-orcamento",
       },
       {
-        title: "Atendimento no WhatsApp sem Fila",
-        description: "Responda em segundos, 24h por dia, qualifique contatos automaticamente e envie para seu time apenas oportunidades reais.",
-        badge: "Resposta em até 5 segundos",
-        cta: "Testar um fluxo real de atendimento →",
-      },
-      {
-        title: "Operação sem Retrabalho",
-        description: "Automatize pedidos, cobrança e atualização de status para reduzir tarefas manuais e liberar sua equipe para o que gera receita.",
-        topBadge: "Mais popular",
-        badge: "Primeiros ganhos em até 30 dias",
-        cta: "Ver processos que já automatizamos →",
+        title: "Atendimento totalmente automático.",
+        description: "Seu cliente é respondido em 15 segundos, 24h por dia. A IA responde, tira dúvidas e até qualifica o lead.",
+        benefits: [
+          "Resposta automática 24/7",
+          "Transferência apenas de oportunidades reais - seu time não perde tempo",
+        ],
+        badge: "Resposta em até 15 segundos",
+        cta: "Quero implementar →",
+        href: "/demo-whatsapp",
       },
     ],
   },
   whatWeDo: {
-    title: "O que é Automação com a Prottocode?",
-    lead: "Você não precisa ser tech: a Prottocode assume a parte técnica e sua equipe opera com clareza desde o primeiro dia.",
+    title: "Você perde venda por causa de dois gargalos",
+    lead: "",
     paragraphs: [
-      "Quando o volume aumenta, tarefas manuais começam a travar a operação: orçamento que demora, cobrança com erro e cliente sem resposta no tempo certo.",
-      "A Prottocode mapeia seu fluxo, conecta os sistemas que você já usa e aplica regras com IA para executar rotinas, priorizar demandas e alertar sua equipe apenas no momento de decidir.",
-      "Nos projetos recentes, os primeiros ganhos surgiram entre 2 e 4 semanas, com queda de retrabalho em até 80% e acompanhamento semanal com especialista dedicado.",
+      "<strong>1. Site que não vende</strong><br />Visitante entra, vê preço? Não vê. Pede orçamento? Envia e-mail que ninguém responde em menos de 24h. Resultado: o lead vai para o concorrente.",
+      "<strong>2. WhatsApp que vira caixa preta</strong><br />Cliente manda áudio às 22h e só recebe resposta na manhã seguinte. Mensagens se perdem, ninguém acompanha. Resultado: frustração e venda perdida.",
+      "A Prottocode resolve esses dois gargalos com um método simples:",
+      "1) Construímos seu site em 10 dias com formulário inteligente (já conectado ao WhatsApp). 2) Instalamos um assistente no WhatsApp que responde 24h e já qualifica o lead. 3) Seu time só entra quando a venda está quente - sem retrabalho.",
+      "Resultado em 30 dias: mais orçamentos enviados, menos cliente frustrado e mais vendas fechadas.",
     ],
-    ctaText: "Quero mapear meu processo e ver ganhos →",
+    ctaText: "Quero mapear meu site e WhatsApp →",
     pillars: [
-      {
-        title: "Processos operacionais",
-        description: "Pedidos, faturamento, follow-up e atualização de status rodando automaticamente, sem planilha paralela e sem gargalo no time.",
-        icon: "⚙️",
-      },
-      {
-        title: "Análise preditiva",
-        description: "A IA detecta padrões de atraso, risco e prioridade para você agir antes do problema virar perda de receita.",
-        icon: "🧠",
-      },
-      {
-        title: "Ecossistema conectado",
-        description: "CRM, ERP, e-commerce e financeiro funcionando juntos para que a informação certa chegue no setor certo, na hora certa.",
-        icon: "🔗",
-      },
-    ],
+  {
+    title: "Captação inteligente",
+    description:
+      "Estruturas digitais preparadas para transformar visitantes em oportunidades reais de negócio.",
+    icon: "⚡",
+  },
+  {
+    title: "Atendimento conectado",
+    description:
+      "Integrações e automações que aceleram respostas e organizam o contato com seus clientes.",
+    icon: "🔗",
+  },
+  {
+    title: "Execução rápida",
+    description:
+      "Projetos modernos entregues com agilidade, clareza e foco em colocar sua operação no ar rapidamente.",
+    icon: "🚀",
+  },
+],
   },
   howItWorks: {
     title: "Como Funciona",
@@ -112,18 +122,17 @@ export const pt: Translations = {
     ctaButton: "Conversar com Especialista",
   },
   finalCta: {
-    title: "Pronto para começar?",
-    titleAccent: " Transforme seu negócio com IA",
-    lead: "Você já viu como automação inteligente pode impactar seu negócio. Agora é hora de conversar com nosso time e construir sua solução.",
-    highlight: "<strong>Sem compromisso.</strong> Vamos entender suas necessidades e mostrar exatamente como podemos ajudar.",
-    btnPrimary: "Solicitar Proposta Agora",
-    btnSecondary: "Conversar pelo WhatsApp",
-    footer: "✓ Já seremos grato a sua atenção <br />✓ Sem compromisso <br />✓ Resposta em 24h",
+    title: "Descubra como sua operação pode evoluir no digital ",
+    titleAccent: " ainda este mês",
+    lead: "Em uma conversa de 10 minutos, analisamos sua presença atual e mostramos oportunidades de melhoria em atendimento, captação e automação.",
+    highlight: "Antes da implantação, registramos os números-base do seu funil para comparação real.",
+    btnPrimary: "▶ Agendar diagnóstico gratuito",
+    btnSecondary: "💬 Falar com a equipe",
+    footer: "✓ Conversa objetiva e sem compromisso, sem pressão <br />✓ Análise personalizada para sua operação<br />✓ Atendimento em horário comercial",
     signals: [
-      "Especialistas em IA & Automação",
-      "Implementação em 30-60 dias",
-      "ROI em 2-3 meses",
-      "Suporte dedicado 24/7",
+      "Website com orçamento automático conectado ao WhatsApp",
+      "Atendimento 24h com resposta em até 5 segundos",
+      "Seu time recebe só oportunidades reais e prontas para venda",
     ],
   },
   faq: {
@@ -206,8 +215,8 @@ export const pt: Translations = {
     ],
   },
   footer: {
-    brandSubtitle: "Automação Inteligente com IA",
-    description: "Transformando processos manuais em automações inteligentes que crescem com seu negócio.",
+    brandSubtitle: "Website + WhatsApp",
+    description: "A presença digital que realmente vende",
     solutionsTitle: "Soluções",
     companyTitle: "Empresa",
     contactTitle: "Contato",
@@ -222,10 +231,6 @@ export const pt: Translations = {
     responseTime: "Resposta em até 24h",
     copyright: "Todos os direitos reservados.",
     badges: { secure: "HTTPS Seguro", lgpd: "LGPD Compliant", dataProtected: "Dados Protegidos" },
-  },
-  themeToggle: {
-    lightLabel: "Mudar para tema claro",
-    darkLabel: "Mudar para tema escuro",
   },
   servicosPage: {
     heroTitle: "Nossas Soluções de ",
@@ -371,20 +376,6 @@ export const pt: Translations = {
     successText: "Recebemos sua solicitação. Nossa equipe entrará em contato em até 24h para dar andamento.",
     errorText: "Erro ao enviar mensagem. Tente novamente.",
     notInformed: "Não informado",
-  },
-  portfolioPage: {
-    badge: "Em breve",
-    title: "Nosso ",
-    titleAccent: "Portfólio",
-    titleSuffix: " está a caminho",
-    description: "Estamos finalizando os detalhes dos nossos projetos para apresentá-los aqui. Em breve você poderá ver cases reais de sites, automações e soluções com IA que desenvolvemos para nossos clientes.",
-    cards: [
-      { icon: "⚙️", title: "Automações com IA", description: "Fluxos automatizados que economizam tempo e aumentam conversões." },
-      { icon: "🧠", title: "Inteligência Artificial", description: "Painéis de dados em tempo real para decisões mais inteligentes." },
-      { icon: "🔗", title: "Websites & Integrações", description: "Sites modernos com design responsivo e integrações inteligentes." },
-    ],
-    ctaText: "Quer ver o que podemos fazer pelo seu negócio?",
-    ctaButton: "Fale com a gente",
   },
   privacidadePage: {
     badge: "Legal",

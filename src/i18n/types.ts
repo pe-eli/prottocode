@@ -3,7 +3,6 @@ export interface Translations {
     brandSubtitle: string;
     services: string;
     contact: string;
-    portfolio: string;
   };
   hero: {
     badge: string;
@@ -13,6 +12,7 @@ export interface Translations {
     lead: string;
     ctaPrimary: string;
     ctaGhost: string;
+    guarantee?: string;
     solutionsTitle: string;
     products: {
       title: string;
@@ -20,6 +20,8 @@ export interface Translations {
       badge: string;
       topBadge?: string;
       cta: string;
+      benefits?: string[];
+      href?: string;
     }[];
   };
   whatWeDo: {
@@ -159,10 +161,6 @@ export interface Translations {
     copyright: string;
     badges: { secure: string; lgpd: string; dataProtected: string };
   };
-  themeToggle: {
-    lightLabel: string;
-    darkLabel: string;
-  };
   servicosPage: {
     heroTitle: string;
     heroAccent: string;
@@ -224,16 +222,6 @@ export interface Translations {
     successText: string;
     errorText: string;
     notInformed: string;
-  };
-  portfolioPage: {
-    badge: string;
-    title: string;
-    titleAccent: string;
-    titleSuffix: string;
-    description: string;
-    cards: { icon: string; title: string; description: string }[];
-    ctaText: string;
-    ctaButton: string;
   };
   privacidadePage: {
     badge: string;

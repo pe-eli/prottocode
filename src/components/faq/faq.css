@@ -12,7 +12,7 @@
 .faq-header h2 {
   font-size: 2.2rem;
   margin-bottom: 1rem;
-  color: var(--color-deep);
+  color: var(--color-light);
 }
 
 .faq-header .section-lead {

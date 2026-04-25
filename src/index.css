@@ -1,59 +1,41 @@
 /* ============================================
-   DESIGN TOKENS — Light (default) + Dark
-   Palette: #0F2854, #1C4D8D, #4988C4, #BDE8F5
+   DESIGN TOKENS — Dark Only
+   Palette: #213448, #547792, #94B4C1, #EAE0CF
    ============================================ */
 
 :root {
-  /* Raw palette */
-  --color-deep:    #0F2854;
-  --color-navy:    #1C4D8D;
-  --color-mid:     #4988C4;
-  --color-light:   #BDE8F5;
+  --color-deep: #213448;
+  --color-navy: #547792;
+  --color-mid: #94B4C1;
+  --color-light: #EAE0CF;
 
-  /* Semantic tokens — Light theme */
-  --bg:              #f7fbfe;
-  --bg-surface:      #ffffff;
-  --bg-card:         rgba(15, 40, 84, 0.03);
-  --text:            #0F2854;
-  --text-secondary:  rgba(15, 40, 84, 0.65);
-  --text-inverse:    #ffffff;
-  --muted:           #6b7f9e;
-  --accent:          #1C4D8D;
-  --accent-2:        #4988C4;
-  --accent-light:    #BDE8F5;
-  --gradient-primary:   linear-gradient(135deg, #1C4D8D, #4988C4);
-  --gradient-secondary: linear-gradient(135deg, #4988C4, #1C4D8D);
-  --border:          rgba(15, 40, 84, 0.1);
-  --border-strong:   rgba(15, 40, 84, 0.2);
-  --shadow-sm:       0 2px 8px rgba(15, 40, 84, 0.06);
-  --shadow-md:       0 8px 24px rgba(15, 40, 84, 0.1);
-  --shadow-lg:       0 16px 48px rgba(15, 40, 84, 0.14);
-  --hero-bg:         #0F2854;
-  --header-bg:       rgba(15, 40, 84, 0.95);
-  --chart-line:      #4988C4;
-  --chart-green:     #BDE8F5;
-}
+  --bg: #213448;
+  --bg-surface: #2A3F55;
+  --bg-elevated: rgba(84, 119, 146, 0.18);
+  --bg-card: rgba(84, 119, 146, 0.14);
 
-[data-theme="dark"] {
-  --bg:              #0a1628;
-  --bg-surface:      #111e36;
-  --bg-card:         rgba(189, 232, 245, 0.04);
-  --text:            #e4eef8;
-  --text-secondary:  rgba(228, 238, 248, 0.65);
-  --text-inverse:    #0F2854;
-  --muted:           #8a9bba;
-  --accent:          #4988C4;
-  --accent-2:        #BDE8F5;
-  --accent-light:    #1C4D8D;
-  --gradient-primary:   linear-gradient(135deg, #4988C4, #BDE8F5);
-  --gradient-secondary: linear-gradient(135deg, #BDE8F5, #4988C4);
-  --border:          rgba(189, 232, 245, 0.08);
-  --border-strong:   rgba(189, 232, 245, 0.16);
-  --shadow-sm:       0 2px 8px rgba(0, 0, 0, 0.2);
-  --shadow-md:       0 8px 24px rgba(0, 0, 0, 0.3);
-  --shadow-lg:       0 16px 48px rgba(0, 0, 0, 0.4);
-  --hero-bg:         #081425;
-  --header-bg:       rgba(10, 22, 40, 0.95);
+  --text: #F2F6F8;
+  --text-secondary: rgba(226, 235, 240, 0.78);
+  --text-inverse: #213448;
+  --muted: rgba(148, 180, 193, 0.84);
+
+  --accent: #547792;
+  --accent-2: #94B4C1;
+  --accent-light: #EAE0CF;
+  --gradient-primary: linear-gradient(135deg, #547792, #94B4C1);
+  --gradient-secondary: linear-gradient(135deg, #94B4C1, #EAE0CF);
+
+  --border: rgba(148, 180, 193, 0.22);
+  --border-strong: rgba(148, 180, 193, 0.34);
+
+  --shadow-sm: 0 6px 20px rgba(13, 22, 31, 0.25);
+  --shadow-md: 0 14px 34px rgba(9, 16, 24, 0.35);
+  --shadow-lg: 0 22px 62px rgba(7, 13, 20, 0.45);
+
+  --hero-bg: #213448;
+  --header-bg: rgba(33, 52, 72, 0.72);
+  --chart-line: #94B4C1;
+  --chart-green: #EAE0CF;
 }
 
 /* ============================================
@@ -69,32 +51,74 @@ html {
   box-sizing: border-box;
 }
 
-body, #root {
+body,
+#root {
   height: 100%;
 }
 
 body {
   margin: 0;
-  font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background: var(--bg);
+  position: relative;
+  min-height: 100%;
+  font-family: 'Nunito', 'Lato', sans-serif;
+  background:
+    radial-gradient(1200px circle at 8% -12%, rgba(148, 180, 193, 0.2), transparent 52%),
+    radial-gradient(900px circle at 100% 0%, rgba(234, 224, 207, 0.1), transparent 42%),
+    linear-gradient(160deg, #213448 0%, #253D54 48%, #213448 100%);
   color: var(--text);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
-  transition: background 0.3s ease, color 0.3s ease;
   font-size: 16px;
   line-height: 1.6;
 }
 
-h1, h2, h3, h4, h5, h6 {
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  width: 58vw;
+  height: 58vw;
+  border-radius: 999px;
+  pointer-events: none;
+  z-index: -1;
+  filter: blur(80px);
+}
+
+body::before {
+  top: -28vw;
+  left: -22vw;
+  background: radial-gradient(circle, rgba(84, 119, 146, 0.28), rgba(84, 119, 146, 0));
+}
+
+body::after {
+  right: -18vw;
+  bottom: -36vw;
+  background: radial-gradient(circle, rgba(234, 224, 207, 0.15), rgba(234, 224, 207, 0));
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: 'Playfair Display', Georgia, serif;
   font-weight: 700;
   line-height: 1.15;
 }
 
+main,
+.pc-root,
+.servicos-page,
+.contato-page,
+.orcamento-page,
+.priv-page {
+  background-color: transparent;
+}
+
 /* ============================================
    GLOBAL BUTTON SYSTEM
-   Base + 4 variants: primary, secondary, ghost, outline
    ============================================ */
 
 .btn,
@@ -106,80 +130,83 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 14px 32px;
-  border-radius: 8px;
-  font-family: 'Lato', sans-serif;
+  padding: 14px 30px;
+  border-radius: 10px;
+  font-family: 'Nunito', 'Lato', sans-serif;
   font-weight: 700;
   font-size: 0.95rem;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.2px;
   text-decoration: none;
   cursor: pointer;
   border: none;
-  transition: all 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
   white-space: nowrap;
   line-height: 1;
 }
 
-/* Primary — solid, high contrast */
 .btn-primary {
-  background: #1C4D8D;
-  color: #ffffff;
-  box-shadow: 0 2px 8px rgba(28, 77, 141, 0.25);
+  background: var(--gradient-secondary);
+  color: var(--text-inverse);
+  box-shadow: 0 8px 24px rgba(11, 20, 30, 0.4);
 }
 
 .btn-primary:hover {
-  background: #0F2854;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(15, 40, 84, 0.3);
+  box-shadow: 0 14px 32px rgba(8, 16, 24, 0.48);
 }
 
-/* Secondary — outline accent */
 .btn-secondary {
-  background: transparent;
-  color: #1C4D8D;
-  border: 2px solid #1C4D8D;
+  background: rgba(148, 180, 193, 0.1);
+  color: var(--text);
+  border: 1px solid var(--border-strong);
+  backdrop-filter: blur(8px);
 }
 
 .btn-secondary:hover {
-  background: #1C4D8D;
-  color: #ffffff;
   transform: translateY(-2px);
+  border-color: var(--accent-light);
+  background: rgba(234, 224, 207, 0.14);
 }
 
-/* Ghost — subtle */
 .btn-ghost {
   background: transparent;
-  color: #1C4D8D;
-  border: 1.5px solid var(--border-strong);
+  color: var(--text);
+  border: 1px solid var(--border);
 }
 
 .btn-ghost:hover {
-  background: rgba(15, 40, 84, 0.06);
-  border-color: #1C4D8D;
   transform: translateY(-2px);
+  border-color: var(--border-strong);
+  background: rgba(148, 180, 193, 0.1);
 }
 
-/* Outline — minimal, nav */
 .btn-outline {
   background: transparent;
   color: inherit;
-  border: 1.5px solid var(--border);
-  padding: 8px 18px;
+  border: 1px solid var(--border);
+  padding: 8px 16px;
   font-weight: 600;
   font-size: 0.9rem;
-  border-radius: 6px;
+  border-radius: 8px;
 }
 
 .btn-outline:hover {
-  border-color: var(--border-strong);
-  background: rgba(15, 40, 84, 0.04);
+  border-color: var(--accent-light);
+  background: rgba(234, 224, 207, 0.08);
+}
+
+.btn-primary:focus-visible,
+.btn-secondary:focus-visible,
+.btn-ghost:focus-visible,
+.btn-outline:focus-visible {
+  outline: 2px solid var(--accent-light);
+  outline-offset: 2px;
 }
 
 /* ============================================
    MICRO-INTERACTIONS
    ============================================ */
 
-/* --- Animated underline for links --- */
 a.link-hover {
   position: relative;
   text-decoration: none;
@@ -192,7 +219,7 @@ a.link-hover::after {
   bottom: -2px;
   width: 0;
   height: 1.5px;
-  background: var(--accent-2);
+  background: var(--accent-light);
   transition: width 0.3s ease;
 }
 
@@ -200,8 +227,12 @@ a.link-hover:hover::after {
   width: 100%;
 }
 
-/* --- Lenis smooth scroll base --- */
-html.lenis, html.lenis body {
+/* ============================================
+   LENIS
+   ============================================ */
+
+html.lenis,
+html.lenis body {
   height: auto;
 }
 

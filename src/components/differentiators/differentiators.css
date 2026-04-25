@@ -1,7 +1,7 @@
 /* Differentiators Section */
 .differentiators {
   padding: 5rem 0;
-  background: linear-gradient(180deg, rgba(15, 40, 84, 0.03) 0%, rgba(28, 77, 141, 0.03) 100%);
+  background: linear-gradient(180deg, rgba(148, 180, 193, 0.06) 0%, rgba(84, 119, 146, 0.08) 100%);
 }
 
 .differentiators-header {
@@ -12,7 +12,7 @@
 .differentiators-header h2 {
   font-size: 2.2rem;
   margin-bottom: 1rem;
-  color: var(--color-deep);
+  color: var(--color-light);
 }
 
 .differentiators-header .section-lead {
@@ -45,7 +45,7 @@
   font-size: 0.95rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: var(--color-navy);
+  color: var(--color-light);
 }
 
 .header-category {
@@ -102,7 +102,7 @@
 
 .prottocode-cell p {
   margin: 0;
-  color: var(--color-navy);
+  color: var(--color-light);
   font-weight: 600;
 }
 
@@ -174,7 +174,7 @@
   content: "✓";
   position: absolute;
   left: 0;
-  color: var(--color-navy);
+  color: var(--color-light);
   font-weight: 700;
 }
 
@@ -208,8 +208,8 @@
 
 .differentiators-cta .btn-primary {
   padding: 14px 32px;
-  background: var(--color-navy);
-  color: #ffffff;
+  background: var(--gradient-secondary);
+  color: var(--text-inverse);
   text-decoration: none;
   border-radius: 10px;
   font-weight: 700;

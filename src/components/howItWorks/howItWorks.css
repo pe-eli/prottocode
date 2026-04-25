@@ -12,7 +12,7 @@
 .how-it-works-header h2 {
   font-size: 2.2rem;
   margin-bottom: 1rem;
-  color: var(--color-deep);
+  color: var(--color-light);
 }
 
 .how-it-works-header .section-lead {
@@ -71,12 +71,20 @@
 }
 
 .step-icon {
-  font-size: 2.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 60px;
-  min-height: 60px;
+  width: 64px;
+  height: 64px;
+  border-radius: 14px;
+  color: var(--color-navy);
+  background: color-mix(in srgb, var(--color-navy) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-navy) 32%, transparent);
+}
+
+.step-icon svg {
+  width: 1.7rem;
+  height: 1.7rem;
 }
 
 .step-number {
@@ -210,7 +218,13 @@
   }
 
   .step-icon {
-    font-size: 2rem;
+    width: 56px;
+    height: 56px;
+  }
+
+  .step-icon svg {
+    width: 1.5rem;
+    height: 1.5rem;
   }
 
   .step-card h3 {

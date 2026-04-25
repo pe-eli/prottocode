@@ -5,8 +5,8 @@
   width: 38px;
   height: 38px;
   border-radius: 10px;
-  border: 1.5px solid rgba(255, 255, 255, 0.25);
-  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border);
+  background: rgba(148, 180, 193, 0.12);
   cursor: pointer;
   transition: all 0.3s ease;
   margin-left: 8px;
@@ -21,7 +21,21 @@
 }
 
 .lang-toggle:hover {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.4);
-  transform: scale(1.08);
+  background: rgba(148, 180, 193, 0.18);
+  border-color: var(--border-strong);
+  transform: translateY(-1px);
+}
+
+.lang-toggle:focus-visible {
+  outline: 2px solid var(--color-light);
+  outline-offset: 2px;
+}
+
+@media (max-width: 768px) {
+  .lang-toggle {
+    margin-left: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 9px;
+  }
 }
